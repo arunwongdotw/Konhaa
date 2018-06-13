@@ -1,0 +1,43 @@
+<ion-view title="ประวัติการแชท">
+  <ion-nav-buttons side="right"></ion-nav-buttons>
+  <ion-content id="default-input-content" overflow-scroll="false">
+    <md-tabs md-dynamic-height md-border-bottom>
+      <md-tab label="แชทกับร้านค้า">
+        <md-content>
+          <div class="list">
+            <a class="item item-avatar" ng-click="btnChat(record.shop_id)" on-hold="btnDelShopChat(record)" ng-repeat="record in items2">
+              <img src="{{record.img}}">
+              <h2>{{record.title}}</h2>
+              <p>{{record.detail}}</p>
+            </a>
+          </div>
+        </md-content>
+      </md-tab>
+      <md-tab label="แชทกับลูกค้า">
+        <md-content>
+          <div class="list">
+            <a class="item item-avatar" ng-click="btnChat2(record1)" on-hold="btnDelCusChat(record1)" ng-repeat="record1 in items3">
+              <img src="{{record1.member_img}}">
+              <h2>{{record1.member_username}}</h2>
+              <p>{{record1.member_firstname}}</p>
+            </a>
+          </div>
+        </md-content>
+      </md-tab>
+    </md-tabs>
+  </ion-content>
+</ion-view>
+
+<!-- <script type="text/ng-template" id="ui-list-bottom-sheet-template">
+  <md-bottom-sheet class="md-list md-has-header">
+    <h1 class="md-bottom-sheet-header">รายการเมนู</h1>
+    <md-list>
+      <md-list-item>
+        <a class="md-default-theme md-bottom-sheet-list-item" ng-click="closeListBottomSheet()">
+                    <i class="ion-android-delete"></i>
+                    <span>ลบประวัติการแชทนี้</span>
+                </a>
+      </md-list-item>
+    </md-list>
+  </md-bottom-sheet>
+</script> -->

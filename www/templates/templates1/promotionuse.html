@@ -1,0 +1,68 @@
+<ion-view title="ใช้งานโปรโมชั่น" id="online-course">
+  <ion-content id="online-course-content" style="background-color: white;" overflow-scroll="false">
+    <md-tabs md-dynamic-height md-border-bottom>
+      <md-tab label="ตรวจสอบสิทธิ์">
+        <md-content>
+          <ion-item style="margin-top: 5%; margin-left: 2%; margin-right: 2%;">
+            <input type="text" placeholder="กรอกชื่อผู้ใช้ (Username) ของลูกค้าเพื่อตรวจสอบ" ng-model="check.username" style="width: 300px;">
+          </ion-item>
+          <button class="md-raised social-button md-button md-default-theme material-background" ng-click="btnCheckPromotion()" style="margin-top: 5%; margin-left: 2%; width: 96%; margin-right: 20%;">ตรวจสอบสิทธิ์ด้วยชื่อผู้ใช้</button>
+          <button class="md-raised social-button md-button md-default-theme material-background" ng-click="btnScan()" style="width: 96%;">ตรวจสอบสิทธิ์ด้วย QR Code</button>
+          <p style="margin-top: 20px; margin-left: 20px; margin-bottom: 20px;" ng-if="show2">ไม่พบโปรโมชั่นของชื่อผู้ใช้นี้</p>
+          <button class="md-raised social-button md-button md-default-theme material-background" ng-click="btnAddPromotionToMember()" style="margin-left: 2%; width: 96%; margin-right: 20%;" ng-if="show1">เพิ่มโปรโมชั่นให้ผู้ใช้</button>
+          <div class="course-list" style="margin-top: 20px;">
+            <div class="course-item" ng-repeat="promotionlist in PromotionListArray">
+              <div class="title ios-course-background">
+                {{promotionlist.promotion_name}}
+              </div>
+              <div class="content">
+                <h1>{{promotionlist.promotion_detail}}</h1>
+                <p>
+                  เงื่อนไขสิทธิ์ : {{promotionlist.promotion_frequency}}</br>
+                  มีสิทธิ์แล้ว : {{promotionlist.mp_frequency}}</br>
+                  หมดเขตโปรโมชั่น : {{promotionlist.promotion_end_date}}</p>
+                <p>
+                  <a class="md-raised md-button md-default-theme ios-course-background" ng-click="btnAddFreq(promotionlist.promotion_id, promotionlist.member_id, promotionlist.member_promotion_id, promotionlist.mp_frequency)">
+                              <i class="fas fa-plus"></i>เพิ่มสิทธิ์</a>
+                  <a class="md-raised md-button md-default-theme ios-course-background" ng-click="btnUsePromotion(promotionlist.member_promotion_id, promotionlist.mp_frequency, promotionlist.promotion_frequency)" ng-if="promotionlist.mp_frequency / promotionlist.promotion_frequency >= 1 && promotionlist.enddate > today">
+                              <i class="fas fa-check"></i>ใช้สิทธิ์</a>
+                </p>
+              </div>
+            </div>
+          </div>
+        </md-content>
+      </md-tab>
+      <md-tab label="ใช้งานโค้ดแนะนำร้านค้า">
+        <md-content>
+          <ion-item style="margin-top: 5%; margin-left: 2%; margin-right: 2%;">
+            <input type="text" placeholder="กรอกโค้ดแนะนำร้านค้า" ng-model="check.code" style="width: 300px; text-transform: uppercase;" maxlength="6">
+          </ion-item>
+          <button class="md-raised social-button md-button md-default-theme material-background" ng-click="btnCheckCode()" style="margin-left: 2%; width: 96%; margin-right: 20%;">ตรวจสอบโค้ด</button>
+          <p style="margin-top: 20px; margin-left: 20px; margin-bottom: 20px;" ng-if="show3">ไม่พบโปรโมชั่นแนะนำร้านค้าในร้านค้านี้</p>
+          <div class="course-list" style="margin-top: 20px;">
+            <div class="course-item" ng-repeat="promotionType3 in promotionType3Array">
+              <div class="title ios-course-background">
+                {{promotionType3.promotion_name}}
+              </div>
+              <div class="content">
+                <h1>{{promotionType3.promotion-detail}}</h1>
+                <p>
+                  เงื่อนไขสิทธิ์ : {{promotionType3.promotion_frequency}}</br>
+                  สิ่งที่ได้รับจากโปรโมชั่น : {{promotionType3.promoton_free}}</br>
+                  หมดเขตโปรโมชั่น : {{promotionType3.promotion_end_date}}
+                </p>
+                <p>
+                  <a class="md-raised md-button md-default-theme ios-course-background" ng-click="btnUseCode(promotionType3.promotion_id)">
+                              <i class="fas fa-edit"></i>ใช้โค้ดกับโปรโมชั่นนี้</a>
+                  <!-- <a class="md-raised md-button md-default-theme ios-course-background" ng-click="btnDelPromotion(promotion.promotion_id)">
+                              <i class="fas fa-trash-alt"></i>ลบ</a> -->
+                </p>
+              </div>
+            </div>
+          </div>
+        </md-content>
+      </md-tab>
+    </md-tabs>
+  </ion-content>
+
+</ion-view>

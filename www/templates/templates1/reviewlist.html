@@ -1,0 +1,20 @@
+<ion-view title="ข้อความรีวิวร้านค้า" id="expense-dashboard">
+  <ion-nav-buttons side="right"></ion-nav-buttons>
+  <ion-content id="expense-dashboard-content" style="margin-top: 0;">
+    <div class="list">
+      <a class="item item-avatar" ng-repeat="review in reviewArray">
+        <img ng-src="http://1did.net/centerapp/img/img_profile/{{review.member_username}}.jpg" style="margin-top: 10px;" ng-click="viewProfile(review)">
+        <h2>{{review.member_username}}</h2>
+        <p>{{review.comment_detail}}</p>
+        <p>{{review.comment_datetime}}</p>
+        <p ng-if="review.comment_pic != ''"><img src="http://1did.net/centerapp/img/img_review/{{review.comment_pic}}"></p>
+        <button class="md-raised md-button md-default-theme ios-course-background" style="margin-top: 8px; color: white;" ng-click="btnDeleteReview(review.comment_id)">
+          <i class="fas fa-trash-alt"></i> ลบรีวิว
+        </button>
+        <button class="md-raised md-button md-default-theme ios-course-background" style="margin-top: 8px; color: white;" ng-click="btnReply(review.comment_id)">
+          <i class="fas fa-reply"></i> ตอบกลับ
+        </button>
+      </a>
+    </div>
+  <ion-content>
+</ion-view>

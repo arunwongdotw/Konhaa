@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1003832017518",
+    "project_id": "konhaa-app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1003832017518:android:804e7a1c0c5ef066",
+        "android_client_info": {
+          "package_name": "com.smartonline.konhaa"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1003832017518-ajmactuh19q818us42pruar41vv87555.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAtIM1jGhyXm0n7IwodPUp0RjWpYqHgsow"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

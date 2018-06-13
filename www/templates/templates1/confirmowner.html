@@ -1,0 +1,39 @@
+<ion-view title="ยืนยันเจ้าของร้านค้า">
+  <ion-nav-buttons side="left">
+    <button class="button button-icon ion-chevron-left" ng-click="btnBack()"></button>
+  </ion-nav-buttons>
+  <ion-content id="social-sign-up-content" overflow-scroll="false">
+    <div class="app-icon">
+      <img src="img/shopping2.png" class="md-card-image" id="IDCard"></br>
+      </br>
+      <a class="md-raised md-button md-default-theme" ng-click="btnIDCardPicByGallery()">
+        อัพโหลดบัตรประชาชน
+      </a>
+    </div>
+    <div class="app-icon">
+      <img src="img/shopping2.png" class="md-card-image" id="OwnerCard"></br>
+      </br>
+      <a class="md-raised md-button md-default-theme" ng-click="btnOwnerCardPicByGallery()">
+        อัพโหลดทะเบียนร้านค้า
+      </a>
+    </div>
+    <md-input-container md-no-float="">
+      <div>
+        <input class="user-name" placeholder="ชื่อจริง *" style="width: 300px;" ng-model="cfmOwner.firstname">
+      </div>
+    </md-input-container>
+    <md-input-container md-no-float="">
+      <div>
+        <input class="user-name" placeholder="นามสกุล *" style="width: 300px;" ng-model="cfmOwner.lastname">
+      </div>
+    </md-input-container>
+    <md-input-container md-no-float="">
+      <div>
+        <input class="user-name" placeholder="เบอร์โทรศัพท์ที่ติดต่อได้ *" style="width: 300px;" ng-model="cfmOwner.mobile">
+      </div>
+    </md-input-container>
+    <a class="md-raised social-button md-button md-default-theme material-background" ng-click="btnConfirmOwner()">
+        ยืนยันตนเป็นเจ้าของร้านค้า
+      </a>
+  </ion-content>
+</ion-view>

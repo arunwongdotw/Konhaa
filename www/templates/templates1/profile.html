@@ -1,0 +1,59 @@
+<!--View Information-->
+<!--View name : Fake Sign Up-->
+<!--State name : app.fakeSignUp-->
+<!--URL : #app/fakeSignUp-->
+
+<ion-view title="โปรไฟล์">
+
+  <!--social sign up section-->
+  <ion-content id="social-sign-up-content" overflow-scroll="false">
+    <div class="app-icon">
+      <img src="{{form.profilepic}}" class="md-card-image" id="myImage"></br>
+      </br>
+      <a class="md-raised md-button md-default-theme" ng-click="btnProfilePicByGallery()">
+        อัพโหลดรูปโปรไฟล์
+      </a>
+    </div>
+    <!--input section-->
+    <md-input-container md-no-float="">
+      <div>
+        <input class="user-name" placeholder="ชื่อผู้ใช้ 6-12 ตัวอักษร *" style="width: 300px;" ng-model="form.txt_username" minlength="6" maxlength="12" disabled>
+      </div>
+    </md-input-container>
+    <md-input-container md-no-float="">
+      <div>
+        <input class="user-name" placeholder="ชื่อ *" style="width: 300px;" ng-model="form.txt_firstname">
+      </div>
+    </md-input-container>
+    <md-input-container md-no-float="">
+      <div>
+        <input class="user-name" placeholder="นามสกุล" style="width: 300px;" ng-model="form.txt_lastname">
+      </div>
+    </md-input-container>
+    <md-input-container md-no-float="">
+      <div>
+        <input class="user-name" placeholder="เบอร์โทรศัพท์ที่ติดต่อได้ *" style="width: 300px;" ng-model="form.txt_mobile" minlength="10" maxlength="10">
+      </div>
+    </md-input-container>
+    <md-input-container md-no-float="">
+      <div>
+        <input class="user-name" placeholder="Email" style="width: 300px;" ng-model="form.txt_email">
+      </div>
+    </md-input-container>
+    <md-input-container md-no-float="">
+      <div>
+        <input class="user-name" placeholder="Facebook" style="width: 300px;" ng-model="form.txt_facebook">
+      </div>
+    </md-input-container>
+    <md-input-container md-no-float="">
+      <div>
+        <input class="user-name" placeholder="Line" style="width: 300px;" ng-model="form.txt_line">
+      </div>
+    </md-input-container>
+    <!--end input section-->
+    <a class="md-raised social-button md-button md-default-theme material-background" ng-click="btnUpdate()">
+            บันทึกโปรไฟล์
+        </a>
+  </ion-content>
+  <!--end social sign up section-->
+</ion-view>

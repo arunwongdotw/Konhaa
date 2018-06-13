@@ -1,0 +1,65 @@
+<!--View Information-->
+<!--View name : Menu Dashboard-->
+<!--Controller name : menuDashboardCtrl-->
+<!--Controller path : www/templates/themes/menu-dashboard/js/controllers.js-->
+<!--State name : app.menuDashboard-->
+<!--URL : #app/menuDashboard-->
+
+<ion-view title="โปรโมชั่นในร้านค้า" id="online-course">
+  <!--menu dashboard section-->
+  <ion-content id="online-course-content" style="background-color: white;" overflow-scroll="false">
+    <!--panel section-->
+    <md-tabs md-dynamic-height md-border-bottom>
+      <md-tab label="โปรโมชั่นในร้านค้า">
+        <md-content>
+          <div class="course-list" style="margin-top: 20px;">
+            <div class="course-item" ng-repeat="promotion in promotionArray">
+              <div class="title ios-course-background">
+                {{promotion.promotion_name}}
+              </div>
+              <div class="content">
+                <h1>{{promotion.promotion_detail}}</h1>
+                <p>
+                  เงื่อนไขโปรโมชั่น : {{promotion.promotion_frequency}}</br>
+                  สิ่งที่ได้รับจากโปรโมชั่น : {{promotion.promotion_free}}</br>
+                  หมดเขตโปรโมชั่น : {{promotion.promotion_end_date}}</p>
+                <p>
+                  <a class="md-raised md-button md-default-theme ios-course-background" ng-click="btnEditPromotion(promotion.promotion_id)">
+                              <i class="fas fa-edit"></i>แก้ไข</a>
+                  <a class="md-raised md-button md-default-theme ios-course-background" ng-click="btnDelPromotion(promotion.promotion_id)">
+                              <i class="fas fa-trash-alt"></i>ลบ</a>
+                </p>
+              </div>
+            </div>
+          </div>
+        </md-content>
+      </md-tab>
+      <md-tab label="ลูกค้ามีโปรโมชั่น">
+        <md-content>
+          <div class="course-list" style="margin-top: 20px;">
+            <div class="course-item" ng-repeat="promotionList in PromotionListArray" ng-click="viewProfile(promotionList)">
+              <div class="title ios-course-background">
+                {{promotionList.promotion_name}}
+              </div>
+              <div class="content">
+                <h1>ชื่อผู้ใช้ : {{promotionList.member_username}}</h1>
+                <p>
+                  เงื่อนไขสิทธิ์ : {{promotionList.promotion_frequency}}</br>
+                  มีสิทธิ์แล้ว : {{promotionList.mp_frequency}}</br>
+                  หมดเขตโปรโมชั่น : {{promotionList.promotion_end_date}}
+                </p>
+              </div>
+            </div>
+          </div>
+        </md-content>
+        </md-content>
+      </md-tab>
+    </md-tabs>
+
+  </ion-content>
+  <div class="footer-fab-bar">
+    <a class="md-button md-accent md-fab fab-footer" ng-click="navigateTo('app2.addpromotion')" aria-label="Add">
+          <i class="icon ion-plus"></i>
+      </a>
+  </div>
+</ion-view>

@@ -1,0 +1,75 @@
+<ion-view title="ร้านของฉัน">
+  <ion-nav-buttons side="right">
+    <!-- <md-button class="md-icon-button ion-nav-button-right" ng-click="navigateTo('app2.listchat')" aria-label="Setting">
+      แชท
+    </md-button> -->
+  </ion-nav-buttons>
+
+  <ion-content id="menu-dashboard-content" overflow-scroll="false">
+    <div class="menu-panel">
+      <div class="row">
+        <div class="col-33" ng-click="navigateTo('app2.shopInsert')">
+          <i class="fas fa-plus"></i>
+          <p>เพิ่มสินค้า</p>
+        </div>
+        <div class="col-33" ng-click="navigateTo('app2.promotion')">
+          <i class="fas fa-bullhorn"></i>
+          <p>จัดการโปรโมชัน</p>
+        </div>
+        <div class="col-33" ng-click="navigateTo('app2.promotionuse')">
+          <i class="fa fa-tags"></i>
+          <p>ใช้งานโปรโมชัน</p>
+        </div>
+
+      </div>
+      <div class="row">
+        <div class="col-33" ng-click="btnGetReview()">
+          <i class="fas fa-comment"></i>
+          <p>ข้อความรีวิว</p>
+        </div>
+        <div class="col-33" ng-click="btnGetRating()">
+          <i class="fa fa fa-star"></i>
+          <p>คะแนนร้าน</p>
+        </div>
+        <div class="col-33" ng-click="btnShopDetail()">
+          <i class="fa fa-cog"></i>
+          <p>ข้อมูลร้าน</p>
+        </div>
+      </div>
+    </div>
+    <div class="card" id="advertise-card" ng-repeat="ads in adsArray" style="border: 3px solid red;">
+      <div class="item item-icon-right" style="text-align: center;">
+        <p style="font-weight: bold; font-size: 20px;">{{ads.advertise_text_1}}</p>
+        <p style="font-weight: bold; font-size: 18px;">{{ads.advertise_text_2}}</p>
+        <p style="font-weight: bold; font-size: 18px;">{{ads.advertise_text_3}}</p>
+        <i class="icon fas fa-times" ng-click="closeCard()"></i>
+      </div>
+    </div>
+    <!--toolbar section-->
+    <!-- <md-toolbar class="bar-subheader md-tall md-primary toolbar-medium toolbar-in-content">
+      <div>
+        <h1>Konhaa (ค้นหา)</h1>
+
+        <h2>ค้นหาร้านค้า ใกล้ๆ คุณ</h2>
+
+        <h2>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+        </h2>
+      </div>
+    </md-toolbar> -->
+
+    <div class="pin" ng-click="btnPro(record)" ng-repeat="record in picArray" style="width: 43%; height: 43%; padding: 10px; margin-right: 10px; margin-left: 10px;">
+      <img ng-src="http://1did.net/centerapp/img/img_product/{{record.product_pic0}}?random={{no}}" />
+      <h1>{{record.product_name}}<br></h1>
+      <p>{{record.product_detail}}</p>
+      <button class="button button-small button-clear" width="50%" height="50%" ng-click="btnEdit(record.product_id)"><font color="black"><i class="fas fa-edit"></i>&nbsp;แก้ไข</font></button>
+      <button class="button button-small button-clear" width="50%" height="50%" ng-click="btndel(record.product_id, record.product_pic)"><font color="black"><i class="fas fa-trash-alt"></i>&nbsp;ลบ</font></button>
+    </div>
+    <!--end product list content-->
+  </ion-content>
+  <!--Menu dashboard section-->
+</ion-view>

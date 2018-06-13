@@ -1,0 +1,32 @@
+<!--View Information-->
+<!--View name : Fake Login-->
+<!--State name : app.fakeLogin-->
+<!--URL : #app/fakeLogin-->
+
+<ion-view title="เข้าสู่ระบบ">
+    <ion-content id="social-login" class="bg-white" overflow-scroll="false">
+        <!--fake login form section-->
+        <form class="fakeLogin-form">
+            <div>
+                <img src="img/shopping1.png"/>
+            </div>
+            <!--<div class="sub-header">เข้าสู่ระบบ Center</div>-->
+
+            <div id="fakeLogin">
+                <md-input-container md-no-float="">
+                    <input class="user-name" placeholder="ชื่อผู้ใช้" ng-model="login.username">
+                </md-input-container>
+                <hr/>
+                <md-input-container md-no-float="">
+                    <input class="user-password" type="password" placeholder="รหัสผ่าน" ng-model="login.password">
+                </md-input-container>
+            </div>
+            <div>
+                <a class="md-raised social-button md-button md-default-theme material-background" ng-click="btnLogin()">
+                    เข้าสู่ระบบ
+                </a>
+                <div class="footer">ลืมรหัสผ่าน ? <a href="#/app1/forgotpassword">กดลืมรหัสผ่าน</a>
+            </div>
+        </form> <!--end fake login form section-->
+    </ion-content><!--end login content section-->
+</ion-view>

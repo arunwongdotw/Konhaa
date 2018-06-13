@@ -1,0 +1,24 @@
+<ion-view title="โปรไฟล์ผู้ใช้" id="online-course">
+  <ion-nav-buttons side="left">
+    <button class="button button-icon ion-chevron-left" ng-click="btnBack()"></button>
+  </ion-nav-buttons>
+  <ion-content id="online-course-content">
+    <md-toolbar class="bar-subheader md-tall md-primary toolbar-online-course ">
+      <div>
+        <img src="http://1did.net/centerapp/img/img_profile/{{userDetail.member_username}}.jpg" class="user-img" ng-click="showUserImages($index)"/>
+        <h1>{{userDetail.member_username}}</h1>
+        <h2>{{userDetail.member_firstname}} {{userDetail.member_lastname}}</h2>
+      </div>
+    </md-toolbar>
+    <div class="row detail">
+      <div class="col">
+        <p class="content" style="margin-left: 10px; font-size: 14px;">
+          <i class="fa fa-phone"></i>&nbsp;โทรศัพท์ : {{userDetail.member_mobile}}<br></br>
+          <i class="fas fa-envelope"></i>&nbsp;Email : {{userDetail.member_email}}<br></br>
+          <i class="fab fa-facebook-square"></i>&nbsp;Facebook : {{userDetail.member_facebook}}<br></br>
+          <i class="fab fa-line"></i>&nbsp;Line : {{userDetail.member_line}}
+        </p>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,96 @@
+<ion-view title="รายละเอียดร้านค้า" id="online-course">
+  <ion-nav-buttons side="right">
+    <md-button class="md-icon-button ion-nav-button-right" ng-click="btnChat()" aria-label="Setting" style="margin-right: 20px;">แชท</md-button>
+  </ion-nav-buttons>
+
+  <ion-nav-buttons side="left">
+    <button class="button button-icon ion-chevron-left" ng-click="btnBack()"></button>
+  </ion-nav-buttons>
+
+  <ion-content id="online-course-content" style="background-color: white;" overflow-scroll="false">
+    <md-toolbar class="bar-subheader md-tall md-primary toolbar-online-course">
+      <div>
+        <img src="{{shop.img}}" class="user-img" ng-click="showImages($index)" />
+        <h1>{{shop.title}}</h1>
+        <h2>{{shop.detail}}</h2>
+      </div>
+    </md-toolbar>
+
+    <md-tabs md-dynamic-height md-border-bottom>
+      <md-tab label="สินค้า">
+        <md-content>
+          <div class="pin" ng-repeat="record in myDataArray" style="width: 43%; height: 43%; padding: 10px; margin-right: 10px; margin-left: 10px; margin-top: 10px;">
+            <img ng-src="http://1did.net/centerapp/img/img_product/{{record.product_pic0}}" ng-click="showProductImages(0, record.product_pic0, record.product_pic1, record.product_pic2, record.product_pic3)" />
+            <h1>{{record.product_name}}</h1>
+            <p>{{record.product_detail}}</p>
+            <div class="pin-footer">
+            </div>
+          </div>
+        </md-content>
+      </md-tab>
+      <md-tab label="ข้อมูลร้านค้า">
+        <md-content>
+          <div class="news-item">
+            <div class="row detail">
+              <div class="col">
+                <p class="content" style="margin-left: 10px; font-size: 14px;">
+                  <i class="far fa-clock"></i>&nbsp;เวลาทำการ : {{shop.activetime}}</br></br>
+                  <i class="far fa-calendar-times"></i>&nbsp;วันหยุดทำการ : {{shop.closeday}}</br></br>
+                  <i class="fas fa-map-marker"></i>&nbsp;ที่อยู่ : {{shop.address}} {{district_name}} {{amphur_name}} {{province_name}} {{shop.postalcode}}</br></br>
+                  <i class="fa fa-phone"></i>&nbsp;โทรศัพท์ : {{shop.mobile}}<br></br>
+                  <i class="fab fa-line"></i>&nbsp;Line : {{shop.line}}<br></br>
+                  <i class="fab fa-facebook-square"></i>&nbsp;Facebook : {{shop.facebook}}<br></br>
+                  <i class="fab fa-instagram"></i>&nbsp;Instagram : {{shop.instagram}}<br></br>
+                  <i class="fas fa-globe"></i>&nbsp;Website : {{shop.website}}</br>
+                  <p style="margin-left: 10px; margin-top: 20px;" ng-if="shop.member_id == 0" ng-click="btnGetUserDetail()">
+                    <i class="fas fa-user"></i>&nbsp;<u>แนะนำร้านค้าโดย : {{shop.review_member_username}}</u>
+                  </p>
+                  <center>
+                    <a class="md-raised social-button md-button md-default-theme material-background" ng-if="shop.member_id == 0 && currentState == 'app2.detail'" style="margin-top: 20px;" ng-click="btnConfirmOwner()">
+                      ยืนยันตนเป็นเจ้าของร้านค้า
+                    </a>
+                  </center>
+                </p>
+              </div>
+            </div>
+          </div>
+        </md-content>
+      </md-tab>
+      <md-tab label="รีวิวร้านค้า">
+        <md-content>
+          <div class="news-item">
+            <div class="row detail">
+              <div class="col">
+                <div class="list">
+                  <center>
+                    <a class="md-raised social-button md-button md-default-theme material-background" ng-if="currentState == 'app2.detail' && shop_member_id != member_id" ng-click="navigateTo('app2.review')" style="margin-top: 20px;">
+                      เขียนรีวิวร้านค้า
+                    </a>
+                  </center>
+                  <a class="item item-avatar" ng-repeat="review in reviewArray" style="border-width: 0px;" ng-click="viewAllReview(review)">
+                    <img ng-src="http://1did.net/centerapp/img/img_profile/{{review.member_username}}.jpg" style="margin-top: 10px;">
+                    <span ng-repeat="n in getRepeater(review.comment_score) track by $index"><i class="ion-ios-star" style="color: #CAC768;"></i></span>
+                    <h2>{{review.member_username}}</h2>
+                    <p>{{review.comment_detail}}</p>
+                    <p>{{review.comment_datetime | date: "shortTime"}}</p>
+                    <p ng-if="review.comment_pic != ''"><img src="http://1did.net/centerapp/img/img_review/{{review.comment_pic}}" style="width: 50%;"></p>
+                    <div class="row header" ng-if="review.reply_detail != ''">
+                      <div class="col-20">
+                        <img ng-src="http://1did.net/centerapp/img/img_shop/{{review.img}}" style="width: 40px; border-radius: 50%; margin-top: 10px;">
+                      </div>
+                      <div class="col-80">
+                        <h2>{{review.title}}</h2>
+                        <p>{{review.reply_detail}}</p>
+                        <p>{{review.reply_datetime}}</p>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </md-content>
+      </md-tab>
+    </md-tabs>
+  </ion-content>
+</ion-view>

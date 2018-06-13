@@ -1,0 +1,88 @@
+<!--View Information-->
+<!--View name : Catalog-->
+<!--Controller name : catalogCtrl-->
+<!--Controller path : www/templates/themes/catalog/js/controllers.js-->
+<!--State name : app.catalog-->
+<!--URL : #app/catalog-->
+
+<ion-view title="Material Shop">
+  <ion-nav-buttons side="left">
+    <button class="button button-icon ion-chevron-left" ng-click="btnBack()"></button>
+  </ion-nav-buttons>
+    <!--slide catalog section-->
+    <ion-slide-box id="slide-catalog-content" active-slide="0">
+        <!--slide section-->
+        <ion-slide>
+            <!--pin section-->
+            <div class="pin" >
+                <img ng-src="{{'img/shirt_01.png'}}"/>
+
+                <h1>{{shop_name}}</h1>
+
+                <p>
+                  {{shop_detail}}
+                </p>
+
+                <div class="pin-footer">
+                  {{pic1}}<span class="pin-footer text-left font-sale"></span>
+                    <span class="pin-footer text-left font-hot-sale">{{txt_price}}</span>
+                </div>
+            </div><!--end pin section-->
+        </ion-slide>
+        <ion-slide>
+            <!--pin section-->
+            <div class="pin" >
+                <img ng-src="{{'img/shirt_02.png'}}"/>
+
+                <h1>Spring Shirt</h1>
+
+                <p>
+                    A shirt with spring design.
+                </p>
+
+                <div class="pin-footer">
+                  {{pic2}}<span class="pin-footer text-left font-sale"></span>
+                    <span class="pin-footer text-left font-hot-sale">{{txt_price}}</span>
+                </div>
+            </div> <!--end pin section-->
+        </ion-slide>
+        <ion-slide>
+            <!--pin section-->
+            <div class="pin" >
+                <img ng-src="{{'img/shirt_04.png'}}"/>
+
+                <h1>Plain Shirt</h1>
+
+                <p>
+                    A shirt with plain design.
+                </p>
+
+                <div class="pin-footer">
+                  {{pic3}}<span class="pin-footer text-left font-sale"></span>
+                    <span class="pin-footer text-left font-hot-sale">{{txt_price}}</span>
+                </div>
+            </div> <!--end pin section-->
+        </ion-slide>
+        <ion-slide>
+            <!--pin section-->
+            <div class="pin" >
+                <img ng-src="{{'img/shirt_06.png'}}"/>
+
+                <h1>Spring Shirt</h1>
+
+                <p>
+                    A shirt with spring design.
+                </p>
+
+                <div class="pin-footer">
+                    {{pic4}}<span class="pin-footer text-left font-sale"></span>
+                    <span class="pin-footer text-left font-hot-sale">{{txt_price}}</span>
+                </div>
+            </div> <!--end pin section-->
+        </ion-slide>
+
+
+        <!--end slide section-->
+    </ion-slide-box><!--end slide catalog section-->
+
+</ion-view>

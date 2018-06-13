@@ -1,0 +1,209 @@
+﻿<!--This is a main HTML file of project default page when application start.-->
+<!--All reference of css and javascript lib is here.-->
+
+<!DOCTYPE html>
+<html>
+
+<!--head section This is a place of all reference of css and javascript lib-->
+<head>
+    <!-- Meta section -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <meta name="format-detection" content="telephone=no"> <!-- To disable phone number typing.-->
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src *; script-src 'self' 'unsafe-inline' 'unsafe-eval' *; style-src  'self' 'unsafe-inline' *"> -->
+    <!-- end Meta section -->
+    <title></title>
+
+    <!-- Font reference section -->
+    <link href="lib/robotodraft/robotodraft.css">
+    <!-- end Font reference section -->
+
+    <!-- CSS reference section -->
+    <link rel="stylesheet" href="css/ionic.app.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet prefetch" href="lib/angular-material/angular-material.css">
+    <!-- <link rel="stylesheet" href="lib/font-awesome-4.4.0/css/font-awesome.css"> -->
+    <link rel="stylesheet" href="lib/font-awesome-5.0.8/css/fontawesome-all.css">
+    <!-- end CSS reference section -->
+
+    <!-- Ionic javascript lib -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+    <!-- end Ionic javascript lib -->
+
+    <!-- Angular javascript lib -->
+    <script src="lib/angular-messages/angular-messages.js"></script>
+    <script src="lib/angular-aria/angular-aria.js"></script>
+    <script src="lib/angular-material/angular-material.js"></script>
+    <!-- end Angular javascript lib -->
+
+    <!-- Cordova script (this will be a 404 during development) -->
+    <script src="lib/ngCordova/dist/ng-cordova.min.js"></script>
+    <script src="lib/ngCordova/dist/ng-cordova.js"></script>
+    <script src="cordova.js"></script>
+
+    <script src="lib/ionic-ratings/dist/ionic-ratings.min.js"></script>
+    <script src="lib/ionic-ratings/src/ionic-ratings.js"></script>
+    <!-- end Cordova script -->
+
+    <!--ionic framework ngIOS9UIWebViewPatch-->
+    <!--Learn more about ngIOS9UIWebViewPatch at : http://blog.ionic.io/ios-9-potential-breaking-change/-->
+    <script src="lib/ngIOS9UIWebViewPatch/angular-ios9-uiwebview.patch.js"></script>
+    <!--end ionic framework ngIOS9UIWebViewPatch-->
+
+    <!-- app.js section-->
+    <script src="js/app.js"></script>
+    <!-- end app.js section-->
+
+    <script src="lib/ionic-datepicker/dist/ionic-datepicker.bundle.min.js"></script>
+
+    <!-- Controllers section-->
+
+
+    <script src="js/controllers.js"></script>
+    <script src="js/shared/directives.js"></script>
+    <script src="js/shared/filter.js"></script>
+    <script src="js/shared/controllers.js"></script>
+    <script src="templates/menu/js/controllers.js"></script>
+    <script src="templates/material-user-interface/dashboard/js/controllers.js"></script>
+    <script src="templates/application-storage/sqLite/js/controllers.js"></script>
+    <script src="templates/application-storage/sqLite/js/services.js"></script>
+    <script src="templates/application-storage/local-application-db/js/controllers.js"></script>
+    <script src="templates/application-storage/local-application-db/js/services.js"></script>
+    <script src="templates/social-network-connect/facebook/js/controllers.js"></script>
+    <script src="templates/social-network-connect/instagram/js/controllers.js"></script>
+    <script src="templates/social-network-connect/google-plus/js/controllers.js"></script>
+    <script src="templates/social-network-connect/foursquare/js/controllers.js"></script>
+    <script src="templates/social-network-connect/dropbox/js/controllers.js"></script>
+    <script src="templates/share-application-content/social-share/js/controllers.js"></script>
+    <script src="templates/share-application-content/email-message/js/controllers.js"></script>
+    <script src="templates/hardware-connect/device-information/js/controllers.js"></script>
+    <script src="templates/hardware-connect/mobile-contract/js/controllers.js"></script>
+    <script src="templates/hardware-connect/flash-light/js/controllers.js"></script>
+    <script src="templates/hardware-connect/vibration/js/controllers.js"></script>
+    <script src="templates/advertising-application/googleAdmob/js/controllers.js"></script>
+    <script src="templates/hardware-connect/image-picker/js/controllers.js"></script>
+    <script src="templates/social-network-connect/wordpress/js/controllers.js"></script>
+    <script src="templates/material-user-interface/dashboard/js/controllers.js"></script>
+    <script src="templates/material-user-interface/default-user-interface/js/controllers.js"></script>
+    <script src="templates/themes/menu-dashboard/js/controllers.js"></script>
+    <script src="templates/themes/expense-dashboard/js/controllers.js"></script>
+    <script src="templates/themes/catalog/js/controllers.js"></script>
+    <script src="templates/push-notification/single-push-notification/js/controllers.js"></script>
+    <script src="templates/push-notification/schedule-push-notification/js/controllers.js"></script>
+    <script src="templates/map-and-location/ios-map-connect/js/controllers.js"></script>
+    <script src="templates/map-and-location/android-map-connect/js/controllers.js"></script>
+
+    <script src="js/services/services.js"></script>
+    <script src="js/services/deviceService.js"></script>
+    <script src="js/services/myService.js"></script>
+
+    <script src="js/controllers_map/mapController.js"></script>
+    <script src="js/controllers_map/home2Controller.js"></script>
+    <script src="js/controllers_map/mapMultiMarkerController.js"></script>
+    <script src="js/controllers_map/locationController.js"></script>
+
+    <script src="js/controllers1/homeController.js"></script>
+    <script src="js/controllers1/loginController.js"></script>
+    <script src="js/controllers1/signupController.js"></script>
+    <script src="js/controllers1/loginmenuController.js"></script>
+    <script src="js/controllers1/notloginmenuController.js"></script>
+    <script src="js/controllers1/shopControl.js"></script>
+    <script src="js/controllers1/profileController.js"></script>
+    <script src="js/controllers1/shopregisterController.js"></script>
+    <script src="js/controllers1/shopdetailController.js"></script>
+    <script src="js/controllers1/homeController.js"></script>
+    <script src="js/controllers1/searchController.js"></script>
+    <script src="js/controllers1/detailController.js"></script>
+    <script src="js/controllers1/ProductControllers.js"></script>
+    <script src="js/controllers1/CommentControllers.js"></script>
+    <script src="js/controllers1/mapController.js"></script>
+    <script src="js/controllers1/ShopinsertController.js"></script>
+    <script src="js/controllers1/editProductController.js"></script>
+    <script src="js/controllers1/promotionController.js"></script>
+    <script src="js/controllers1/addPromotionController.js"></script>
+    <script src="js/controllers1/editPromotionController.js"></script>
+    <script src="js/controllers1/promotionUseController.js"></script>
+    <script src="js/controllers1/addFreqController.js"></script>
+    <script src="js/controllers1/addPromotionToMemberController.js"></script>
+    <script src="js/controllers1/generateCodeController.js"></script>
+    <script src="js/controllers1/forgotPasswordController.js"></script>
+    <script src="js/controllers1/termAndConditionController.js"></script>
+    <script src="js/controllers1/promotionListController.js"></script>
+    <script src="js/controllers1/qrCodeController.js"></script>
+    <script src="js/controllers1/chatControl.js"></script>
+    <script src="js/controllers1/listchatControl.js"></script>
+    <script src="js/controllers1/listchat2Control.js"></script>
+    <script src="js/controllers1/chatfirebaseControl.js"></script>
+    <script src="js/controllers1/reviewController.js"></script>
+    <script src="js/controllers1/reviewListController.js"></script>
+    <script src="js/controllers1/ratingListController.js"></script>
+    <script src="js/controllers1/userProfileController.js"></script>
+    <script src="js/controllers1/contactUsController.js"></script>
+    <script src="js/controllers1/reviewListUserController.js"></script>
+    <script src="js/controllers1/shopReviewController.js"></script>
+    <script src="js/controllers1/replyController.js"></script>
+    <script src="js/controllers1/confirmOwnerController.js"></script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDgxSTLg26FVJeB8OQl1-WTjqOcZ4a8GKM"></script>
+    <script src='https://cdn.firebase.com/js/client/2.4.1/firebase.js'></script>
+
+    <!-- <script src="js/ng-cordova-oauth.min.js"></script> -->
+
+    <!-- end Controllers section-->
+
+    <!-- jQuery section-->
+    <script src="lib/jQuery/jquery.js"></script>
+    <!-- end jQuery section-->
+
+</head><!-- end head section-->
+
+<!--body section-->
+<body ng-app="starter" class="hide-native-scroll-y">
+
+<!--Custom Style section-->
+<style type="text/css">
+    {{customStyle}}
+</style><!-- end Custom Style section-->
+
+<!-- Ionic navigation bar section-->
+<ion-nav-view></ion-nav-view>
+<!-- end Ionic navigation bar section-->
+
+</body><!-- end body section-->
+
+
+<!-- Angular custom template section-->
+
+<!--Share template confirm-dialog section-->
+<script type="text/ng-template" id="confirm-dialog.html">
+    <md-dialog aria-label="confirm-dialog">
+        <form>
+            <md-dialog-content>
+                <div>
+                    <h2 class="md-title">{{displayOption.title}}</h2>
+
+                    <p>{{displayOption.content}}</p>
+                </div>
+            </md-dialog-content>
+            <div class="md-actions" layout="row">
+                <a class="md-primary-color dialog-action-btn" ng-click="cancel()">
+                    {{displayOption.cancel}}
+                </a>
+                <a class="md-primary-color dialog-action-btn" ng-click="ok()">
+                    {{displayOption.ok}}
+                </a>
+            </div>
+        </form>
+    </md-dialog>
+</script> <!-- end share template confirm-dialog section-->
+
+<!-- Share template toast section-->
+<script type="text/ng-template" id="toast.html">
+    <md-toast class="toast-form">
+        <span flex>{{displayOption.title}}</span>
+    </md-toast>
+</script><!-- end share template toast section-->
+
+<!-- end Angular custom template section-->
+
+</html>

@@ -1,0 +1,59 @@
+<!--View Information-->
+<!--View name : Menu Dashboard-->
+<!--Controller name : menuDashboardCtrl-->
+<!--Controller path : www/templates/themes/menu-dashboard/js/controllers.js-->
+<!--State name : app.menuDashboard-->
+<!--URL : #app/menuDashboard-->
+
+<ion-view title="เพิ่มโปรโมชั่นในร้านค้า">
+  <!--menu dashboard section-->
+  <ion-nav-buttons side="left">
+    <button class="button button-icon ion-chevron-left" ng-click="btnBack()"></button>
+  </ion-nav-buttons>
+  <ion-content id="social-sign-up-content" overflow-scroll="false">
+    <!--panel section-->
+    <md-input-container md-no-float="">
+      <!-- <div> -->
+      <p style="margin-top: 20px;">ประเภทโปรโมชั่น   <i class="far fa-question-circle" ng-click="typeExplain()"></i></p>
+        <md-select ng-model="mdSelectValue"  aria-label="md-option">
+          <md-option value="{{promotionType.promotion_type_id}}" ng-repeat="promotionType in promotionTypeArray" ng-click="setDetail(promotionType.promotion_type_id)">{{promotionType.pt_name}}</md-option>
+        </md-select>
+      <!-- </div> -->
+    </md-input-container>
+    <md-input-container md-no-float="">
+      <p>ชื่อโปรโมชั่น</p>
+      <div>
+        <input class="user-name" placeholder="ชื่อโปรโมชั่น *" style="width: 300px;" ng-model="promotion.name" maxlength="50">
+      </div>
+    </md-input-container>
+    <md-input-container md-no-float="">
+      <p>คำอธิบายโปรโมชั่น   <i class="far fa-question-circle" ng-click="detailExplain()"></i></p>
+      <div>
+        <textarea class="user-name" placeholder="รายละเอียดโปรโมชั่น *" style="width: 300px;" ng-model="promotion.detail" maxlength="100"></textarea>
+      </div>
+    </md-input-container>
+    <md-input-container md-no-float="">
+      <p>{{freqname}}   <i class="far fa-question-circle" ng-click="freqExplain()"></i></p>
+      <div>
+        <input class="user-name" placeholder="{{freqplaceholder}}" style="width: 300px;" ng-model="promotion.freq">
+      </div>
+    </md-input-container>
+    <md-input-container md-no-float="">
+      <p>{{freename}}   <i class="far fa-question-circle" ng-click="freeExplain()"></i></p>
+      <div>
+        <input class="user-name" placeholder="{{freeplaceholder}}" style="width: 300px;" ng-model="promotion.free">
+      </div>
+    </md-input-container>
+    <md-input-container md-no-float="">
+      <p>วันหมดเขตโปรโมชั่น</p>
+      <div>
+        <input class="user-name" placeholder="เลือกวันหมดเขตโปรโมชั่น" style="width: 300px;" ng-model="promotion.enddate" ng-click="openDatePicker()">
+      </div>
+    </md-input-container>
+    <a class="md-raised social-button md-button md-default-theme material-background" ng-click="btnAddPromotion()">
+      เพิ่มโปรโมชั่น
+    </a>
+    <!--end product list content-->
+  </ion-content>
+  <!--Menu dashboard section-->
+</ion-view>

@@ -1,0 +1,14 @@
+<ion-view title="คะแนนร้านค้า" id="expense-dashboard">
+  <ion-nav-buttons side="right"></ion-nav-buttons>
+  <ion-content id="expense-dashboard-content" style="margin-top: 0;">
+    <div class="list">
+      <a class="item item-avatar" ng-repeat="rating in ratingArray">
+        <img ng-src="http://1did.net/centerapp/img/img_profile/{{rating.member_username}}.jpg" style="margin-top: 10px;">
+        <span ng-repeat="n in getRepeater(rating.comment_score) track by $index"><i class="ion-ios-star" style="color: #CAC768;"></i></span>
+        <h2>{{rating.member_username}}</h2>
+        <p>{{rating.comment_datetime}}</p>
+        <button class="md-raised md-button md-default-theme ios-course-background" style="margin-top: 8px; color: white;" ng-click="btnDeleteRating(rating.comment_id)">
+                    <i class="fas fa-trash-alt"></i> ลบคะแนนร้านค้า</button>
+      </a>
+    </div>
+</ion-view>

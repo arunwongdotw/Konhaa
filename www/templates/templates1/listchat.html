@@ -1,0 +1,11 @@
+<ion-view title="แชทกับลูกค้า" id="expense-dashboard">
+  <ion-nav-buttons side="right"></ion-nav-buttons>
+  <ion-content id="expense-dashboard-content" style="margin-top: 0;">
+    <div class="list">
+      <a class="item item-avatar" ng-click="btnChat(record)" ng-repeat="record in items2">
+        <img src="{{record.member_img}}">
+        <h2>{{record.member_username}}</h2>
+        <p>{{record.member_firstname}}</p>
+      </a>
+    </div>
+</ion-view>
