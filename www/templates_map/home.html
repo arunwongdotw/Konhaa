@@ -1,39 +1,25 @@
 <ion-view>
-  <ion-nav-bar class="bar-dark">
-    <ion-nav-title>My House</ion-nav-title>
-    <ion-nav-buttons side="right">
-      <button class="button button-icon ion-map" ng-click="btnLaunchMap()" ng-if="mapStatus"></button>
-    </ion-nav-buttons>
-  </ion-nav-bar>
-
-  <ion-content>
-
-    <div class="list card">
-      <div class="item item-divider">ตำแหน่งใกล้เคียง</div>
-
-      <div class="item item-thumbnail-left item-icon-right"
-        ng-click="showMap(record)"
-        ng-repeat="record in items">
-
-        <img ng-src="img/{{record.img}}">
-        <h2>{{record.title}}</h2>
-        <p>{{record.desc}}</p>
-        <p>Location : {{record.latitude}} / {{record.longitude}}</p>
-
-        <i class="icon ion-chevron-right"></i>
+    <ion-nav-bar class="bar-dark">
+        <ion-nav-title>My House</ion-nav-title>
+        <ion-nav-buttons side="right">
+            <button class="button button-icon ion-map" ng-click="btnLaunchMap()" ng-if="mapStatus"></button>
+        </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-content>
+        <div class="list card">
+            <div class="item item-divider">ตำแหน่งใกล้เคียง</div>
+            <div class="item item-thumbnail-left item-icon-right" ng-click="showMap(record)" ng-repeat="record in items">
+                <img ng-src="img/{{record.img}}">
+                <h2>{{record.title}}</h2>
+                <p>{{record.desc}}</p>
+                <p>Location : {{record.latitude}} / {{record.longitude}}</p>
+                <i class="icon ion-chevron-right"></i>
+            </div>
         </div>
-    </div>
-  </ion-content>
-
-  <ion-footer-bar class="bar-dark">
-
-    <!--<button class="button button-icon ion-checkmark-circled" ng-click="btnCheckGPS()"></button>-->
-    <!--<button class="button button-icon ion-gear-a" ng-click="btnOpenSetting()"></button>-->
-    <button class="button button-icon ion-pinpoint" ng-click="btnCurrentLocationTest()">เพิ่มธุรกิจของคุณที่นี่</button>
-
-  </ion-footer-bar>
-
+    </ion-content>
+    <ion-footer-bar class="bar-dark">
+        <!--<button class="button button-icon ion-checkmark-circled" ng-click="btnCheckGPS()"></button>-->
+        <!--<button class="button button-icon ion-gear-a" ng-click="btnOpenSetting()"></button>-->
+        <button class="button button-icon ion-pinpoint" ng-click="btnCurrentLocationTest()">เพิ่มธุรกิจของคุณที่นี่</button>
+    </ion-footer-bar>
 </ion-view>
-
-
-

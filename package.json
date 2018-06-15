@@ -5,7 +5,7 @@
   "dependencies": {
     "@ionic-native/barcode-scanner": "^4.5.3",
     "@ionic-native/facebook": "^4.5.3",
-    "cordova-android": "^6.4.0",
+    "cordova-android": "^6.3.0",
     "cordova-android-support-gradle-release": "^1.2.0",
     "cordova-plugin-actionsheet": "^2.3.3",
     "cordova-plugin-camera": "^4.0.2",
@@ -48,7 +48,9 @@
     "android"
   ],
   "cordova": {
-    "platforms": [],
+    "platforms": [
+      "android"
+    ],
     "plugins": {
       "cordova-plugin-facebook": {
         "FACEBOOK_APP_ID": "158512354870740",
