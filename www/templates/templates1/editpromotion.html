@@ -1,59 +1,44 @@
-<!--View Information-->
-<!--View name : Menu Dashboard-->
-<!--Controller name : menuDashboardCtrl-->
-<!--Controller path : www/templates/themes/menu-dashboard/js/controllers.js-->
-<!--State name : app.menuDashboard-->
-<!--URL : #app/menuDashboard-->
-
 <ion-view title="แก้ไขโปรโมชั่น">
-  <!--menu dashboard section-->
-  <ion-nav-buttons side="left">
-    <button class="button button-icon ion-chevron-left" ng-click="btnBack()"></button>
-  </ion-nav-buttons>
-  <ion-content id="social-sign-up-content" overflow-scroll="false">
-    <!--panel section-->
-    <md-input-container md-no-float="">
-      <p style="margin-top: 20px;">ชื่อโปรโมชั่น</p>
-      <div>
-        <input class="user-name" placeholder="ชื่อโปรโมชั่น *" style="width: 300px;" ng-model="promotion.promotion_name" maxlength="50">
-      </div>
-    </md-input-container>
-    <md-input-container md-no-float="">
-      <p>คำอธิบายโปรโมชั่น   <i class="far fa-question-circle" ng-click="detailExplain()"></i></p>
-      <div>
-        <textarea class="user-name" placeholder="อธิบายโปร *" style="width: 300px;" ng-model="promotion.promotion_detail" maxlength="100"></textarea>
-      </div>
-    </md-input-container>
-    <md-input-container md-no-float="">
-      <!-- <div> -->
-      <p>ประเภทโปรโมชั่น   <i class="far fa-question-circle" ng-click="typeExplain()"></i></p>
-        <md-select ng-model="mdSelectValue"  aria-label="md-option" ng-disabled="true">
-          <md-option value="{{promotionType.promotion_type_id}}" ng-repeat="promotionType in promotionTypeArray" ng-click="setDetail(promotionType.promotion_type_id)">{{promotionType.pt_name}}</md-option>
-        </md-select>
-      <!-- </div> -->
-    </md-input-container>
-    <md-input-container md-no-float="">
-      <p>{{freqname}}   <i class="far fa-question-circle" ng-click="freqExplain()"></i></p>
-      <div>
-        <input class="user-name" placeholder="{{freqplaceholder}}" style="width: 300px;" ng-model="promotion.promotion_frequency">
-      </div>
-    </md-input-container>
-    <md-input-container md-no-float="">
-      <p>{{freename}}   <i class="far fa-question-circle" ng-click="freeExplain()"></i></p>
-      <div>
-        <input class="user-name" placeholder="{{freeplaceholder}}" style="width: 300px;" ng-model="promotion.promotion_free">
-      </div>
-    </md-input-container>
-    <md-input-container md-no-float="">
-      <p>วันหมดเขตโปรโมชั่น</p>
-      <div>
-        <input class="user-name" placeholder="เลือกวันหมดเขตโปรโมชั่น" style="width: 300px;" ng-model="promotion.promotion_end_date" ng-click="openDatePicker()">
-      </div>
-    </md-input-container>
-    <a class="md-raised social-button md-button md-default-theme material-background" ng-click="btnEditPromotion()">
-      แก้ไขโปรโมชั่น
-    </a>
-    <!--end product list content-->
-  </ion-content>
-  <!--Menu dashboard section-->
+    <ion-nav-buttons side="left">
+        <button class="button button-icon ion-chevron-left" ng-click="btnBack()"></button>
+    </ion-nav-buttons>
+    <ion-content id="social-sign-up-content" overflow-scroll="false">
+        <md-input-container md-no-float="">
+            <p style="margin-top: 20px;">ชื่อโปรโมชั่น</p>
+            <div>
+                <input class="user-name" placeholder="ชื่อโปรโมชั่น *" style="width: 300px;" ng-model="promotion.promotion_name" maxlength="50">
+            </div>
+        </md-input-container>
+        <md-input-container md-no-float="">
+            <p>คำอธิบายโปรโมชั่น   <i class="far fa-question-circle" ng-click="detailExplain()"></i></p>
+            <div>
+                <textarea class="user-name" placeholder="อธิบายโปร *" style="width: 300px;" ng-model="promotion.promotion_detail" maxlength="100"></textarea>
+            </div>
+        </md-input-container>
+        <md-input-container md-no-float="">
+            <p>ประเภทโปรโมชั่น   <i class="far fa-question-circle" ng-click="typeExplain()"></i></p>
+            <md-select ng-model="mdSelectValue"  aria-label="md-option" ng-disabled="true">
+                <md-option value="{{promotionType.promotion_type_id}}" ng-repeat="promotionType in promotionTypeArray" ng-click="setDetail(promotionType.promotion_type_id)">{{promotionType.pt_name}}</md-option>
+            </md-select>
+        </md-input-container>
+        <md-input-container md-no-float="">
+            <p>{{freqname}}   <i class="far fa-question-circle" ng-click="freqExplain()"></i></p>
+            <div>
+                <input class="user-name" placeholder="{{freqplaceholder}}" style="width: 300px;" ng-model="promotion.promotion_frequency">
+            </div>
+        </md-input-container>
+        <md-input-container md-no-float="">
+            <p>{{freename}}   <i class="far fa-question-circle" ng-click="freeExplain()"></i></p>
+            <div>
+                <input class="user-name" placeholder="{{freeplaceholder}}" style="width: 300px;" ng-model="promotion.promotion_free">
+            </div>
+        </md-input-container>
+        <md-input-container md-no-float="">
+            <p>วันหมดเขตโปรโมชั่น</p>
+            <div>
+                <input class="user-name" placeholder="เลือกวันหมดเขตโปรโมชั่น" style="width: 300px;" ng-model="promotion.promotion_end_date" ng-click="openDatePicker()">
+            </div>
+        </md-input-container>
+        <a class="md-raised social-button md-button md-default-theme material-background" ng-click="btnEditPromotion()">แก้ไขโปรโมชั่น</a>
+    </ion-content>
 </ion-view>

@@ -1,26 +1,17 @@
-<!--View Information-->
-<!--View name : Note Setting-->
-<!--Controller name : noteSettingCtrl-->
-<!--Controller path : www/templates/application-storage/local-application-db/js/controllers.js-->
-<!--State name : app.notesetting-->
-<!--URL : #app/notesetting-->
-
 <ion-view title="เพิ่มสิทธิ์ให้กับลูกค้า">
-  <ion-nav-buttons side="left">
-    <button class="button button-icon ion-chevron-left" ng-click="btnBack()"></button>
-  </ion-nav-buttons>
-  <ion-content id="social-sign-up-content">
-    <p style="margin-top: 20px;">ชื่อโปรโมชั่น : {{addfreq.name}}</p>
-    <p>รายละเอียดโปรโมชั่น : {{addfreq.detail}}</p>
-    <p>วันหมดเขตโปรโมชั่น : {{addfreq.end_date}}</p>
-    <md-input-container md-no-float="">
-      <p style="margin-top: 20px;">เพิ่มสิทธิ์</p>
-      <div>
-        <input class="user-name" placeholder="จำนวนสิทธิ์ (ตัวอย่าง 1, 10, 1000) *" style="width: 300px;" ng-model="amount.freq">
-      </div>
-    </md-input-container>
-    <a class="md-raised social-button md-button md-default-theme material-background" ng-click="btnAddFreq()">
-      เพิ่มสิทธิ์
-    </a>
-  </ion-content>
+    <ion-nav-buttons side="left">
+        <button class="button button-icon ion-chevron-left" ng-click="btnBack()"></button>
+    </ion-nav-buttons>
+    <ion-content id="social-sign-up-content">
+        <p style="margin-top: 20px;">ชื่อโปรโมชั่น : {{addfreq.name}}</p>
+        <p>รายละเอียดโปรโมชั่น : {{addfreq.detail}}</p>
+        <p>วันหมดเขตโปรโมชั่น : {{addfreq.end_date}}</p>
+        <md-input-container md-no-float="">
+            <p style="margin-top: 20px;">เพิ่มสิทธิ์</p>
+            <div>
+                <input class="user-name" placeholder="จำนวนสิทธิ์ (ตัวอย่าง 1, 10, 1000) *" style="width: 300px;" ng-model="amount.freq">
+            </div>
+        </md-input-container>
+        <a class="md-raised social-button md-button md-default-theme material-background" ng-click="btnAddFreq()">เพิ่มสิทธิ์</a>
+    </ion-content>
 </ion-view>

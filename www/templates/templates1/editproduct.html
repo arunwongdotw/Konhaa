@@ -1,39 +1,24 @@
-<!--View Information-->
-<!--View name : Fake Sign Up-->
-<!--State name : app.fakeSignUp-->
-<!--URL : #app/fakeSignUp-->
-
 <ion-view title="แก้ไขสินค้า">
-
-  <!--social sign up section-->
-  <ion-content id="social-sign-up-content" overflow-scroll="false">
-    <div class="app-icon">
-      <!-- <img src="{{form.productpic}}" class="md-card-image" id="myImage"></br> -->
-      <img src="{{form.productpic0}}" class="md-card-image" id="myImage0">
-      <img src="{{form.productpic1}}" class="md-card-image" id="myImage1">
-      <img src="{{form.productpic2}}" class="md-card-image" id="myImage2">
-      <img src="{{form.productpic3}}" class="md-card-image" id="myImage3"></br>
-      </br>
-      <!-- <a class="md-raised md-button md-default-theme" ng-click="btnProfilePicByGallery()"> -->
-      <a class="md-raised md-button md-default-theme" ng-click="getImageSaveContact()">
-        อัพโหลดรูปโปรไฟล์
-      </a>
-    </div>
-    <!--input section-->
-    <md-input-container md-no-float="">
-      <div>
-        <input class="user-name" placeholder="ชื่อสินค้า *" style="width: 300px;" ng-model="form.productname" >
-      </div>
-    </md-input-container>
-    <md-input-container md-no-float="">
-      <div>
-        <input  class="user-name" placeholder="รายละเอียดสินค้า *" style="width: 300px;" ng-model="form.productdetail" >
-      </div>
-    </md-input-container>
-    <!--end input section-->
-    <a class="md-raised social-button md-button md-default-theme material-background" ng-click="btnUpdate()">
-            บันทึกโปรไฟล์
-        </a>
-  </ion-content>
-  <!--end social sign up section-->
+    <ion-content id="social-sign-up-content" overflow-scroll="false">
+        <div class="app-icon">
+            <!-- <img src="{{form.productpic}}" class="md-card-image" id="myImage"></br> -->
+            <img src="{{form.productpic0}}" class="md-card-image" id="myImage0">
+            <img src="{{form.productpic1}}" class="md-card-image" id="myImage1">
+            <img src="{{form.productpic2}}" class="md-card-image" id="myImage2">
+            <img src="{{form.productpic3}}" class="md-card-image" id="myImage3"></br></br>
+            <!-- <a class="md-raised md-button md-default-theme" ng-click="btnProfilePicByGallery()"> -->
+            <a class="md-raised md-button md-default-theme" ng-click="getImageSaveContact()">อัพโหลดรูปโปรไฟล์</a>
+        </div>
+        <md-input-container md-no-float="">
+            <div>
+                <input class="user-name" placeholder="ชื่อสินค้า *" style="width: 300px;" ng-model="form.productname">
+            </div>
+        </md-input-container>
+        <md-input-container md-no-float="">
+            <div>
+                <input class="user-name" placeholder="รายละเอียดสินค้า *" style="width: 300px;" ng-model="form.productdetail">
+            </div>
+        </md-input-container>
+        <a class="md-raised social-button md-button md-default-theme material-background" ng-click="btnUpdate()">บันทึกโปรไฟล์</a>
+    </ion-content>
 </ion-view>

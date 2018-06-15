@@ -1,87 +1,82 @@
 <ion-view title="ติดต่อเรา/รายงานปัญหา" id="online-course">
-  <ion-content id="online-course-content" style="background-color: white;" overflow-scroll="false">
-    <md-toolbar class="bar-subheader md-tall md-primary toolbar-online-course ">
-      <div>
-        <img src="http://www.smartonline.info/images/logo.jpg" class="user-img" ng-click="showOwnerImages($index)" />
-        <h1>บริษัท สมาร์ท ออนไลน์</h1>
-      </div>
-    </md-toolbar>
-    <md-tabs md-dynamic-height md-border-bottom>
-      <md-tab label="ติดต่อบริษัท">
-        <md-content>
-          <div class="news-item">
-            <div class="row detail">
-              <div class="col">
+    <ion-content id="online-course-content" style="background-color: white;" overflow-scroll="false">
+        <md-toolbar class="bar-subheader md-tall md-primary toolbar-online-course ">
+            <div>
+                <img src="http://www.smartonline.info/images/logo.jpg" class="user-img" ng-click="showOwnerImages($index)" />
+                <h1>บริษัท สมาร์ท ออนไลน์</h1>
+            </div>
+        </md-toolbar>
+        <md-tabs md-dynamic-height md-border-bottom>
+            <md-tab label="ติดต่อบริษัท">
+                <md-content>
+                    <div class="news-item">
+                        <div class="row detail">
+                            <div class="col">
+                                <p class="content" style="margin-left: 10px; font-size: 14px;">
+                                    <i class="fas fa-map-marker"></i>&nbsp;ที่อยู่ : </br></br>
+                                    <i class="far fa-clock"></i>&nbsp;เวลาทำการ : 08:00 - 16:00 น. ทุกวัน</br></br>
+                                    <i class="fa fa-phone"></i>&nbsp;โทรศัพท์ : 075-806504, 080-9907722<br></br>
+                                    <i class="fas fa-envelope"></i>&nbsp;Email : smartapp2017@gmail.com<br></br>
+                                    <i class="fas fa-globe"></i>&nbsp;Website : www.smartonline.info
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </md-content>
+            </md-tab>
+            <md-tab label="รายงานปัญหา">
+                <md-content>
+                      <div class="news-item">
+                          <div class="row detail">
+                              <div class="col">
+                                  <div class="list">
+                                      <md-input-container md-no-float="" style="margin-left: 10px;">
+                                          <p>หัวข้อ</p>
+                                          <div>
+                                              <input class="user-name" placeholder="หัวข้อ *" style="width: 300px;" ng-model="contactus.title" maxlength="50">
+                                          </div>
+                                      </md-input-container>
+                                      <md-input-container md-no-float="" style="margin-left: 10px;">
+                                          <p>รายละเอียด</p>
+                                          <div>
+                                              <input class="user-name" placeholder="รายละเอียด *" style="width: 300px;" ng-model="contactus.detail" maxlength="50">
+                                          </div>
+                                      </md-input-container>
+                                      <center>
+                                          <a class="md-raised social-button md-button md-default-theme material-background" ng-click="btnReport()">รายงานปัญหา</a>
+                                      </center>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                </md-content>
+            </md-tab>
+            <md-tab label="รายการปัญหาที่แจ้ง">
+                <md-content>
+                    <div class="news-item">
+                        <div class="row detail">
+                            <div class="col">
+                                <div class="list">
+                                    <p style="margin-left: 10px;">รายการปัญหาที่แจ้ง</p>
+                                    <div ng-repeat="reportlist in reportArrayList" style="margin-left: 10px;">
+                                        <p>{{$index + 1}}. หัวข้อ : {{reportlist.report_title}}<br> &nbsp;&nbsp;&nbsp;&nbsp;รายละเอียด : {{reportlist.report_detail}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </md-content>
+            </md-tab>
+        </md-tabs>
+        <!-- <div class="row detail">
+            <div class="col">
                 <p class="content" style="margin-left: 10px; font-size: 14px;">
-                  <i class="fas fa-map-marker"></i>&nbsp;ที่อยู่ : </br></br>
-                  <i class="far fa-clock"></i>&nbsp;เวลาทำการ : 08:00 - 16:00 น. ทุกวัน</br></br>
-                  <i class="fa fa-phone"></i>&nbsp;โทรศัพท์ : 075-806504, 080-9907722<br></br>
-                  <i class="fas fa-envelope"></i>&nbsp;Email : smartapp2017@gmail.com<br></br>
-                  <i class="fas fa-globe"></i>&nbsp;Website : www.smartonline.info
+                    <i class="fa fa-phone"></i>&nbsp;โทรศัพท์ : {{userDetail.member_mobile}}<br></br>
+                    <i class="fas fa-envelope"></i>&nbsp;Email : {{userDetail.member_email}}<br></br>
+                    <i class="fab fa-facebook-square"></i>&nbsp;Facebook : {{userDetail.member_facebook}}<br></br>
+                    <i class="fab fa-line"></i>&nbsp;Line : {{userDetail.member_line}}
                 </p>
-              </div>
             </div>
-          </div>
-        </md-content>
-      </md-tab>
-      <md-tab label="รายงานปัญหา">
-        <md-content>
-          <div class="news-item">
-            <div class="row detail">
-              <div class="col">
-                <div class="list">
-                  <md-input-container md-no-float="" style="margin-left: 10px;">
-                    <p>หัวข้อ</p>
-                    <div>
-                      <input class="user-name" placeholder="หัวข้อ *" style="width: 300px;" ng-model="contactus.title" maxlength="50">
-                    </div>
-                  </md-input-container>
-                  <md-input-container md-no-float="" style="margin-left: 10px;">
-                    <p>รายละเอียด</p>
-                    <div>
-                      <input class="user-name" placeholder="รายละเอียด *" style="width: 300px;" ng-model="contactus.detail" maxlength="50">
-                    </div>
-                  </md-input-container>
-                  <center>
-                    <a class="md-raised social-button md-button md-default-theme material-background" ng-click="btnReport()">
-                      รายงานปัญหา
-                    </a>
-                  </center>
-                </div>
-              </div>
-            </div>
-          </div>
-        </md-content>
-      </md-tab>
-      <md-tab label="รายการปัญหาที่แจ้ง">
-        <md-content>
-          <div class="news-item">
-            <div class="row detail">
-              <div class="col">
-                <div class="list">
-                  <p style="margin-left: 10px;">รายการปัญหาที่แจ้ง</p>
-                  <div ng-repeat="reportlist in reportArrayList" style="margin-left: 10px;">
-                    <p>
-                      {{$index + 1}}. หัวข้อ : {{reportlist.report_title}}<br>
-                      &nbsp;&nbsp;&nbsp;&nbsp;รายละเอียด : {{reportlist.report_detail}}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </md-content>
-      </md-tab>
-    </md-tabs>
-    <!-- <div class="row detail">
-      <div class="col">
-        <p class="content" style="margin-left: 10px; font-size: 14px;">
-          <i class="fa fa-phone"></i>&nbsp;โทรศัพท์ : {{userDetail.member_mobile}}<br></br>
-          <i class="fas fa-envelope"></i>&nbsp;Email : {{userDetail.member_email}}<br></br>
-          <i class="fab fa-facebook-square"></i>&nbsp;Facebook : {{userDetail.member_facebook}}<br></br>
-          <i class="fab fa-line"></i>&nbsp;Line : {{userDetail.member_line}}
-        </p>
-      </div>
-    </div> -->
-  </ion-content>
+        </div> -->
+    </ion-content>
 </ion-view>

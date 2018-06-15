@@ -1,16 +1,14 @@
 <ion-view title="ตอบกลับรีวิว">
-  <ion-nav-buttons side="left">
-    <button class="button button-icon ion-chevron-left" ng-click="btnBack()"></button>
-  </ion-nav-buttons>
-  <ion-content id="social-sign-up-content" overflow-scroll="false">
-    <md-input-container md-no-float="">
-      <p style="margin-top: 20px;">ข้อความตอบกลับ</p>
-      <div>
-        <input class="user-name" placeholder="ข้อความตอบกลับ *" style="width: 300px;" ng-model="reply.detail">
-      </div>
-    </md-input-container>
-    <a class="md-raised social-button md-button md-default-theme material-background" ng-click="btnReply()">
-        ตอบกลับ
-      </a>
-  </ion-content>
+    <ion-nav-buttons side="left">
+        <button class="button button-icon ion-chevron-left" ng-click="btnBack()"></button>
+    </ion-nav-buttons>
+    <ion-content id="social-sign-up-content" overflow-scroll="false">
+        <md-input-container md-no-float="">
+            <p style="margin-top: 20px;">ข้อความตอบกลับ</p>
+            <div>
+                <input class="user-name" placeholder="ข้อความตอบกลับ *" style="width: 300px;" ng-model="reply.detail">
+            </div>
+        </md-input-container>
+        <a class="md-raised social-button md-button md-default-theme material-background" ng-click="btnReply()">ตอบกลับ</a>
+    </ion-content>
 </ion-view>

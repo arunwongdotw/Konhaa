@@ -1,80 +1,69 @@
-<!--View Information-->
-<!--View name : NEWS Feed-->
-<!--State name : app.newsFeed-->
-<!--URL : #app/newsFeed-->
-
 <ion-view view-title="รายการร้านค้า" cache-view="false">
-  <ion-nav-buttons side="left">
-    <button class="button button-icon ion-chevron-left" ng-click="btnBack()"></button>
-  </ion-nav-buttons>
-
-  <ion-nav-buttons side="right">
-    <button class="button button-icon ion-android-refresh" ng-click="btnRefresh()"></button>
-  </ion-nav-buttons>
-
-  <ion-content id="news-feed-content" style="background-color: azure;" overflow-scroll="false">
-    <ion-slide-box auto-play="true" does-continue="true" id="restaurant-slide-box" show-pager="false" active-slide="0">
-      <ion-slide class="slide-01" style="background-color: azure;">
-        <center>
-          <div class="content">
-            <br><img width="50%" height="50%" src="img/8.png" />
-            <h1>Center</h1>
-          </div>
-        </center>
-      </ion-slide>
-
-      <ion-slide class="slide-02" style="background-color: azure;">
-        <center>
-          <div class="content">
-            <br><img width="50%" height="50%" src="img/8.png" class="user-img" />
-            <h1>แอพทันสมัย</h1>
-          </div>
-        </center>
-      </ion-slide>
-
-      <ion-slide class="slide-03" style="background-color: azure;">
-        <center>
-          <div class="content">
-            <br><img width="50%" height="50%" src="img/8.png" class="user-img" />
-            <h1>สะดวกต่อคุณ</h1>
-          </div>
-        </center>
-      </ion-slide>
-    </ion-slide-box>
-
-    <div class="course-list">
-      <div class="course-item">
-        <div class="title ios-course-background">
-          <p style="margin-right: 5%; margin-bottom: 0; font-size: 16px; color: white; padding-top: 2%; padding-bottom: 2%; padding-left: 2%; padding-right: 2%;">
-            <span></span>ร้านค้าใกล้เคียง</p>
+    <ion-nav-buttons side="left">
+        <button class="button button-icon ion-chevron-left" ng-click="btnBack()"></button>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+        <button class="button button-icon ion-android-refresh" ng-click="btnRefresh()"></button>
+    </ion-nav-buttons>
+    <ion-content id="news-feed-content" style="background-color: azure;" overflow-scroll="false">
+        <ion-slide-box auto-play="true" does-continue="true" id="restaurant-slide-box" show-pager="false" active-slide="0">
+            <ion-slide class="slide-01" style="background-color: azure;">
+                <center>
+                    <div class="content"><br>
+                        <img width="50%" height="50%" src="img/8.png" />
+                        <h1>Center</h1>
+                    </div>
+                </center>
+            </ion-slide>
+            <ion-slide class="slide-02" style="background-color: azure;">
+                <center>
+                    <div class="content"><br>
+                        <img width="50%" height="50%" src="img/8.png" class="user-img" />
+                        <h1>แอพทันสมัย</h1>
+                    </div>
+                </center>
+            </ion-slide>
+            <ion-slide class="slide-03" style="background-color: azure;">
+                <center>
+                    <div class="content"><br>
+                        <img width="50%" height="50%" src="img/8.png" class="user-img" />
+                        <h1>สะดวกต่อคุณ</h1>
+                    </div>
+                </center>
+            </ion-slide>
+        </ion-slide-box>
+        <div class="course-list">
+            <div class="course-item">
+                <div class="title ios-course-background">
+                    <p style="margin-right: 5%; margin-bottom: 0; font-size: 16px; color: white; padding-top: 2%; padding-bottom: 2%; padding-left: 2%; padding-right: 2%;">
+                        <span></span>ร้านค้าใกล้เคียง
+                    </p>
+                </div>
+              <div class="item item-thumbnail-left item-icon-right content" ng-repeat="record in items track by $index" ng-style="record.advertise && {'background-color':'#ccffff'}">
+                  <img ng-src="{{record.img}}" ng-click="btnDetail(record)">
+                  <!-- <p ng-if="$index % 3 == 0 && $index != 0">test</p> -->
+                  <h2>{{record.title}}</h2>
+                  <p>{{record.desc}}</p>
+                  <p ng-if="record.advertise" style="color: green; font-weight: bold;">ADVERTISE</p>
+                  <p ng-if="!record.advertise">ระยะทาง : {{record.distancetext}}</p>
+                  <a ng-click="showMap(record)" aria-label="location">
+                      <i style="color:#990000;height: 100%" class="icon ion-location"></i>
+                  </a>
+                  <button class="button button-small button-outline button-dark" style="width: 100%" ng-click="btnDetail(record)">รายละเอียด</button>
+              </div>
+              <!-- <div class="item item-thumbnail-left item-icon-right content" ng-repeat="record2 in items2" ng-if="$index % 3 == 0 && $index != 0">
+                <img ng-src="{{record2.img}}" ng-click="btnDetail(record2)">
+                <h2>{{record2.title}}</h2>
+                <p>{{record2.desc}}</p>
+                <p>ระยะทาง : {{record.distancetext}}</p>
+                <a ng-click="showMap(record)" aria-label="location">
+                  <i style="color:#990000;height: 100%" class="icon ion-location"></i>
+                </a>
+                <button class="button button-small button-outline button-dark" style="width: 100%" ng-click="btnDetail(record2)">
+                  รายละเอียด
+                </button>
+              </div> -->
+            </div>
         </div>
-        <div class="item item-thumbnail-left item-icon-right content" ng-repeat="record in items track by $index" ng-style="record.advertise && {'background-color':'#ccffff'}">
-          <img ng-src="{{record.img}}" ng-click="btnDetail(record)">
-          <!-- <p ng-if="$index % 3 == 0 && $index != 0">test</p> -->
-          <h2>{{record.title}}</h2>
-          <p>{{record.desc}}</p>
-          <p ng-if="record.advertise" style="color: green; font-weight: bold;">ADVERTISE</p>
-          <p ng-if="!record.advertise">ระยะทาง : {{record.distancetext}}</p>
-          <a ng-click="showMap(record)" aria-label="location">
-            <i style="color:#990000;height: 100%" class="icon ion-location"></i>
-          </a>
-          <button class="button button-small button-outline button-dark" style="width: 100%" ng-click="btnDetail(record)">
-            รายละเอียด
-          </button>
-        </div>
-        <!-- <div class="item item-thumbnail-left item-icon-right content" ng-repeat="record2 in items2" ng-if="$index % 3 == 0 && $index != 0">
-          <img ng-src="{{record2.img}}" ng-click="btnDetail(record2)">
-          <h2>{{record2.title}}</h2>
-          <p>{{record2.desc}}</p>
-          <p>ระยะทาง : {{record.distancetext}}</p>
-          <a ng-click="showMap(record)" aria-label="location">
-            <i style="color:#990000;height: 100%" class="icon ion-location"></i>
-          </a>
-          <button class="button button-small button-outline button-dark" style="width: 100%" ng-click="btnDetail(record2)">
-            รายละเอียด
-          </button>
-        </div> -->
-      </div>
-    </div>
-  </ion-content>
+    </ion-content>
 </ion-view>

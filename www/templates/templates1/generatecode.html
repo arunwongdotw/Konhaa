@@ -1,15 +1,13 @@
 <ion-view title="สร้างโค้ดแนะนำร้านค้า">
-  <ion-content id="social-sign-up-content" overflow-scroll="false">
-    <h1 style="margin-top: 20px; text-align: center;">{{code}}</h1>
-    <a class="md-raised social-button md-button md-default-theme material-background" ng-click="btnCodeGenerate()">
-        สร้างโค้ด
-      </a>
-    <a class="md-raised social-button md-button md-default-theme material-background" ng-click="copyText(code)" tooltip="eiei">
-      <i class="fas fa-clipboard-list"></i>    คัดลอกโค้ด
-      </a>
-    <h3>รายการโค้ดที่สร้างแล้ว</h3>
-    <div class="content" ng-repeat="codelist in codeArrayList">
-      <p>{{$index + 1}}. {{codelist.code}}</p>
-    </div>
-  </ion-content>
+    <ion-content id="social-sign-up-content" overflow-scroll="false">
+        <h1 style="margin-top: 20px; text-align: center;">{{code}}</h1>
+        <a class="md-raised social-button md-button md-default-theme material-background" ng-click="btnCodeGenerate()">สร้างโค้ด</a>
+        <a class="md-raised social-button md-button md-default-theme material-background" ng-click="copyText(code)" tooltip="eiei">
+            <i class="fas fa-clipboard-list"></i>    คัดลอกโค้ด
+        </a>
+        <h3>รายการโค้ดที่สร้างแล้ว</h3>
+        <div class="content" ng-repeat="codelist in codeArrayList">
+            <p>{{$index + 1}}. {{codelist.code}}</p>
+        </div>
+    </ion-content>
 </ion-view>

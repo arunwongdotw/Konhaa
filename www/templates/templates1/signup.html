@@ -1,67 +1,52 @@
-<!--View Information-->
-<!--View name : Fake Sign Up-->
-<!--State name : app.fakeSignUp-->
-<!--URL : #app/fakeSignUp-->
-
 <ion-view title="ลงทะเบียนสมาชิก">
-
-  <!--social sign up section-->
-  <ion-content id="social-sign-up-content" overflow-scroll="false">
-    <div class="app-icon">
-      <img src="img/shopping2.png" class="md-card-image" id="myImage"></br>
-      </br>
-      <a class="md-raised md-button md-default-theme" ng-click="btnProfilePicByGallery()">
-        อัพโหลดรูปโปรไฟล์
-      </a>
-      <!-- <a class="md-raised md-button md-default-theme" ng-click="showListBottomSheet($event)">
-        อัพโหลดรูปโปรไฟล์
-      </a> -->
-    </div>
-    <!--input section-->
-    <md-input-container md-no-float="">
-      <div>
-        <input class="user-name" placeholder="ชื่อผู้ใช้ 6-12 ตัวอักษร *" style="width: 300px;" ng-model="form.txt_username" minlength="6" maxlength="12">
-      </div>
-    </md-input-container>
-    <md-input-container md-no-float="">
-      <div>
-        <input type="password" class="user-name" placeholder="รหัสผ่าน 6-12 ตัวอักษร *" style="width: 300px;" ng-model="form.txt_password" minlength="6" maxlength="12">
-      </div>
-    </md-input-container>
-    <md-input-container md-no-float="">
-      <div>
-        <input type="password" class="user-name" placeholder="ยืนยันรหัสผ่าน *" style="width: 300px;" ng-model="form.txt_cfmpassword" minlength="6" maxlength="12">
-      </div>
-    </md-input-container>
-    <md-input-container md-no-float="">
-      <div>
-        <input class="user-name" placeholder="ชื่อ *" style="width: 300px;" ng-model="form.txt_firstname">
-      </div>
-    </md-input-container>
-    <md-input-container md-no-float="">
-      <div>
-        <input class="user-name" placeholder="นามสกุล *" style="width: 300px;" ng-model="form.txt_lastname">
-      </div>
-    </md-input-container>
-    <md-input-container md-no-float="">
-      <div>
-        <input class="user-name" placeholder="เบอร์โทรศัพท์ที่ติดต่อได้ *" style="width: 300px;" ng-model="form.txt_mobile" minlength="10" maxlength="10">
-      </div>
-    </md-input-container>
-    <md-input-container md-no-float="">
-      <div>
-        <input class="user-name" placeholder="Email (ใช้ในกรณีลืมรหัสผ่าน) *" style="width: 300px;" ng-model="form.txt_email">
-      </div>
-    </md-input-container>
-    <!-- <md-checkbox aria-label="CheckboxTerms" ng-model="form.checkbox" ng-click="openModal()">
-      ฉันยอมรับข้อกำหนดและเงื่อนไขในการให้บริการ
-    </md-checkbox> -->
-    <!--end input section-->
-    <a class="md-raised social-button md-button md-default-theme material-background" ng-click="btnSignup()">
-            ลงทะเบียนสมาชิก
-        </a>
-  </ion-content>
-  <!--end social sign up section-->
+    <ion-content id="social-sign-up-content" overflow-scroll="false">
+        <div class="app-icon">
+            <img src="img/shopping2.png" class="md-card-image" id="myImage"></br></br>
+            <a class="md-raised md-button md-default-theme" ng-click="btnProfilePicByGallery()">อัพโหลดรูปโปรไฟล์</a>
+            <!-- <a class="md-raised md-button md-default-theme" ng-click="showListBottomSheet($event)">
+              อัพโหลดรูปโปรไฟล์
+            </a> -->
+        </div>
+        <md-input-container md-no-float="">
+            <div>
+                <input class="user-name" placeholder="ชื่อผู้ใช้ 6-12 ตัวอักษร *" style="width: 300px;" ng-model="form.txt_username" minlength="6" maxlength="12">
+            </div>
+        </md-input-container>
+        <md-input-container md-no-float="">
+            <div>
+                <input type="password" class="user-name" placeholder="รหัสผ่าน 6-12 ตัวอักษร *" style="width: 300px;" ng-model="form.txt_password" minlength="6" maxlength="12">
+            </div>
+        </md-input-container>
+        <md-input-container md-no-float="">
+            <div>
+                <input type="password" class="user-name" placeholder="ยืนยันรหัสผ่าน *" style="width: 300px;" ng-model="form.txt_cfmpassword" minlength="6" maxlength="12">
+            </div>
+        </md-input-container>
+        <md-input-container md-no-float="">
+            <div>
+                <input class="user-name" placeholder="ชื่อ *" style="width: 300px;" ng-model="form.txt_firstname">
+            </div>
+        </md-input-container>
+        <md-input-container md-no-float="">
+            <div>
+                <input class="user-name" placeholder="นามสกุล *" style="width: 300px;" ng-model="form.txt_lastname">
+            </div>
+        </md-input-container>
+        <md-input-container md-no-float="">
+            <div>
+                <input class="user-name" placeholder="เบอร์โทรศัพท์ที่ติดต่อได้ *" style="width: 300px;" ng-model="form.txt_mobile" minlength="10" maxlength="10">
+            </div>
+        </md-input-container>
+        <md-input-container md-no-float="">
+            <div>
+                <input class="user-name" placeholder="Email (ใช้ในกรณีลืมรหัสผ่าน) *" style="width: 300px;" ng-model="form.txt_email">
+            </div>
+        </md-input-container>
+        <!-- <md-checkbox aria-label="CheckboxTerms" ng-model="form.checkbox" ng-click="openModal()">
+          ฉันยอมรับข้อกำหนดและเงื่อนไขในการให้บริการ
+        </md-checkbox> -->
+        <a class="md-raised social-button md-button md-default-theme material-background" ng-click="btnSignup()">ลงทะเบียนสมาชิก</a>
+    </ion-content>
 </ion-view>
 
 <!-- <script type="text/ng-template" id="ui-list-bottom-sheet-template">

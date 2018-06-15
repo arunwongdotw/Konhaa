@@ -1,10 +1,3 @@
-<!--View Information-->
-<!--View name : Menu-->
-<!--Controller name : menuCtrl-->
-<!--Controller path : www/templates/menu/js/controllers.js-->
-<!--State name : app-->
-<!--URL : #app-->
-
 <ion-side-menus enable-menu-with-back-views="true">
     <ion-side-menu-content>
         <ion-nav-bar class="bar-balanced  material-background-nav-bar">
@@ -15,26 +8,21 @@
         <ion-nav-view name="menuContent"></ion-nav-view>
     </ion-side-menu-content>
     <md-sidenav md-component-id="left" on-swipe-left="closeSideNav()" on-drag-left="closeSideNav()">
-        <!--menu section-->
         <div class="material-background" id="toggle-menu-left-header">
-            <!--menu header section-->
             <div class="menu-left-header">
                 <img class="user-img" src="img/shopping.png">
-
                 <p>
-                    <span class="title">Konhaa </span>
-                    <br/>
+                    <span class="title">Konhaa </span><br/>
                     <span class="sub-title">Welcome to Konhaa application</span>
                 </p>
-            </div><!--end menu header section-->
-        </div> <!--menu content section-->
+            </div>
+        </div>
         <ion-content id="toggle-menu-left-content" overflow-scroll="false">
-
             <!--If device is android application will present below code.-->
             <!--It will disable animation to better performance on android.-->
             <!--list section-->
             <div ng-if="isAndroid" class="menu-list">
-                <div class="row menu-item"  ng-click="navigateTo('app1.home')">
+                <div class="row menu-item" ng-click="navigateTo('app1.home')">
                     <div class="col-33">
                         <i class="fa fa fa-home"></i>
                     </div>
@@ -42,7 +30,7 @@
                         <span>หน้าหลัก</span>
                     </div>
                 </div>
-                <div class="row menu-item"  ng-click="navigateTo('app1.signup')">
+                <div class="row menu-item" ng-click="navigateTo('app1.signup')">
                     <div class="col-33">
                         <i class="fa fa-registered"></i>
                     </div>
@@ -50,7 +38,7 @@
                         <span>ลงทะเบียน</span>
                     </div>
                 </div>
-                <div class="row menu-item"  ng-click="navigateTo('app1.login')">
+                <div class="row menu-item" ng-click="navigateTo('app1.login')">
                     <div class="col-33">
                         <i class="fas fa-sign-in-alt"></i>
                     </div>
@@ -60,7 +48,6 @@
                 </div>
             </div>
 
-
             <!--If device is not Android application will present below code.-->
             <!--It will show animation when selecting row.-->
             <md-list ng-if="!isAndroid">
@@ -69,17 +56,14 @@
                     <span>หน้าหลัก</span>
                 </md-list-item>
                 <md-list-item class="menu-list-item" ng-click="navigateTo('app1.signup')">
-                  <i class="fa fa-registered"></i>
-                  <span>ลงทะเบียน</span>
+                    <i class="fa fa-registered"></i>
+                    <span>ลงทะเบียน</span>
                 </md-list-item>
                 <md-list-item class="menu-list-item" ng-click="navigateTo('app1.login')">
-                  <i class="fas fa-sign-in-alt"></i>
-                  <span>เข้าสู่ระบบ</span>
+                    <i class="fas fa-sign-in-alt"></i>
+                    <span>เข้าสู่ระบบ</span>
                 </md-list-item>
             </md-list>
-            <!--end list section-->
-        </ion-content><!--end menu content section-->
-        <!--end menu section-->
-
+        </ion-content>
     </md-sidenav>
 </ion-side-menus>

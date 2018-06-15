@@ -1,19 +1,19 @@
 <ion-view view-title="{{menubar}}">
-  <ion-nav-buttons side="right"></ion-nav-buttons>
-  <ion-content id="news-feed-content" style="background-color: azure;" overflow-scroll="false">
-    <ion-slide-box auto-play="true" does-continue="true" id="restaurant-slide-box" show-pager="false" active-slide="0">
-      <ion-slide class="slide-01">
-        <center>
-          <div class="content" style="background-color: azure">
-            <br><img width="50%" src="img/8.png" />
-            <h1>Konhaa</h1>
-          </div>
-        </center>
-      </ion-slide>
-    </ion-slide-box>
-    <ion-item style="margin-top: 5%; margin-left: 2%; margin-right: 2%;">
-      <input type="text" placeholder="ค้นหาร้านค้า" ng-model="form.txt_Search" style="width: 100%;">
-    </ion-item>
-    <button class="md-raised social-button md-button md-default-theme material-background" ng-click="btnSearch()" style="margin-left:2%; width: 96%; margin-right: 20%">ค้นหา</button>
-  </ion-content>
+    <ion-nav-buttons side="right"></ion-nav-buttons>
+    <ion-content id="news-feed-content" style="background-color: azure;" overflow-scroll="false">
+        <ion-slide-box auto-play="true" does-continue="true" id="restaurant-slide-box" show-pager="false" active-slide="0">
+            <ion-slide class="slide-01">
+                <center>
+                    <div class="content" style="background-color: azure"><br>
+                        <img width="50%" src="img/8.png" />
+                        <h1>Konhaa</h1>
+                    </div>
+                </center>
+            </ion-slide>
+        </ion-slide-box>
+        <ion-item style="margin-top: 5%; margin-left: 2%; margin-right: 2%;">
+            <input type="text" placeholder="ค้นหาร้านค้า" ng-model="form.txt_Search" style="width: 100%;">
+        </ion-item>
+        <button class="md-raised social-button md-button md-default-theme material-background" ng-click="btnSearch()" style="margin-left:2%; width: 96%; margin-right: 20%">ค้นหา</button>
+    </ion-content>
 </ion-view>

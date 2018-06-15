@@ -1,69 +1,59 @@
-<!--View Information-->
-<!--View name : Fake Sign Up-->
-<!--State name : app.fakeSignUp-->
-<!--URL : #app/fakeSignUp-->
-
 <ion-view title="ลงทะเบียนร้านค้า">
-
-  <!--social sign up section-->
-  <ion-content id="social-sign-up-content" overflow-scroll="false">
-    <div class="app-icon">
-      <img src="img/app_icon.png" class="md-card-image" id="myImage"></br>
-      </br>
-      <a class="md-raised md-button md-default-theme" ng-click="btnShopPicByGallery()">
-        อัพโหลดรูปร้านค้า
-      </a>
-    </div>
-    <!--input section-->
-    <md-input-container md-no-float="">
-      <div>
-        <input class="user-name" placeholder="ชื่อร้านค้า *" style="width: 300px;" ng-model="shop.shop_name">
-      </div>
-    </md-input-container>
-    <md-input-container md-no-float="">
-      <textarea class="user-name" placeholder="รายละเอียดร้านค้า ความยาว 100 ตัวอักษร *" ng-model="shop.shop_desc" style="border-bottom-style: solid; border-color: rgba(0, 0, 0, 0.12); border-width: 1px; width: 300px;" maxlength="100"></textarea>
-    </md-input-container>
-    <md-input-container md-no-float="">
-      <div>
-        <input class="user-name" placeholder="ชื่อเจ้าของร้านค้า *" style="width: 300px;" ng-model="shop.owner_firstname">
-      </div>
-    </md-input-container>
-    <md-input-container md-no-float="">
-      <div>
-        <input class="user-name" placeholder="นามสกุลเจ้าของร้านค้า *" style="width: 300px;" ng-model="shop.owner_lastname">
-      </div>
-    </md-input-container>
-    <md-input-container md-no-float="">
-      <div>
-        <input class="user-name" placeholder="เบอร์โทรศัพท์มือถือ *" style="width: 300px;" ng-model="shop.mobile_number" maxlength="10" minlength="10">
-      </div>
-    </md-input-container>
-    <p>ตำแหน่งที่ตั้งของร้าน <font style="color: #d73d32;">ตำแหน่งที่ท่านสมัครจะเป็นตำแหน่งของร้าน</font></p>
-    <md-input-container md-no-float="">
-      <div>
-        <input class="user-name" placeholder="ละติจูดของร้าน *" style="width: 300px;" ng-model="latitude" disabled>
-      </div>
-    </md-input-container>
-    <md-input-container md-no-float="">
-      <div>
-        <input class="user-name" placeholder="ลองติจูดของร้าน *" style="width: 300px;" ng-model="longitude" disabled>
-      </div>
-    </md-input-container>
-<!--
-    <div>
-      ที่ตั้งของร้าน
-      <font style="color: #d73d32">*จะเป็นที่อยู่ปัจจุบันของคุณ ณ เวลาที่สมัครเปิดร้าน</font>
-    </div>
-    <div class="item">
-      ละติจูด : {{latitude}}
-    </div>
-    <div class="item">
-      ลองจิจูด : {{longitude}}
-    </div> -->
-    <!--end input section-->
-    <a class="md-raised social-button md-button md-default-theme material-background" ng-click="btnRegister()">
-            ลงทะเบียนร้านค้า
-        </a>
-  </ion-content>
-  <!--end social sign up section-->
+    <ion-content id="social-sign-up-content" overflow-scroll="false">
+        <div class="app-icon">
+            <img src="img/app_icon.png" class="md-card-image" id="myImage"></br></br>
+            <a class="md-raised md-button md-default-theme" ng-click="btnShopPicByGallery()">อัพโหลดรูปร้านค้า</a>
+        </div>
+        <md-input-container md-no-float="">
+            <div>
+                <input class="user-name" placeholder="ชื่อร้านค้า *" style="width: 300px;" ng-model="shop.shop_name">
+            </div>
+        </md-input-container>
+        <md-input-container md-no-float="">
+            <textarea class="user-name" placeholder="รายละเอียดร้านค้า ความยาว 100 ตัวอักษร *" ng-model="shop.shop_desc"
+                style="border-bottom-style: solid; border-color: rgba(0, 0, 0, 0.12); border-width: 1px; width: 300px;" maxlength="100">
+            </textarea>
+        </md-input-container>
+        <md-input-container md-no-float="">
+            <div>
+                <input class="user-name" placeholder="ชื่อเจ้าของร้านค้า *" style="width: 300px;" ng-model="shop.owner_firstname">
+            </div>
+        </md-input-container>
+        <md-input-container md-no-float="">
+            <div>
+                <input class="user-name" placeholder="นามสกุลเจ้าของร้านค้า *" style="width: 300px;" ng-model="shop.owner_lastname">
+            </div>
+        </md-input-container>
+        <md-input-container md-no-float="">
+            <div>
+                <input class="user-name" placeholder="เบอร์โทรศัพท์มือถือ *" style="width: 300px;" ng-model="shop.mobile_number" maxlength="10" minlength="10">
+            </div>
+        </md-input-container>
+        <p>ตำแหน่งที่ตั้งของร้าน
+            <font style="color: #d73d32;">ตำแหน่งที่ท่านสมัครจะเป็นตำแหน่งของร้าน</font>
+        </p>
+        <md-input-container md-no-float="">
+            <div>
+                <input class="user-name" placeholder="ละติจูดของร้าน *" style="width: 300px;" ng-model="latitude" disabled>
+            </div>
+        </md-input-container>
+        <md-input-container md-no-float="">
+            <div>
+                <input class="user-name" placeholder="ลองติจูดของร้าน *" style="width: 300px;" ng-model="longitude" disabled>
+            </div>
+        </md-input-container>
+        <!--
+        <div>
+          ที่ตั้งของร้าน
+          <font style="color: #d73d32">*จะเป็นที่อยู่ปัจจุบันของคุณ ณ เวลาที่สมัครเปิดร้าน</font>
+        </div>
+        <div class="item">
+          ละติจูด : {{latitude}}
+        </div>
+        <div class="item">
+          ลองจิจูด : {{longitude}}
+        </div> -->
+        <!--end input section-->
+        <a class="md-raised social-button md-button md-default-theme material-background" ng-click="btnRegister()">ลงทะเบียนร้านค้า</a>
+    </ion-content>
 </ion-view>

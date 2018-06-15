@@ -1,18 +1,23 @@
 <ion-view title="รายการรีวิวทั้งหมด" id="expense-dashboard">
-  <ion-nav-buttons side="right"></ion-nav-buttons>
-  <ion-nav-buttons side="left">
-    <button class="button button-icon ion-chevron-left" ng-click="btnBack()"></button>
-  </ion-nav-buttons>
-  <ion-content id="expense-dashboard-content" style="margin-top: 0;">
-    <div class="list">
-      <p style="margin-left: 10px; margin-top: 20px;">รายการรีวิวทั้งหมดของ {{username}}</p>
-      <a class="item item-avatar" ng-repeat="review in reviewArray" style="border-width: 0px;">
-        <img ng-src="http://1did.net/centerapp/img/img_shop/{{review.img}}">
-        <span ng-repeat="n in getRepeater(review.comment_score) track by $index"><i class="ion-ios-star" style="color: #CAC768;"></i></span>
-        <h2>ชื่อร้าน : {{review.title}}</h2>
-        <p>ข้อความรีวิว : {{review.comment_detail}}</p>
-        <p>วันเวลาที่รีวิว : {{review.comment_datetime}}</p>
-        <p ng-if="review.comment_pic != ''"><img src="http://1did.net/centerapp/img/img_review/{{review.comment_pic}}" style="width: 50%;"></p>
-      </a>
-    </div>
+    <ion-nav-buttons side="right"></ion-nav-buttons>
+    <ion-nav-buttons side="left">
+        <button class="button button-icon ion-chevron-left" ng-click="btnBack()"></button>
+    </ion-nav-buttons>
+    <ion-content id="expense-dashboard-content" style="margin-top: 0;">
+        <div class="list">
+            <p style="margin-left: 10px; margin-top: 20px;">รายการรีวิวทั้งหมดของ {{username}}</p>
+            <a class="item item-avatar" ng-repeat="review in reviewArray" style="border-width: 0px;">
+                <img ng-src="http://1did.net/centerapp/img/img_shop/{{review.img}}">
+                <span ng-repeat="n in getRepeater(review.comment_score) track by $index">
+                    <i class="ion-ios-star" style="color: #CAC768;"></i>
+                </span>
+                <h2>ชื่อร้าน : {{review.title}}</h2>
+                <p>ข้อความรีวิว : {{review.comment_detail}}</p>
+                <p>วันเวลาที่รีวิว : {{review.comment_datetime}}</p>
+                <p ng-if="review.comment_pic != ''">
+                    <img src="http://1did.net/centerapp/img/img_review/{{review.comment_pic}}" style="width: 50%;">
+                </p>
+            </a>
+        </div>
+    </ion-content>
 </ion-view>

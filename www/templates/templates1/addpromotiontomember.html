@@ -1,35 +1,20 @@
-<!--View Information-->
-<!--View name : Menu Dashboard-->
-<!--Controller name : menuDashboardCtrl-->
-<!--Controller path : www/templates/themes/menu-dashboard/js/controllers.js-->
-<!--State name : app.menuDashboard-->
-<!--URL : #app/menuDashboard-->
-
 <ion-view title="เพิ่มโปรโมชั่นให้ลูกค้า">
-  <!--menu dashboard section-->
-  <ion-nav-buttons side="left">
-    <button class="button button-icon ion-chevron-left" ng-click="btnBack()"></button>
-  </ion-nav-buttons>
-  <ion-content id="social-sign-up-content" overflow-scroll="false">
-    <!--panel section-->
-    <md-input-container md-no-float="">
-      <!-- <div> -->
-      <p style="margin-top: 20px;">รายการโปรโมชั่นของร้านค้า</p>
-        <md-select ng-model="mdSelectValue"  aria-label="md-option">
-          <md-option value="{{promotionlist.promotion_id}}" ng-repeat="promotionlist in PromotionListArray" ng-click="setmdSelectValue(promotionlist.promotion_id)">{{promotionlist.promotion_name}}</md-option>
-        </md-select>
-      <!-- </div> -->
-    </md-input-container>
-    <md-input-container md-no-float="">
-      <p>เพิ่มสิทธิ์</p>
-      <div>
-        <input class="user-name" placeholder="จำนวนสิทธิ์ (ตัวอย่าง 1, 10, 1000) *" style="width: 300px;" ng-model="amount.freq">
-      </div>
-    </md-input-container>
-    <a class="md-raised social-button md-button md-default-theme material-background" ng-click="btnAddPromotionToMember()">
-      เพิ่มโปรโมชั่น
-    </a>
-    <!--end product list content-->
-  </ion-content>
-  <!--Menu dashboard section-->
+    <ion-nav-buttons side="left">
+        <button class="button button-icon ion-chevron-left" ng-click="btnBack()"></button>
+    </ion-nav-buttons>
+    <ion-content id="social-sign-up-content" overflow-scroll="false">
+        <md-input-container md-no-float="">
+            <p style="margin-top: 20px;">รายการโปรโมชั่นของร้านค้า</p>
+            <md-select ng-model="mdSelectValue" aria-label="md-option">
+                <md-option value="{{promotionlist.promotion_id}}" ng-repeat="promotionlist in PromotionListArray" ng-click="setmdSelectValue(promotionlist.promotion_id)">{{promotionlist.promotion_name}}</md-option>
+            </md-select>
+        </md-input-container>
+        <md-input-container md-no-float="">
+            <p>เพิ่มสิทธิ์</p>
+            <div>
+                <input class="user-name" placeholder="จำนวนสิทธิ์ (ตัวอย่าง 1, 10, 1000) *" style="width: 300px;" ng-model="amount.freq">
+            </div>
+        </md-input-container>
+        <a class="md-raised social-button md-button md-default-theme material-background" ng-click="btnAddPromotionToMember()">เพิ่มโปรโมชั่น</a>
+    </ion-content>
 </ion-view>

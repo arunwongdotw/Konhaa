@@ -1,62 +1,46 @@
-<!--View Information-->
-<!--View name : Fake Sign Up-->
-<!--State name : app.fakeSignUp-->
-<!--URL : #app/fakeSignUp-->
-
 <ion-view title="ลงสินค้า">
-
-  <!--social sign up section-->
-  <ion-content id="social-sign-up-content" overflow-scroll="false">
-    <div class="app-icon">
-      <img src="img/shopping.png" class="md-card-image" id="myImage0">
-      <img src="img/shopping.png" class="md-card-image" id="myImage1">
-      <img src="img/shopping.png" class="md-card-image" id="myImage2">
-      <img src="img/shopping.png" class="md-card-image" id="myImage3">
-      </br></br>
-      <!-- <a class="md-raised md-button md-default-theme" ng-click="btnProfilePicByGallery()"> -->
-      <a class="md-raised md-button md-default-theme" ng-click="getImageSaveContact()">
-        อัพโหลดรูปสินค้า
-      </a>
-      <!-- <a class="md-raised md-button md-default-theme" ng-click="showListBottomSheet($event)">
-        อัพโหลดรูปโปรไฟล์
-      </a> -->
-    </div>
-    <!--input section-->
-    <md-input-container md-no-float="">
-      <div>
-        <input class="user-name" placeholder="ชื่อสินค้า *" style="width: 300px;" ng-model="form.txt_productname" >
-      </div>
-    </md-input-container>
-    <md-input-container md-no-float="">
-      <div>
-        <input  class="user-name" placeholder="รายละเอียดสินค้า *" style="width: 300px;" ng-model="form.txt_detailproduct" >
-      </div>
-    </md-input-container>
-
-    <!--end input section-->
-    <a class="md-raised social-button md-button md-default-theme material-background" ng-click="btninsert()">
-      ลงสินค้า
-    </a>
-  </ion-content>
-  <!--end social sign up section-->
+    <ion-content id="social-sign-up-content" overflow-scroll="false">
+        <div class="app-icon">
+            <img src="img/shopping.png" class="md-card-image" id="myImage0">
+            <img src="img/shopping.png" class="md-card-image" id="myImage1">
+            <img src="img/shopping.png" class="md-card-image" id="myImage2">
+            <img src="img/shopping.png" class="md-card-image" id="myImage3"></br></br>
+            <!-- <a class="md-raised md-button md-default-theme" ng-click="btnProfilePicByGallery()"> -->
+            <a class="md-raised md-button md-default-theme" ng-click="getImageSaveContact()">อัพโหลดรูปสินค้า</a>
+            <!-- <a class="md-raised md-button md-default-theme" ng-click="showListBottomSheet($event)">
+              อัพโหลดรูปโปรไฟล์
+            </a> -->
+        </div>
+        <md-input-container md-no-float="">
+            <div>
+                <input class="user-name" placeholder="ชื่อสินค้า *" style="width: 300px;" ng-model="form.txt_productname" >
+            </div>
+        </md-input-container>
+        <md-input-container md-no-float="">
+            <div>
+                <input  class="user-name" placeholder="รายละเอียดสินค้า *" style="width: 300px;" ng-model="form.txt_detailproduct" >
+            </div>
+        </md-input-container>
+        <a class="md-raised social-button md-button md-default-theme material-background" ng-click="btninsert()">ลงสินค้า</a>
+    </ion-content>
 </ion-view>
 
 <!-- <script type="text/ng-template" id="ui-list-bottom-sheet-template">
-  <md-bottom-sheet class="md-list md-has-header">
-    <h1 class="md-bottom-sheet-header">รายการอัพโหลดรูปโปรไฟล์</h1>
-    <md-list>
-      <md-list-item>
-        <a class="md-default-theme md-bottom-sheet-list-item" ng-click="btnProfilePicByCamera()">
-          <i class="fa fa-camera"></i>
-          <span>กล้องถ่ายรูป</span>
-        </a>
-      </md-list-item>
-      <md-list-item>
-        <a class="md-default-theme md-bottom-sheet-list-item" ng-click="btnProfilePicByGallery()">
-          <i class="fa fa-image"></i>
-          <span>อัลบั้มภาพ</span>
-        </a>
-      </md-list-item>
-    </md-list>
-  </md-bottom-sheet>
+    <md-bottom-sheet class="md-list md-has-header">
+      <h1 class="md-bottom-sheet-header">รายการอัพโหลดรูปโปรไฟล์</h1>
+        <md-list>
+            <md-list-item>
+                <a class="md-default-theme md-bottom-sheet-list-item" ng-click="btnProfilePicByCamera()">
+                    <i class="fa fa-camera"></i>
+                    <span>กล้องถ่ายรูป</span>
+                </a>
+            </md-list-item>
+            <md-list-item>
+                <a class="md-default-theme md-bottom-sheet-list-item" ng-click="btnProfilePicByGallery()">
+                    <i class="fa fa-image"></i>
+                    <span>อัลบั้มภาพ</span>
+                </a>
+            </md-list-item>
+        </md-list>
+    </md-bottom-sheet>
 </script> -->
