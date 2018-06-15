@@ -87,14 +87,36 @@ appControllers.controller('reviewCtrl', function($scope, $mdUtil, $mdSidenav, $t
                     }
                   }).then(function(response) {
                     $state.go('app2.detail');
-                  }, function(error) {
-                    console.log(error);
                   });
                 }, function(error) {
-                  console.log(error);
+                  $mdDialog.show({
+                    controller: 'DialogController',
+                    templateUrl: 'confirm-dialog.html',
+                    locals: {
+                      displayOption: {
+                        title: "เกิดข้อผิดพลาด !",
+                        content: "เกิดข้อผิดพลาด btnReviewShop ใน reviewController ระบบจะปิดอัตโนมัติ",
+                        ok: "ตกลง"
+                      }
+                    }
+                  }).then(function(response) {
+                    ionic.Platform.exitApp();
+                  });
                 });
               }, function(error) {
-                console.log(error);
+                $mdDialog.show({
+                  controller: 'DialogController',
+                  templateUrl: 'confirm-dialog.html',
+                  locals: {
+                    displayOption: {
+                      title: "เกิดข้อผิดพลาด !",
+                      content: "เกิดข้อผิดพลาด btnReviewShop ใน reviewController ระบบจะปิดอัตโนมัติ",
+                      ok: "ตกลง"
+                    }
+                  }
+                }).then(function(response) {
+                  ionic.Platform.exitApp();
+                });
               });
           } else {
             $http({
@@ -119,11 +141,21 @@ appControllers.controller('reviewCtrl', function($scope, $mdUtil, $mdSidenav, $t
                 }
               }).then(function(response) {
                 $state.go('app2.detail');
-              }, function(error) {
-                console.log(error);
               });
             }, function(error) {
-              console.log(error);
+              $mdDialog.show({
+                controller: 'DialogController',
+                templateUrl: 'confirm-dialog.html',
+                locals: {
+                  displayOption: {
+                    title: "เกิดข้อผิดพลาด !",
+                    content: "เกิดข้อผิดพลาด btnReviewShop ใน reviewController ระบบจะปิดอัตโนมัติ",
+                    ok: "ตกลง"
+                  }
+                }
+              }).then(function(response) {
+                ionic.Platform.exitApp();
+              });
             });
           }
         } else {
@@ -140,7 +172,19 @@ appControllers.controller('reviewCtrl', function($scope, $mdUtil, $mdSidenav, $t
           });
         }
       }, function(error) {
-        console.log(error);
+        $mdDialog.show({
+          controller: 'DialogController',
+          templateUrl: 'confirm-dialog.html',
+          locals: {
+            displayOption: {
+              title: "เกิดข้อผิดพลาด !",
+              content: "เกิดข้อผิดพลาด btnReviewShop ใน reviewController ระบบจะปิดอัตโนมัติ",
+              ok: "ตกลง"
+            }
+          }
+        }).then(function(response) {
+          ionic.Platform.exitApp();
+        });
       });
     } else {
       $mdDialog.show({
@@ -193,8 +237,20 @@ appControllers.controller('reviewCtrl', function($scope, $mdUtil, $mdSidenav, $t
     $cordovaCamera.getPicture(options).then(function(imageURI) {
       var image = document.getElementById('myImage');
       image.src = imageURI;
-    }, function(err) {
-      console.log(err);
+    }, function(error) {
+      $mdDialog.show({
+        controller: 'DialogController',
+        templateUrl: 'confirm-dialog.html',
+        locals: {
+          displayOption: {
+            title: "เกิดข้อผิดพลาด !",
+            content: "เกิดข้อผิดพลาด btnReviewPicByGallery ใน reviewController ระบบจะปิดอัตโนมัติ",
+            ok: "ตกลง"
+          }
+        }
+      }).then(function(response) {
+        ionic.Platform.exitApp();
+      });
     });
   };
 });

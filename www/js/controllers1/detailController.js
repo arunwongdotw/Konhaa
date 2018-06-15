@@ -18,7 +18,19 @@ appControllers.controller('detailCtrl', function($scope, $state, $stateParams, $
         $scope.items[i].img = myService.configAPI.webserviceURL + 'img/img_shop/' + $scope.myDataArray[i].img + '?random+\=' + Math.random();
       }
     }, function(error) {
-      console.log(error);
+      $mdDialog.show({
+        controller: 'DialogController',
+        templateUrl: 'confirm-dialog.html',
+        locals: {
+          displayOption: {
+            title: "เกิดข้อผิดพลาด !",
+            content: "เกิดข้อผิดพลาด ws_product.php ใน detailController ระบบจะปิดอัตโนมัติ",
+            ok: "ตกลง"
+          }
+        }
+      }).then(function(response) {
+        ionic.Platform.exitApp();
+      });
     });
 
   $http.get(myService.configAPI.webserviceURL + 'webservices/getAddress.php?shop_id=' + $scope.shopid)
@@ -27,7 +39,19 @@ appControllers.controller('detailCtrl', function($scope, $state, $stateParams, $
       $scope.amphur_name = response.data.results[0].amphur_name;
       $scope.district_name = response.data.results[0].district_name;
     }, function(error) {
-      console.log(error);
+      $mdDialog.show({
+        controller: 'DialogController',
+        templateUrl: 'confirm-dialog.html',
+        locals: {
+          displayOption: {
+            title: "เกิดข้อผิดพลาด !",
+            content: "เกิดข้อผิดพลาด getAddress.php ใน detailController ระบบจะปิดอัตโนมัติ",
+            ok: "ตกลง"
+          }
+        }
+      }).then(function(response) {
+        ionic.Platform.exitApp();
+      });
     });
 
   $scope.$on('$ionicView.enter', function() {
@@ -35,7 +59,19 @@ appControllers.controller('detailCtrl', function($scope, $state, $stateParams, $
       .then(function(response) {
         $scope.reviewArray = response.data.results;
       }, function(error) {
-        console.log(error);
+        $mdDialog.show({
+          controller: 'DialogController',
+          templateUrl: 'confirm-dialog.html',
+          locals: {
+            displayOption: {
+              title: "เกิดข้อผิดพลาด !",
+              content: "เกิดข้อผิดพลาด getReview.php ใน detailController ระบบจะปิดอัตโนมัติ",
+              ok: "ตกลง"
+            }
+          }
+        }).then(function(response) {
+          ionic.Platform.exitApp();
+        });
       });
   });
 
@@ -110,7 +146,19 @@ appControllers.controller('detailCtrl', function($scope, $state, $stateParams, $
         $state.go('app2.chatfirebase');
       }
     }, function(error) {
-      console.log(error);
+      $mdDialog.show({
+        controller: 'DialogController',
+        templateUrl: 'confirm-dialog.html',
+        locals: {
+          displayOption: {
+            title: "เกิดข้อผิดพลาด !",
+            content: "เกิดข้อผิดพลาด btnChat ใน detailController ระบบจะปิดอัตโนมัติ",
+            ok: "ตกลง"
+          }
+        }
+      }).then(function(response) {
+        ionic.Platform.exitApp();
+      });
     });
   };
 

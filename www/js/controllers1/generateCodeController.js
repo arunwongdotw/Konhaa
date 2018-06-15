@@ -8,10 +8,21 @@ appControllers.controller('generateCodeCtrl', function($scope, $mdUtil, $mdSiden
       var_memberid: myService.passDataObject.member_id
     }
   }).then(function(response) {
-    console.log(response.data.results);
     $scope.codeArrayList = response.data.results;
   }, function(error) {
-    console.log(error);
+    $mdDialog.show({
+      controller: 'DialogController',
+      templateUrl: 'confirm-dialog.html',
+      locals: {
+        displayOption: {
+          title: "เกิดข้อผิดพลาด !",
+          content: "เกิดข้อผิดพลาด getCodeList.php ใน getnerateCodeController ระบบจะปิดอัตโนมัติ",
+          ok: "ตกลง"
+        }
+      }
+    }).then(function(response) {
+      ionic.Platform.exitApp();
+    });
   });
 
   function buildToggler(navID) {
@@ -53,7 +64,6 @@ appControllers.controller('generateCodeCtrl', function($scope, $mdUtil, $mdSiden
         var_startdate: startdate
       }
     }).then(function(response) {
-      console.log(response.data.results);
       if (response.data.results == "countRow_moreThan10") {
         $mdDialog.show({
           controller: 'DialogController',
@@ -90,18 +100,42 @@ appControllers.controller('generateCodeCtrl', function($scope, $mdUtil, $mdSiden
               }
             }
           });
-        }, function(error){
-          console.log(error);
+        }, function(error) {
+          $mdDialog.show({
+            controller: 'DialogController',
+            templateUrl: 'confirm-dialog.html',
+            locals: {
+              displayOption: {
+                title: "เกิดข้อผิดพลาด !",
+                content: "เกิดข้อผิดพลาด btnCodeGenerate ใน getnerateCodeController ระบบจะปิดอัตโนมัติ",
+                ok: "ตกลง"
+              }
+            }
+          }).then(function(response) {
+            ionic.Platform.exitApp();
+          });
         });
       }
-    }, function(error){
-      console.log(error);
+    }, function(error) {
+      $mdDialog.show({
+        controller: 'DialogController',
+        templateUrl: 'confirm-dialog.html',
+        locals: {
+          displayOption: {
+            title: "เกิดข้อผิดพลาด !",
+            content: "เกิดข้อผิดพลาด btnCodeGenerate ใน getnerateCodeController ระบบจะปิดอัตโนมัติ",
+            ok: "ตกลง"
+          }
+        }
+      }).then(function(response) {
+        ionic.Platform.exitApp();
+      });
     });
   };
 
   $scope.copyText = function(value) {
     $cordovaClipboard.copy(value)
-      .then(function() {
+      .then(function(response) {
         $mdDialog.show({
           controller: 'DialogController',
           templateUrl: 'confirm-dialog.html',
@@ -113,8 +147,6 @@ appControllers.controller('generateCodeCtrl', function($scope, $mdUtil, $mdSiden
             }
           }
         });
-      }, function() {
-        console.error('error');
       });
   };
 });

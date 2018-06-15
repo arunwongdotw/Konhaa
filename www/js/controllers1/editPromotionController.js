@@ -24,7 +24,19 @@ appControllers.controller('editPromotionCtrl', function(ionicDatePicker, $scope,
     .then(function(response) {
       $scope.promotionTypeArray = response.data.results;
     }, function(error) {
-      console.log(error);
+      $mdDialog.show({
+        controller: 'DialogController',
+        templateUrl: 'confirm-dialog.html',
+        locals: {
+          displayOption: {
+            title: "เกิดข้อผิดพลาด !",
+            content: "เกิดข้อผิดพลาด getPromotionType ใน editPromotionController ระบบจะปิดอัตโนมัติ",
+            ok: "ตกลง"
+          }
+        }
+      }).then(function(response) {
+        ionic.Platform.exitApp();
+      });
     });
 
   var ipObj1 = {
@@ -79,11 +91,21 @@ appControllers.controller('editPromotionCtrl', function(ionicDatePicker, $scope,
                         }
                       }).then(function(response) {
                         $state.go('app2.shop');
-                      }, function(error) {
-                        console.log(error);
                       });
                     }, function(error) {
-                      console.log(error);
+                      $mdDialog.show({
+                        controller: 'DialogController',
+                        templateUrl: 'confirm-dialog.html',
+                        locals: {
+                          displayOption: {
+                            title: "เกิดข้อผิดพลาด !",
+                            content: "เกิดข้อผิดพลาด btnEditPromotion ใน editPromotionController ระบบจะปิดอัตโนมัติ",
+                            ok: "ตกลง"
+                          }
+                        }
+                      }).then(function(response) {
+                        ionic.Platform.exitApp();
+                      });
                     });
                   } else {
                     $mdDialog.show({
@@ -207,11 +229,21 @@ appControllers.controller('editPromotionCtrl', function(ionicDatePicker, $scope,
                       }
                     }).then(function(response) {
                       $state.go('app2.shop');
-                    }, function(error) {
-                      console.log(error);
                     });
                   }, function(error) {
-                    console.log(error);
+                    $mdDialog.show({
+                      controller: 'DialogController',
+                      templateUrl: 'confirm-dialog.html',
+                      locals: {
+                        displayOption: {
+                          title: "เกิดข้อผิดพลาด !",
+                          content: "เกิดข้อผิดพลาด btnEditPromotion ใน editPromotionController ระบบจะปิดอัตโนมัติ",
+                          ok: "ตกลง"
+                        }
+                      }
+                    }).then(function(response) {
+                      ionic.Platform.exitApp();
+                    });
                   });
                 } else {
                   $mdDialog.show({
@@ -322,11 +354,21 @@ appControllers.controller('editPromotionCtrl', function(ionicDatePicker, $scope,
                       }
                     }).then(function(response) {
                       $state.go('app2.shop');
-                    }, function(error) {
-                      console.log(error);
                     });
                   }, function(error) {
-                    console.log(error);
+                    $mdDialog.show({
+                      controller: 'DialogController',
+                      templateUrl: 'confirm-dialog.html',
+                      locals: {
+                        displayOption: {
+                          title: "เกิดข้อผิดพลาด !",
+                          content: "เกิดข้อผิดพลาด btnEditPromotion ใน editPromotionController ระบบจะปิดอัตโนมัติ",
+                          ok: "ตกลง"
+                        }
+                      }
+                    }).then(function(response) {
+                      ionic.Platform.exitApp();
+                    });
                   });
                 } else {
                   $mdDialog.show({

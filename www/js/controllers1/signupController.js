@@ -50,12 +50,7 @@ appControllers.controller('signupCtrl', function($scope, $mdDialog, $http, mySer
                               }
                             });
                           } else {
-                            $http.get('http://1did.net/centerapp/php_qrcode/index.php?data=' + $scope.form.txt_username + '&level=high&size=10')
-                              .then(function(response) {
-                                console.log(response);
-                              }, function(error) {
-                                console.log(error);
-                              });
+                            $http.get('http://1did.net/centerapp/php_qrcode/index.php?data=' + $scope.form.txt_username + '&level=high&size=10');
                             $mdDialog.show({
                               controller: 'DialogController',
                               templateUrl: 'confirm-dialog.html',
@@ -66,7 +61,7 @@ appControllers.controller('signupCtrl', function($scope, $mdDialog, $http, mySer
                                   ok: "ตกลง"
                                 }
                               }
-                            }).then(function() {
+                            }).then(function(response) {
                               var notify_id = $cordovaDevice.getUUID();
                               $http({
                                 url: myService.configAPI.webserviceURL + 'webservices/loginMember.php',
@@ -81,12 +76,36 @@ appControllers.controller('signupCtrl', function($scope, $mdDialog, $http, mySer
                                 myService.passDataObject = response.data.results[0];
                                 $state.go('app2.home');
                               }, function(error){
-                                console.log(error);
+                                $mdDialog.show({
+                                  controller: 'DialogController',
+                                  templateUrl: 'confirm-dialog.html',
+                                  locals: {
+                                    displayOption: {
+                                      title: "เกิดข้อผิดพลาด !",
+                                      content: "เกิดข้อผิดพลาด btnSignup ใน signupController ระบบจะปิดอัตโนมัติ",
+                                      ok: "ตกลง"
+                                    }
+                                  }
+                                }).then(function(response) {
+                                  ionic.Platform.exitApp();
+                                });
                               });
                             });
                           }
                         }, function(error) {
-                          console.log(error);
+                          $mdDialog.show({
+                            controller: 'DialogController',
+                            templateUrl: 'confirm-dialog.html',
+                            locals: {
+                              displayOption: {
+                                title: "เกิดข้อผิดพลาด !",
+                                content: "เกิดข้อผิดพลาด btnSignup ใน signupController ระบบจะปิดอัตโนมัติ",
+                                ok: "ตกลง"
+                              }
+                            }
+                          }).then(function(response) {
+                            ionic.Platform.exitApp();
+                          });
                         });
                       } else {
                         $mdDialog.show({
@@ -236,8 +255,20 @@ appControllers.controller('signupCtrl', function($scope, $mdDialog, $http, mySer
     $cordovaCamera.getPicture(options).then(function(imageURI) {
       var image = document.getElementById('myImage');
       image.src = imageURI;
-    }, function(err) {
-      console.log(err);
+    }, function(error) {
+      $mdDialog.show({
+        controller: 'DialogController',
+        templateUrl: 'confirm-dialog.html',
+        locals: {
+          displayOption: {
+            title: "เกิดข้อผิดพลาด !",
+            content: "เกิดข้อผิดพลาด btnProfilePicByGallery ใน signupController ระบบจะปิดอัตโนมัติ",
+            ok: "ตกลง"
+          }
+        }
+      }).then(function(response) {
+        ionic.Platform.exitApp();
+      });
     });
   };
 });

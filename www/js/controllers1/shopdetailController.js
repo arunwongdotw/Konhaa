@@ -1,5 +1,4 @@
 appControllers.controller('shopdetailCtrl', function($state, $scope, $mdDialog, $http, myService, $cordovaFileTransfer, $cordovaCamera) {
-
   $scope.member_id = myService.passDataObject.member_id;
   $scope.mdSelectValue = "1";
   $scope.mdSelectValue2 = "1";
@@ -20,14 +19,38 @@ appControllers.controller('shopdetailCtrl', function($state, $scope, $mdDialog, 
         .then(function(response) {
           $scope.provinceArray = response.data.results;
         }, function(error) {
-          console.log(error);
+          $mdDialog.show({
+            controller: 'DialogController',
+            templateUrl: 'confirm-dialog.html',
+            locals: {
+              displayOption: {
+                title: "เกิดข้อผิดพลาด !",
+                content: "เกิดข้อผิดพลาด showprovince.php ใน shopdetailController ระบบจะปิดอัตโนมัติ",
+                ok: "ตกลง"
+              }
+            }
+          }).then(function(response) {
+            ionic.Platform.exitApp();
+          });
         });
     } else {
       $http.get('http://1did.net/centerapp/webservices/showprovince.php')
         .then(function(response) {
           $scope.provinceArray = response.data.results;
         }, function(error) {
-          console.log(error);
+          $mdDialog.show({
+            controller: 'DialogController',
+            templateUrl: 'confirm-dialog.html',
+            locals: {
+              displayOption: {
+                title: "เกิดข้อผิดพลาด !",
+                content: "เกิดข้อผิดพลาด showprovince.php ใน shopdetailController ระบบจะปิดอัตโนมัติ",
+                ok: "ตกลง"
+              }
+            }
+          }).then(function(response) {
+            ionic.Platform.exitApp();
+          });
         });
     }
     if ($scope.shop.amphur_id) {
@@ -36,14 +59,38 @@ appControllers.controller('shopdetailCtrl', function($state, $scope, $mdDialog, 
         .then(function(response) {
           $scope.amphurArray = response.data.results;
         }, function(error) {
-          console.log(error);
+          $mdDialog.show({
+            controller: 'DialogController',
+            templateUrl: 'confirm-dialog.html',
+            locals: {
+              displayOption: {
+                title: "เกิดข้อผิดพลาด !",
+                content: "เกิดข้อผิดพลาด showamphur.php ใน shopdetailController ระบบจะปิดอัตโนมัติ",
+                ok: "ตกลง"
+              }
+            }
+          }).then(function(response) {
+            ionic.Platform.exitApp();
+          });
         });
     } else {
       $http.get('http://1did.net/centerapp/webservices/showamphur.php?province_id=' + $scope.mdSelectValue)
         .then(function(response) {
           $scope.amphurArray = response.data.results;
         }, function(error) {
-          console.log(error);
+          $mdDialog.show({
+            controller: 'DialogController',
+            templateUrl: 'confirm-dialog.html',
+            locals: {
+              displayOption: {
+                title: "เกิดข้อผิดพลาด !",
+                content: "เกิดข้อผิดพลาด showamphur.php ใน shopdetailController ระบบจะปิดอัตโนมัติ",
+                ok: "ตกลง"
+              }
+            }
+          }).then(function(response) {
+            ionic.Platform.exitApp();
+          });
         });
     }
     if ($scope.shop.district_id) {
@@ -52,14 +99,38 @@ appControllers.controller('shopdetailCtrl', function($state, $scope, $mdDialog, 
         .then(function(response) {
           $scope.districtArray = response.data.results;
         }, function(error) {
-          console.log(error);
+          $mdDialog.show({
+            controller: 'DialogController',
+            templateUrl: 'confirm-dialog.html',
+            locals: {
+              displayOption: {
+                title: "เกิดข้อผิดพลาด !",
+                content: "เกิดข้อผิดพลาด showdistrict.php ใน shopdetailController ระบบจะปิดอัตโนมัติ",
+                ok: "ตกลง"
+              }
+            }
+          }).then(function(response) {
+            ionic.Platform.exitApp();
+          });
         });
     } else {
       $http.get('http://1did.net/centerapp/webservices/showdistrict.php?amphur_id=' + $scope.mdSelectValue2)
         .then(function(response) {
           $scope.districtArray = response.data.results;
         }, function(error) {
-          console.log(error);
+          $mdDialog.show({
+            controller: 'DialogController',
+            templateUrl: 'confirm-dialog.html',
+            locals: {
+              displayOption: {
+                title: "เกิดข้อผิดพลาด !",
+                content: "เกิดข้อผิดพลาด showdistrict.php ใน shopdetailController ระบบจะปิดอัตโนมัติ",
+                ok: "ตกลง"
+              }
+            }
+          }).then(function(response) {
+            ionic.Platform.exitApp();
+          });
         });
     }
     $scope.imgname = response.data.results[0].img;
@@ -75,14 +146,38 @@ appControllers.controller('shopdetailCtrl', function($state, $scope, $mdDialog, 
       .then(function(response) {
         $scope.amphurArray = response.data.results;
       }, function(error) {
-        console.log(error);
+        $mdDialog.show({
+          controller: 'DialogController',
+          templateUrl: 'confirm-dialog.html',
+          locals: {
+            displayOption: {
+              title: "เกิดข้อผิดพลาด !",
+              content: "เกิดข้อผิดพลาด showamphur.php ใน shopdetailController ระบบจะปิดอัตโนมัติ",
+              ok: "ตกลง"
+            }
+          }
+        }).then(function(response) {
+          ionic.Platform.exitApp();
+        });
       });
 
     $http.get('http://1did.net/centerapp/webservices/showdistrict.php?amphur_id=' + min_amphur)
       .then(function(response) {
         $scope.districtArray = response.data.results;
       }, function(error) {
-        console.log(error);
+        $mdDialog.show({
+          controller: 'DialogController',
+          templateUrl: 'confirm-dialog.html',
+          locals: {
+            displayOption: {
+              title: "เกิดข้อผิดพลาด !",
+              content: "เกิดข้อผิดพลาด showdistrict.php ใน shopdetailController ระบบจะปิดอัตโนมัติ",
+              ok: "ตกลง"
+            }
+          }
+        }).then(function(response) {
+          ionic.Platform.exitApp();
+        });
       });
   };
 
@@ -94,7 +189,19 @@ appControllers.controller('shopdetailCtrl', function($state, $scope, $mdDialog, 
       .then(function(response) {
         $scope.districtArray = response.data.results;
       }, function(error) {
-        console.log(error);
+        $mdDialog.show({
+          controller: 'DialogController',
+          templateUrl: 'confirm-dialog.html',
+          locals: {
+            displayOption: {
+              title: "เกิดข้อผิดพลาด !",
+              content: "เกิดข้อผิดพลาด showdistrict.php ใน shopdetailController ระบบจะปิดอัตโนมัติ",
+              ok: "ตกลง"
+            }
+          }
+        }).then(function(response) {
+          ionic.Platform.exitApp();
+        });
       });
   };
 
@@ -166,7 +273,19 @@ appControllers.controller('shopdetailCtrl', function($state, $scope, $mdDialog, 
                               });
                             }
                           }, function(error) {
-                            console.log(error);
+                            $mdDialog.show({
+                              controller: 'DialogController',
+                              templateUrl: 'confirm-dialog.html',
+                              locals: {
+                                displayOption: {
+                                  title: "เกิดข้อผิดพลาด !",
+                                  content: "เกิดข้อผิดพลาด btnUpdate ใน shopdetailController ระบบจะปิดอัตโนมัติ",
+                                  ok: "ตกลง"
+                                }
+                              }
+                            }).then(function(response) {
+                              ionic.Platform.exitApp();
+                            });
                           });
                         } else {
                           $mdDialog.show({
@@ -329,8 +448,20 @@ appControllers.controller('shopdetailCtrl', function($state, $scope, $mdDialog, 
     $cordovaCamera.getPicture(options).then(function(imageURI) {
       var image = document.getElementById('myShop');
       image.src = imageURI;
-    }, function(err) {
-      console.log(err);
+    }, function(error) {
+      $mdDialog.show({
+        controller: 'DialogController',
+        templateUrl: 'confirm-dialog.html',
+        locals: {
+          displayOption: {
+            title: "เกิดข้อผิดพลาด !",
+            content: "เกิดข้อผิดพลาด btnShopPicByGallery ใน shopdetailController ระบบจะปิดอัตโนมัติ",
+            ok: "ตกลง"
+          }
+        }
+      }).then(function(response) {
+        ionic.Platform.exitApp();
+      });
     });
   };
 });

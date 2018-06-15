@@ -1,6 +1,5 @@
 appControllers.controller('ChatCtrl', function($scope, $state, $ionicPopup, $ionicScrollDelegate, myService, $http) {
   $ionicScrollDelegate.scrollBottom(true);
-  console.log('chatControl start...');
   // $scope.shop_id = myService.shopid.shop_id;
   // console.log($scope.shop_id);
   // $scope.title = myService.shopDataObject.title;

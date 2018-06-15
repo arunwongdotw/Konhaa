@@ -30,9 +30,20 @@ appControllers.controller('qrCodeCtrl', function($scope, $mdUtil, $mdSidenav, $t
   }).then(function(response) {
     $scope.username = response.data.results[0].member_username;
     $scope.qrcode = 'http://1did.net/centerapp/img/img_qrcode/' + response.data.results[0].member_qrcode;
-    console.log($scope.qrcode);
   }, function(error) {
-    console.log(error);
+    $mdDialog.show({
+      controller: 'DialogController',
+      templateUrl: 'confirm-dialog.html',
+      locals: {
+        displayOption: {
+          title: "เกิดข้อผิดพลาด !",
+          content: "เกิดข้อผิดพลาด getMemberQRCode.php ใน qrCodeController ระบบจะปิดอัตโนมัติ",
+          ok: "ตกลง"
+        }
+      }
+    }).then(function(response) {
+      ionic.Platform.exitApp();
+    });
   });
 
   $scope.closeCard = function() {

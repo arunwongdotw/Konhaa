@@ -31,7 +31,19 @@ appControllers.controller('loginmenuCtrl', function($scope, $mdUtil, $mdSidenav,
       myService.passDataObject = response.data.results[0];
       callback(myService.passDataObject);
     }, function(error) {
-      console.log(error);
+      $mdDialog.show({
+        controller: 'DialogController',
+        templateUrl: 'confirm-dialog.html',
+        locals: {
+          displayOption: {
+            title: "เกิดข้อผิดพลาด !",
+            content: "เกิดข้อผิดพลาด getUserDetailFromLocalStorage ใน loginmenuController ระบบจะปิดอัตโนมัติ",
+            ok: "ตกลง"
+          }
+        }
+      }).then(function(response) {
+        ionic.Platform.exitApp();
+      });
     });
   }
 
@@ -67,11 +79,9 @@ appControllers.controller('loginmenuCtrl', function($scope, $mdUtil, $mdSidenav,
           cancel: "ยกเลิก"
         }
       }
-    }).then(function() {
+    }).then(function(response) {
       window.localStorage.username = "";
       $state.go('app1.home');
-    }, function() {
-      console.log('cancel');
     });
   };
 
@@ -95,10 +105,8 @@ appControllers.controller('loginmenuCtrl', function($scope, $mdUtil, $mdSidenav,
               cancel: "ยกเลิก"
             }
           }
-        }).then(function() {
+        }).then(function(response) {
           $scope.navigateTo('app2.termandcondition');
-        }, function() {
-
         });
       } else {
         myService.shopid = {

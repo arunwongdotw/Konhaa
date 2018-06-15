@@ -25,10 +25,22 @@ appControllers.controller('homeController', function($scope, $state, $http, mySe
       $scope.memberUsername = response.data.results[0].member_username;
       callback($scope.memberUsername);
     }, function(error) {
-      console.log(error);
+      $mdDialog.show({
+        controller: 'DialogController',
+        templateUrl: 'confirm-dialog.html',
+        locals: {
+          displayOption: {
+            title: "เกิดข้อผิดพลาด !",
+            content: "เกิดข้อผิดพลาด getMemberUsername ใน homeController ระบบจะปิดอัตโนมัติ",
+            ok: "ตกลง"
+          }
+        }
+      }).then(function(response) {
+        ionic.Platform.exitApp();
+      });
     });
   }
-  
+
   $scope.btnSearch = function() {
     if (($scope.form.txt_Search != null) && ($scope.form.txt_Search != "")) {
       deviceService.passValueFromHome = $scope.form.txt_Search;
@@ -66,10 +78,8 @@ appControllers.controller('homeController', function($scope, $state, $http, mySe
             cancel: "ยกเลิก"
           }
         }
-      }).then(function() {
+      }).then(function(response) {
         navigator.app.exitApp();
-      }, function() {
-
       });
     } else {
       navigator.app.backHistory();

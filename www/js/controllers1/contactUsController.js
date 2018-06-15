@@ -11,7 +11,19 @@ appControllers.controller('contactUsCtrl', function($scope, $mdUtil, $mdSidenav,
   }).then(function(response) {
     $scope.reportArrayList = response.data.results;
   }, function(error) {
-    console.log(error);
+    $mdDialog.show({
+      controller: 'DialogController',
+      templateUrl: 'confirm-dialog.html',
+      locals: {
+        displayOption: {
+          title: "เกิดข้อผิดพลาด !",
+          content: "เกิดข้อผิดพลาด getReportList.php ใน contactUsController ระบบจะปิดอัตโนมัติ",
+          ok: "ตกลง"
+        }
+      }
+    }).then(function(response) {
+      ionic.Platform.exitApp();
+    });
   });
 
   function buildToggler(navID) {
@@ -69,14 +81,24 @@ appControllers.controller('contactUsCtrl', function($scope, $mdUtil, $mdSidenav,
                   ok: "ตกลง"
                 }
               }
-            }).then(function(){
+            }).then(function(response) {
               $state.reload();
-            }, function(){
-
             });
           }
         }, function(error) {
-          console.log(error);
+          $mdDialog.show({
+            controller: 'DialogController',
+            templateUrl: 'confirm-dialog.html',
+            locals: {
+              displayOption: {
+                title: "เกิดข้อผิดพลาด !",
+                content: "เกิดข้อผิดพลาด btnReport ใน contactUsController ระบบจะปิดอัตโนมัติ",
+                ok: "ตกลง"
+              }
+            }
+          }).then(function(response) {
+            ionic.Platform.exitApp();
+          });
         });
       } else {
         $mdDialog.show({
@@ -139,5 +161,4 @@ appControllers.controller('contactUsCtrl', function($scope, $mdUtil, $mdSidenav,
       $ionicSlideBoxDelegate.enableSlide(false);
     }
   };
-
 });

@@ -51,7 +51,19 @@ appControllers.controller('shopregisterCtrl', function($state, $scope, $mdDialog
                     });
                   }
                 }, function(error) {
-                  console.log(error);
+                  $mdDialog.show({
+                    controller: 'DialogController',
+                    templateUrl: 'confirm-dialog.html',
+                    locals: {
+                      displayOption: {
+                        title: "เกิดข้อผิดพลาด !",
+                        content: "เกิดข้อผิดพลาด btnRegister ใน shopregisterController ระบบจะปิดอัตโนมัติ",
+                        ok: "ตกลง"
+                      }
+                    }
+                  }).then(function(response) {
+                    ionic.Platform.exitApp();
+                  });
                 });
               } else {
                 $mdDialog.show({
@@ -149,8 +161,20 @@ appControllers.controller('shopregisterCtrl', function($state, $scope, $mdDialog
     $cordovaCamera.getPicture(options).then(function(imageURI) {
       var image = document.getElementById('myImage');
       image.src = imageURI;
-    }, function(err) {
-      console.log(err);
+    }, function(error) {
+      $mdDialog.show({
+        controller: 'DialogController',
+        templateUrl: 'confirm-dialog.html',
+        locals: {
+          displayOption: {
+            title: "เกิดข้อผิดพลาด !",
+            content: "เกิดข้อผิดพลาด btnShopPicByGallery ใน shopregisterController ระบบจะปิดอัตโนมัติ",
+            ok: "ตกลง"
+          }
+        }
+      }).then(function(response) {
+        ionic.Platform.exitApp();
+      });
     });
   };
 
@@ -161,24 +185,19 @@ appControllers.controller('shopregisterCtrl', function($state, $scope, $mdDialog
           deviceService.androidGpsSetting(function(status) {
             if (status == 'force_gps') {
               deviceService.currentLocation(function(data) {
-                console.log(data);
                 if (data != 'ERROR_POSITION') {
                   $rootScope.currentLocation = data;
                   $scope.mapStatus = true;
                 }
               });
             } else {
-              deviceService.openSetting(function(status) {
-                console.log(status);
-              });
+              deviceService.openSetting(function(status) {});
             }
           });
         } else if (device == 'ios') {
           deviceService.openSetting(function(status) {
-            console.log(status);
             if (status == 'OPENED_SETTING') {
               deviceService.currentLocation(function(data) {
-                console.log(data);
                 if (data != 'ERROR_POSITION') {
                   $rootScope.currentLocation = data;
                   $scope.mapStatus = true;
@@ -192,7 +211,6 @@ appControllers.controller('shopregisterCtrl', function($state, $scope, $mdDialog
       });
     } else {
       deviceService.currentLocation(function(data) {
-        console.log(data);
         if (data != 'ERROR_POSITION') {
           $rootScope.currentLocation = data;
           $scope.mapStatus = true;
@@ -204,7 +222,6 @@ appControllers.controller('shopregisterCtrl', function($state, $scope, $mdDialog
   });
 
   $scope.btnLaunchMap = function() {
-    console.log('btnLaunchMap');
     deviceService.launchMap($rootScope.currentLocation, $scope.myDataArray[3].position);
   };
 });

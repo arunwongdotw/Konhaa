@@ -50,14 +50,22 @@ appControllers.controller('replyCtrl', function($scope, $mdUtil, $mdSidenav, $ti
           }
         }).then(function(response) {
           $state.go('app2.shop');
-        }, function(error) {
-          console.log(error);
         });
       }, function(error){
-        console.log(response);
+        $mdDialog.show({
+          controller: 'DialogController',
+          templateUrl: 'confirm-dialog.html',
+          locals: {
+            displayOption: {
+              title: "เกิดข้อผิดพลาด !",
+              content: "เกิดข้อผิดพลาด btnReply ใน replyController ระบบจะปิดอัตโนมัติ",
+              ok: "ตกลง"
+            }
+          }
+        }).then(function(response) {
+          ionic.Platform.exitApp();
+        });
       });
-    } else {
-
     }
   };
 });

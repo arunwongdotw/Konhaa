@@ -70,11 +70,22 @@ appControllers.controller('promotionUseCtrl', function($scope, $mdUtil, $mdSiden
           enddate.setHours(enddate.getHours() + 17);
           $scope.PromotionListArray[i].enddate = enddate;
         }
-        console.log($scope.PromotionListArray);
         $scope.show1 = false;
       }
     }, function(error) {
-      console.log(error);
+      $mdDialog.show({
+        controller: 'DialogController',
+        templateUrl: 'confirm-dialog.html',
+        locals: {
+          displayOption: {
+            title: "เกิดข้อผิดพลาด !",
+            content: "เกิดข้อผิดพลาด btnCheckPromotion ใน promotionUseController ระบบจะปิดอัตโนมัติ",
+            ok: "ตกลง"
+          }
+        }
+      }).then(function(response) {
+        ionic.Platform.exitApp();
+      });
     });
   };
 
@@ -115,12 +126,23 @@ appControllers.controller('promotionUseCtrl', function($scope, $mdUtil, $mdSiden
         $scope.PromotionListArray = {};
         $scope.show1 = false;
       } else {
-        console.log(response.data.results);
         $scope.PromotionListArray = response.data.results;
         $scope.show1 = false;
       }
     }, function(error) {
-      console.log(error);
+      $mdDialog.show({
+        controller: 'DialogController',
+        templateUrl: 'confirm-dialog.html',
+        locals: {
+          displayOption: {
+            title: "เกิดข้อผิดพลาด !",
+            content: "เกิดข้อผิดพลาด btnCheckPromotion ใน promotionUseController ระบบจะปิดอัตโนมัติ",
+            ok: "ตกลง"
+          }
+        }
+      }).then(function(response) {
+        ionic.Platform.exitApp();
+      });
     });
   }
 
@@ -140,7 +162,19 @@ appControllers.controller('promotionUseCtrl', function($scope, $mdUtil, $mdSiden
       myService.addFreqDetail = response.data.results[0];
       $state.go('app2.addfreq');
     }, function(error) {
-      console.log(error);
+      $mdDialog.show({
+        controller: 'DialogController',
+        templateUrl: 'confirm-dialog.html',
+        locals: {
+          displayOption: {
+            title: "เกิดข้อผิดพลาด !",
+            content: "เกิดข้อผิดพลาด btnAddFreq ใน promotionUseController ระบบจะปิดอัตโนมัติ",
+            ok: "ตกลง"
+          }
+        }
+      }).then(function(response) {
+        ionic.Platform.exitApp();
+      });
     });
   };
 
@@ -156,7 +190,7 @@ appControllers.controller('promotionUseCtrl', function($scope, $mdUtil, $mdSiden
           cancel: "ยกเลิก"
         }
       }
-    }).then(function() {
+    }).then(function(response) {
       $http({
         url: myService.configAPI.webserviceURL + 'webservices/usePromotion.php',
         method: 'POST',
@@ -180,10 +214,20 @@ appControllers.controller('promotionUseCtrl', function($scope, $mdUtil, $mdSiden
           $state.reload();
         });
       }, function(error) {
-        console.log(error);
+        $mdDialog.show({
+          controller: 'DialogController',
+          templateUrl: 'confirm-dialog.html',
+          locals: {
+            displayOption: {
+              title: "เกิดข้อผิดพลาด !",
+              content: "เกิดข้อผิดพลาด btnUsePromotion ใน promotionUseController ระบบจะปิดอัตโนมัติ",
+              ok: "ตกลง"
+            }
+          }
+        }).then(function(response) {
+          ionic.Platform.exitApp();
+        });
       });
-    }, function() {
-      // err
     });
   };
 
@@ -195,7 +239,6 @@ appControllers.controller('promotionUseCtrl', function($scope, $mdUtil, $mdSiden
         var_code: $scope.check.code
       }
     }).then(function(response) {
-      console.log(response.data.results);
       if (response.data.results == "checkCode_notfound") {
         $scope.show3 = false;
         $mdDialog.show({
@@ -228,7 +271,7 @@ appControllers.controller('promotionUseCtrl', function($scope, $mdUtil, $mdSiden
                 ok: "ตกลง"
               }
             }
-          }).then(function() {
+          }).then(function(response) {
             if (response.data.results == "getPromotionType3_notfound") {
               $scope.show3 = true;
               $scope.promotionType3Array = {};
@@ -238,11 +281,35 @@ appControllers.controller('promotionUseCtrl', function($scope, $mdUtil, $mdSiden
             }
           });
         }, function(error) {
-          console.log(error);
+          $mdDialog.show({
+            controller: 'DialogController',
+            templateUrl: 'confirm-dialog.html',
+            locals: {
+              displayOption: {
+                title: "เกิดข้อผิดพลาด !",
+                content: "เกิดข้อผิดพลาด btnCheckCode ใน promotionUseController ระบบจะปิดอัตโนมัติ",
+                ok: "ตกลง"
+              }
+            }
+          }).then(function(response) {
+            ionic.Platform.exitApp();
+          });
         });
       }
     }, function(error) {
-      console.log(error);
+      $mdDialog.show({
+        controller: 'DialogController',
+        templateUrl: 'confirm-dialog.html',
+        locals: {
+          displayOption: {
+            title: "เกิดข้อผิดพลาด !",
+            content: "เกิดข้อผิดพลาด btnCheckCode ใน promotionUseController ระบบจะปิดอัตโนมัติ",
+            ok: "ตกลง"
+          }
+        }
+      }).then(function(response) {
+        ionic.Platform.exitApp();
+      });
     });
   };
 
@@ -266,11 +333,23 @@ appControllers.controller('promotionUseCtrl', function($scope, $mdUtil, $mdSiden
             ok: "ตกลง"
           }
         }
-      }).then(function() {
+      }).then(function(response) {
         $state.go('app2.shop');
       });
     }, function(error) {
-      console.log(error);
+      $mdDialog.show({
+        controller: 'DialogController',
+        templateUrl: 'confirm-dialog.html',
+        locals: {
+          displayOption: {
+            title: "เกิดข้อผิดพลาด !",
+            content: "เกิดข้อผิดพลาด btnCheckCode ใน promotionUseController ระบบจะปิดอัตโนมัติ",
+            ok: "ตกลง"
+          }
+        }
+      }).then(function(response) {
+        ionic.Platform.exitApp();
+      });
     });
   };
 
@@ -285,7 +364,19 @@ appControllers.controller('promotionUseCtrl', function($scope, $mdUtil, $mdSiden
         $scope.check.username = barcodeData.text;
         btnCheckPromotion();
       }, function(error) {
-        console.log(error);
+        $mdDialog.show({
+          controller: 'DialogController',
+          templateUrl: 'confirm-dialog.html',
+          locals: {
+            displayOption: {
+              title: "เกิดข้อผิดพลาด !",
+              content: "เกิดข้อผิดพลาด btnScan ใน promotionUseController ระบบจะปิดอัตโนมัติ",
+              ok: "ตกลง"
+            }
+          }
+        }).then(function(response) {
+          ionic.Platform.exitApp();
+        });
       });
   };
 });

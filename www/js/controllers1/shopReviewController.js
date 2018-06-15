@@ -61,7 +61,19 @@ appControllers.controller('shopReviewCtrl', function($scope, $mdUtil, $mdSidenav
         }
         var keep = results;
       }, function(error) {
-        console.log('Error: ' + JSON.stringify(error)); // In case of error
+        $mdDialog.show({
+          controller: 'DialogController',
+          templateUrl: 'confirm-dialog.html',
+          locals: {
+            displayOption: {
+              title: "เกิดข้อผิดพลาด !",
+              content: "เกิดข้อผิดพลาด getPictures ใน shopReviewController ระบบจะปิดอัตโนมัติ",
+              ok: "ตกลง"
+            }
+          }
+        }).then(function(response) {
+          ionic.Platform.exitApp();
+        });
       });
   };
 
@@ -99,10 +111,34 @@ appControllers.controller('shopReviewCtrl', function($scope, $mdUtil, $mdSidenav
                 i = i + 1;
                 updateProductPic(callback);
               }, function(error) {
-                console.log(error);
+                $mdDialog.show({
+                  controller: 'DialogController',
+                  templateUrl: 'confirm-dialog.html',
+                  locals: {
+                    displayOption: {
+                      title: "เกิดข้อผิดพลาด !",
+                      content: "เกิดข้อผิดพลาด updateProductPic ใน shopReviewController ระบบจะปิดอัตโนมัติ",
+                      ok: "ตกลง"
+                    }
+                  }
+                }).then(function(response) {
+                  ionic.Platform.exitApp();
+                });
               });
             }, function(error) {
-              console.log(error);
+              $mdDialog.show({
+                controller: 'DialogController',
+                templateUrl: 'confirm-dialog.html',
+                locals: {
+                  displayOption: {
+                    title: "เกิดข้อผิดพลาด !",
+                    content: "เกิดข้อผิดพลาด updateProductPic ใน shopReviewController ระบบจะปิดอัตโนมัติ",
+                    ok: "ตกลง"
+                  }
+                }
+              }).then(function(response) {
+                ionic.Platform.exitApp();
+              });
             });
         } else {
           $cordovaFileTransfer.upload(server, imageURI, options2)
@@ -121,10 +157,34 @@ appControllers.controller('shopReviewCtrl', function($scope, $mdUtil, $mdSidenav
                 i = i + 1;
                 updateProductPic(callback);
               }, function(error) {
-                console.log(error);
+                $mdDialog.show({
+                  controller: 'DialogController',
+                  templateUrl: 'confirm-dialog.html',
+                  locals: {
+                    displayOption: {
+                      title: "เกิดข้อผิดพลาด !",
+                      content: "เกิดข้อผิดพลาด updateProductPic ใน shopReviewController ระบบจะปิดอัตโนมัติ",
+                      ok: "ตกลง"
+                    }
+                  }
+                }).then(function(response) {
+                  ionic.Platform.exitApp();
+                });
               });
             }, function(error) {
-              console.log(error);
+              $mdDialog.show({
+                controller: 'DialogController',
+                templateUrl: 'confirm-dialog.html',
+                locals: {
+                  displayOption: {
+                    title: "เกิดข้อผิดพลาด !",
+                    content: "เกิดข้อผิดพลาด updateProductPic ใน shopReviewController ระบบจะปิดอัตโนมัติ",
+                    ok: "ตกลง"
+                  }
+                }
+              }).then(function(response) {
+                ionic.Platform.exitApp();
+              });
             });
         }
       }
@@ -147,8 +207,20 @@ appControllers.controller('shopReviewCtrl', function($scope, $mdUtil, $mdSidenav
     $cordovaCamera.getPicture(options).then(function(imageURI) {
       var image = document.getElementById('myImage');
       image.src = imageURI;
-    }, function(err) {
-      console.log(err);
+    }, function(error) {
+      $mdDialog.show({
+        controller: 'DialogController',
+        templateUrl: 'confirm-dialog.html',
+        locals: {
+          displayOption: {
+            title: "เกิดข้อผิดพลาด !",
+            content: "เกิดข้อผิดพลาด btnShopPicByGallery ใน shopReviewController ระบบจะปิดอัตโนมัติ",
+            ok: "ตกลง"
+          }
+        }
+      }).then(function(response) {
+        ionic.Platform.exitApp();
+      });
     });
   };
 
@@ -159,24 +231,19 @@ appControllers.controller('shopReviewCtrl', function($scope, $mdUtil, $mdSidenav
           deviceService.androidGpsSetting(function(status) {
             if (status == 'force_gps') {
               deviceService.currentLocation(function(data) {
-                console.log(data);
                 if (data != 'ERROR_POSITION') {
                   $rootScope.currentLocation = data;
                   $scope.mapStatus = true;
                 }
               });
             } else {
-              deviceService.openSetting(function(status) {
-                console.log(status);
-              });
+              deviceService.openSetting(function(status) {});
             }
           });
         } else if (device == 'ios') {
           deviceService.openSetting(function(status) {
-            console.log(status);
             if (status == 'OPENED_SETTING') {
               deviceService.currentLocation(function(data) {
-                console.log(data);
                 if (data != 'ERROR_POSITION') {
                   $rootScope.currentLocation = data;
                   $scope.mapStatus = true;
@@ -190,7 +257,6 @@ appControllers.controller('shopReviewCtrl', function($scope, $mdUtil, $mdSidenav
       });
     } else {
       deviceService.currentLocation(function(data) {
-        console.log(data);
         if (data != 'ERROR_POSITION') {
           $rootScope.currentLocation = data;
           $scope.mapStatus = true;

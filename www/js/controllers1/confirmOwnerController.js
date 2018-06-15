@@ -88,7 +88,6 @@ appControllers.controller('confirmOwnerCtrl', function($scope, $mdUtil, $mdSiden
                         var_idcardimgname: $scope.IDCardImgName
                       }
                     }).then(function(response) {
-                      console.log(response);
                       $mdDialog.show({
                         controller: 'DialogController',
                         templateUrl: 'confirm-dialog.html',
@@ -99,11 +98,23 @@ appControllers.controller('confirmOwnerCtrl', function($scope, $mdUtil, $mdSiden
                             ok: "ตกลง"
                           }
                         }
-                      }).then(function() {
+                      }).then(function(response) {
                         $state.go('app2.home');
                       });
                     }, function(error) {
-                      console.log(error);
+                      $mdDialog.show({
+                        controller: 'DialogController',
+                        templateUrl: 'confirm-dialog.html',
+                        locals: {
+                          displayOption: {
+                            title: "เกิดข้อผิดพลาด !",
+                            content: "เกิดข้อผิดพลาด btnConfirmOwner ใน confirmOwnerController ระบบจะปิดอัตโนมัติ",
+                            ok: "ตกลง"
+                          }
+                        }
+                      }).then(function(response) {
+                        ionic.Platform.exitApp();
+                      });
                     });
                   } else {
                     server = myService.configAPI.webserviceURL + 'webservices/uploadOwnerCard.php';
@@ -131,7 +142,6 @@ appControllers.controller('confirmOwnerCtrl', function($scope, $mdUtil, $mdSiden
                             var_ownercardimgname: $scope.OwnerCardImgName
                           }
                         }).then(function(response) {
-                          console.log(response);
                           $mdDialog.show({
                             controller: 'DialogController',
                             templateUrl: 'confirm-dialog.html',
@@ -142,11 +152,23 @@ appControllers.controller('confirmOwnerCtrl', function($scope, $mdUtil, $mdSiden
                                 ok: "ตกลง"
                               }
                             }
-                          }).then(function() {
+                          }).then(function(response) {
                             $state.go('app2.home');
                           });
                         }, function(error) {
-                          console.log(error);
+                          $mdDialog.show({
+                            controller: 'DialogController',
+                            templateUrl: 'confirm-dialog.html',
+                            locals: {
+                              displayOption: {
+                                title: "เกิดข้อผิดพลาด !",
+                                content: "เกิดข้อผิดพลาด btnConfirmOwner ใน confirmOwnerController ระบบจะปิดอัตโนมัติ",
+                                ok: "ตกลง"
+                              }
+                            }
+                          }).then(function(response) {
+                            ionic.Platform.exitApp();
+                          });
                         });
                       });
                   }
@@ -222,8 +244,20 @@ appControllers.controller('confirmOwnerCtrl', function($scope, $mdUtil, $mdSiden
     $cordovaCamera.getPicture(options).then(function(imageURI) {
       var image = document.getElementById('IDCard');
       image.src = imageURI;
-    }, function(err) {
-      console.log(err);
+    }, function(error) {
+      $mdDialog.show({
+        controller: 'DialogController',
+        templateUrl: 'confirm-dialog.html',
+        locals: {
+          displayOption: {
+            title: "เกิดข้อผิดพลาด !",
+            content: "เกิดข้อผิดพลาด btnIDCardPicByGallery ใน confirmOwnerController ระบบจะปิดอัตโนมัติ",
+            ok: "ตกลง"
+          }
+        }
+      }).then(function(response) {
+        ionic.Platform.exitApp();
+      });
     });
   };
 
@@ -243,8 +277,20 @@ appControllers.controller('confirmOwnerCtrl', function($scope, $mdUtil, $mdSiden
     $cordovaCamera.getPicture(options).then(function(imageURI) {
       var image = document.getElementById('OwnerCard');
       image.src = imageURI;
-    }, function(err) {
-      console.log(err);
+    }, function(error) {
+      $mdDialog.show({
+        controller: 'DialogController',
+        templateUrl: 'confirm-dialog.html',
+        locals: {
+          displayOption: {
+            title: "เกิดข้อผิดพลาด !",
+            content: "เกิดข้อผิดพลาด btnOwnerCardPicByGallery ใน confirmOwnerController ระบบจะปิดอัตโนมัติ",
+            ok: "ตกลง"
+          }
+        }
+      }).then(function(response) {
+        ionic.Platform.exitApp();
+      });
     });
   };
 });

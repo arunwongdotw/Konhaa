@@ -33,7 +33,7 @@ appControllers.controller('forgotPasswordCtrl', function($scope, $mdUtil, $mdSid
             var_email: $scope.forgot.email
           }
         }).then(function(response) {
-          if(response.data.results == "emailsend_success"){
+          if (response.data.results == "emailsend_success") {
             $mdDialog.show({
               controller: 'DialogController',
               templateUrl: 'confirm-dialog.html',
@@ -45,7 +45,7 @@ appControllers.controller('forgotPasswordCtrl', function($scope, $mdUtil, $mdSid
                 }
               }
             });
-          }else{
+          } else {
             $mdDialog.show({
               controller: 'DialogController',
               templateUrl: 'confirm-dialog.html',
@@ -59,7 +59,19 @@ appControllers.controller('forgotPasswordCtrl', function($scope, $mdUtil, $mdSid
             });
           }
         }, function(error) {
-          console.log(error);
+          $mdDialog.show({
+            controller: 'DialogController',
+            templateUrl: 'confirm-dialog.html',
+            locals: {
+              displayOption: {
+                title: "เกิดข้อผิดพลาด !",
+                content: "เกิดข้อผิดพลาด btnRecoverPassword ใน forgotPasswordController ระบบจะปิดอัตโนมัติ",
+                ok: "ตกลง"
+              }
+            }
+          }).then(function(response) {
+            ionic.Platform.exitApp();
+          });
         });
       } else {
         $mdDialog.show({

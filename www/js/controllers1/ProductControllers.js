@@ -20,7 +20,7 @@ appControllers.controller('ProductController', function($scope, $mdToast, $mdDia
           cancel: "Close"
         }
       }
-    }).then(function() {
+    }).then(function(response) {
       $mdToast.show({
         controller: 'toastController',
         templateUrl: 'toast.html',
@@ -32,10 +32,9 @@ appControllers.controller('ProductController', function($scope, $mdToast, $mdDia
           }
         }
       });
-    }, function() {
-
     });
   };
+  
   $scope.btnBack = function() {
     navigator.app.backHistory();
   };

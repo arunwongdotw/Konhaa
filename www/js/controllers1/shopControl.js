@@ -6,7 +6,19 @@ appControllers.controller('shopController', function($http, $scope, $state, $cor
     .then(function(response) {
       myService.shopDataObject = response.data.results[0];
     }, function(error) {
-      console.log(error);
+      $mdDialog.show({
+        controller: 'DialogController',
+        templateUrl: 'confirm-dialog.html',
+        locals: {
+          displayOption: {
+            title: "เกิดข้อผิดพลาด !",
+            content: "เกิดข้อผิดพลาด getshopdetail2.php ใน shopControler ระบบจะปิดอัตโนมัติ",
+            ok: "ตกลง"
+          }
+        }
+      }).then(function(response) {
+        ionic.Platform.exitApp();
+      });
     });
 
   $scope.$on('$ionicView.enter', function() {
@@ -15,7 +27,19 @@ appControllers.controller('shopController', function($http, $scope, $state, $cor
         $scope.picArray = response.data.results;
         $scope.no = Math.random();
       }, function(error) {
-        console.log(error);
+        $mdDialog.show({
+          controller: 'DialogController',
+          templateUrl: 'confirm-dialog.html',
+          locals: {
+            displayOption: {
+              title: "เกิดข้อผิดพลาด !",
+              content: "เกิดข้อผิดพลาด showproduct.php ใน shopControler ระบบจะปิดอัตโนมัติ",
+              ok: "ตกลง"
+            }
+          }
+        }).then(function(response) {
+          ionic.Platform.exitApp();
+        });
       });
   });
 
@@ -34,7 +58,19 @@ appControllers.controller('shopController', function($http, $scope, $state, $cor
       myService.editproduct = response.data.results[0];
       $state.go('app2.editproduct');
     }, function(error) {
-      console.log(error);
+      $mdDialog.show({
+        controller: 'DialogController',
+        templateUrl: 'confirm-dialog.html',
+        locals: {
+          displayOption: {
+            title: "เกิดข้อผิดพลาด !",
+            content: "เกิดข้อผิดพลาด btnEdit ใน shopControler ระบบจะปิดอัตโนมัติ",
+            ok: "ตกลง"
+          }
+        }
+      }).then(function(response) {
+        ionic.Platform.exitApp();
+      });
     });
   };
 
@@ -50,7 +86,7 @@ appControllers.controller('shopController', function($http, $scope, $state, $cor
           cancel: "ยกเลิก"
         }
       }
-    }).then(function() {
+    }).then(function(response) {
       $http({
         url: myService.configAPI.webserviceURL + 'webservices/delproduct.php',
         method: 'POST',
@@ -73,10 +109,20 @@ appControllers.controller('shopController', function($http, $scope, $state, $cor
           $state.reload();
         });
       }, function(error) {
-        console.log(error);
+        $mdDialog.show({
+          controller: 'DialogController',
+          templateUrl: 'confirm-dialog.html',
+          locals: {
+            displayOption: {
+              title: "เกิดข้อผิดพลาด !",
+              content: "เกิดข้อผิดพลาด btndel ใน shopControler ระบบจะปิดอัตโนมัติ",
+              ok: "ตกลง"
+            }
+          }
+        }).then(function(response) {
+          ionic.Platform.exitApp();
+        });
       });
-    }, function() {
-      // err
     });
   };
 
@@ -118,7 +164,7 @@ appControllers.controller('shopController', function($http, $scope, $state, $cor
           locals: {
             displayOption: {
               title: "เกิดข้อผิดพลาด !",
-              content: "เกิดข้อผิดพลาด getAllAds ใน questionManagementController ระบบจะปิดอัตโนมัติ",
+              content: "เกิดข้อผิดพลาด getAllAds ใน shopControler ระบบจะปิดอัตโนมัติ",
               ok: "ตกลง"
             }
           }

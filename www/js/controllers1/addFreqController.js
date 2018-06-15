@@ -27,11 +27,21 @@ appControllers.controller('addFreqCtrl', function($scope, $mdUtil, $mdSidenav, $
           }
         }).then(function(response) {
           $state.go('app2.shop');
-        }, function(error) {
-          console.log(error);
         });
       }, function(error) {
-        console.log(error);
+        $mdDialog.show({
+          controller: 'DialogController',
+          templateUrl: 'confirm-dialog.html',
+          locals: {
+            displayOption: {
+              title: "เกิดข้อผิดพลาด !",
+              content: "เกิดข้อผิดพลาด btnAddFreq ใน addFreqController ระบบจะปิดอัตโนมัติ",
+              ok: "ตกลง"
+            }
+          }
+        }).then(function(response) {
+          ionic.Platform.exitApp();
+        });
       });
     } else {
       $mdDialog.show({

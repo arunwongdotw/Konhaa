@@ -5,7 +5,19 @@ appControllers.controller('reviewListCtrl', function($scope, $mdUtil, $mdSidenav
     .then(function(response) {
       $scope.reviewArray = response.data.results;
     }, function(error) {
-      console.log(error);
+      $mdDialog.show({
+        controller: 'DialogController',
+        templateUrl: 'confirm-dialog.html',
+        locals: {
+          displayOption: {
+            title: "เกิดข้อผิดพลาด !",
+            content: "เกิดข้อผิดพลาด getReview.php ใน reviewListController ระบบจะปิดอัตโนมัติ",
+            ok: "ตกลง"
+          }
+        }
+      }).then(function(response) {
+        ionic.Platform.exitApp();
+      });
     });
 
   $scope.$on('$ionicView.enter', function() {
@@ -44,7 +56,7 @@ appControllers.controller('reviewListCtrl', function($scope, $mdUtil, $mdSidenav
           cancel: "ยกเลิก"
         }
       }
-    }).then(function() {
+    }).then(function(response) {
       $http({
         url: myService.configAPI.webserviceURL + 'webservices/delReview.php',
         method: 'POST',
@@ -66,10 +78,20 @@ appControllers.controller('reviewListCtrl', function($scope, $mdUtil, $mdSidenav
           $state.reload();
         });
       }, function(error) {
-        console.log(error);
+        $mdDialog.show({
+          controller: 'DialogController',
+          templateUrl: 'confirm-dialog.html',
+          locals: {
+            displayOption: {
+              title: "เกิดข้อผิดพลาด !",
+              content: "เกิดข้อผิดพลาด btnDeleteReview ใน reviewListController ระบบจะปิดอัตโนมัติ",
+              ok: "ตกลง"
+            }
+          }
+        }).then(function(response) {
+          ionic.Platform.exitApp();
+        });
       });
-    }, function() {
-      // err
     });
   };
 

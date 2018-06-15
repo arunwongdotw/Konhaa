@@ -1,6 +1,5 @@
 appControllers.controller('listChatCtrl', function($scope, $state, $ionicPopup, $ionicScrollDelegate, myService, $http) {
   $ionicScrollDelegate.scrollBottom(true);
-
   $scope.title = myService.shopDataObject.title;
   $scope.member_id = myService.passDataObject.member_id;
   var shop_id = myService.shopid.shop_id;
@@ -66,7 +65,19 @@ appControllers.controller('listChatCtrl', function($scope, $state, $ionicPopup, 
               });
               $scope.items2 = array2;
             }, function(error) {
-              console.log(error);
+              $mdDialog.show({
+                controller: 'DialogController',
+                templateUrl: 'confirm-dialog.html',
+                locals: {
+                  displayOption: {
+                    title: "เกิดข้อผิดพลาด !",
+                    content: "เกิดข้อผิดพลาด listenToFirebase2 ใน listchat2Controller ระบบจะปิดอัตโนมัติ",
+                    ok: "ตกลง"
+                  }
+                }
+              }).then(function(response) {
+                ionic.Platform.exitApp();
+              });
             });
         });
       }

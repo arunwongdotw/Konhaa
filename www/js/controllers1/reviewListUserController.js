@@ -1,14 +1,24 @@
 appControllers.controller('reviewListUserCtrl', function($scope, $mdUtil, $mdSidenav, $timeout, $ionicHistory, $state, myService, $mdDialog, $http, $stateParams, $ionicNavBarDelegate) {
   $scope.toggleLeft = buildToggler('left');
-  console.log(myService.memberidFromReview);
   $scope.username = myService.memberidFromReview.member_username;
 
   $http.get(myService.configAPI.webserviceURL + 'webservices/getAllReviewFromUser.php?member_id=' + myService.memberidFromReview.member_id)
     .then(function(response) {
       $scope.reviewArray = response.data.results;
-      console.log($scope.reviewArray);
     }, function(error) {
-      console.log(error);
+      $mdDialog.show({
+        controller: 'DialogController',
+        templateUrl: 'confirm-dialog.html',
+        locals: {
+          displayOption: {
+            title: "เกิดข้อผิดพลาด !",
+            content: "เกิดข้อผิดพลาด getAllReviewFromUser.php ใน reviewListUserController ระบบจะปิดอัตโนมัติ",
+            ok: "ตกลง"
+          }
+        }
+      }).then(function(response) {
+        ionic.Platform.exitApp();
+      });
     });
 
   $scope.$on('$ionicView.enter', function() {
@@ -47,5 +57,4 @@ appControllers.controller('reviewListUserCtrl', function($scope, $mdUtil, $mdSid
   $scope.btnBack = function() {
     navigator.app.backHistory();
   };
-
 });

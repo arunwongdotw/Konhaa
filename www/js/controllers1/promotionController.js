@@ -11,14 +11,38 @@ appControllers.controller('promotionCtrl', function($scope, $mdUtil, $mdSidenav,
   }).then(function(response) {
     $scope.PromotionListArray = response.data.results;
   }, function(error) {
-    console.log(error);
+    $mdDialog.show({
+      controller: 'DialogController',
+      templateUrl: 'confirm-dialog.html',
+      locals: {
+        displayOption: {
+          title: "เกิดข้อผิดพลาด !",
+          content: "เกิดข้อผิดพลาด getAllMemberHavePromotion.php ใน promotionController ระบบจะปิดอัตโนมัติ",
+          ok: "ตกลง"
+        }
+      }
+    }).then(function(response) {
+      ionic.Platform.exitApp();
+    });
   });
 
   $http.get('http://1did.net/centerapp/webservices/getPromotion.php?member_id=' + $scope.member_id)
     .then(function(response) {
       $scope.promotionArray = response.data.results;
     }, function(error) {
-      console.log(error);
+      $mdDialog.show({
+        controller: 'DialogController',
+        templateUrl: 'confirm-dialog.html',
+        locals: {
+          displayOption: {
+            title: "เกิดข้อผิดพลาด !",
+            content: "เกิดข้อผิดพลาด getPromotion.php ใน promotionController ระบบจะปิดอัตโนมัติ",
+            ok: "ตกลง"
+          }
+        }
+      }).then(function(response) {
+        ionic.Platform.exitApp();
+      });
     });
 
   function buildToggler(navID) {
@@ -47,7 +71,19 @@ appControllers.controller('promotionCtrl', function($scope, $mdUtil, $mdSidenav,
         myService.promotionDetail = response.data.results[0];
         $state.go('app2.editpromotion');
       }, function(error) {
-        console.log(error);
+        $mdDialog.show({
+          controller: 'DialogController',
+          templateUrl: 'confirm-dialog.html',
+          locals: {
+            displayOption: {
+              title: "เกิดข้อผิดพลาด !",
+              content: "เกิดข้อผิดพลาด btnEditPromotion ใน promotionController ระบบจะปิดอัตโนมัติ",
+              ok: "ตกลง"
+            }
+          }
+        }).then(function(response) {
+          ionic.Platform.exitApp();
+        });
       });
   };
 
@@ -63,7 +99,7 @@ appControllers.controller('promotionCtrl', function($scope, $mdUtil, $mdSidenav,
           cancel: "ยกเลิก"
         }
       }
-    }).then(function() {
+    }).then(function(response) {
       $http.get('http://1did.net/centerapp/webservices/deletePromotion.php?promotion_id=' + promotionid)
         .then(function(response) {
           $mdDialog.show({
@@ -80,10 +116,20 @@ appControllers.controller('promotionCtrl', function($scope, $mdUtil, $mdSidenav,
             $state.reload();
           });
         }, function(error) {
-          console.log(error);
+          $mdDialog.show({
+            controller: 'DialogController',
+            templateUrl: 'confirm-dialog.html',
+            locals: {
+              displayOption: {
+                title: "เกิดข้อผิดพลาด !",
+                content: "เกิดข้อผิดพลาด btnDelPromotion ใน promotionController ระบบจะปิดอัตโนมัติ",
+                ok: "ตกลง"
+              }
+            }
+          }).then(function(response) {
+            ionic.Platform.exitApp();
+          });
         });
-    }, function() {
-      // err
     });
   };
 

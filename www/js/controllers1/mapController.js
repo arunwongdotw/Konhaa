@@ -20,7 +20,6 @@ appControllers.controller('mapController', function($scope, $state, $compile, $r
       travelMode: 'DRIVING'
     }, function(response, status) {
       if (status === 'OK') {
-        console.log(response);
         directionsDisplay.setDirections(response);
       } else {
         console.log('Directions request failed due to ' + status);
@@ -43,10 +42,8 @@ appControllers.controller('mapController', function($scope, $state, $compile, $r
             cancel: "ยกเลิก"
           }
         }
-      }).then(function() {
+      }).then(function(response) {
         navigator.app.exitApp();
-      }, function() {
-
       });
     } else {
       navigator.app.backHistory();

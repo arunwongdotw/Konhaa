@@ -5,7 +5,19 @@ appControllers.controller('ratingListCtrl', function($scope, $mdUtil, $mdSidenav
     .then(function(response) {
       $scope.ratingArray = response.data.results;
     }, function(error) {
-      console.log(error);
+      $mdDialog.show({
+        controller: 'DialogController',
+        templateUrl: 'confirm-dialog.html',
+        locals: {
+          displayOption: {
+            title: "เกิดข้อผิดพลาด !",
+            content: "เกิดข้อผิดพลาด getReview.php ใน ratingController ระบบจะปิดอัตโนมัติ",
+            ok: "ตกลง"
+          }
+        }
+      }).then(function(response) {
+        ionic.Platform.exitApp();
+      });
     });
 
   // $scope.getAsterisks = rating => Array.from('*'.repeat(parseInt(rating, 10)));
@@ -44,7 +56,6 @@ appControllers.controller('ratingListCtrl', function($scope, $mdUtil, $mdSidenav
   };
 
   $scope.btnDeleteRating = function(commentid) {
-    console.log(commentid);
     $mdDialog.show({
       controller: 'DialogController',
       templateUrl: 'confirm-dialog.html',
@@ -56,7 +67,7 @@ appControllers.controller('ratingListCtrl', function($scope, $mdUtil, $mdSidenav
           cancel: "ยกเลิก"
         }
       }
-    }).then(function() {
+    }).then(function(response) {
       $http({
         url: myService.configAPI.webserviceURL + 'webservices/delReview.php',
         method: 'POST',
@@ -78,10 +89,20 @@ appControllers.controller('ratingListCtrl', function($scope, $mdUtil, $mdSidenav
           $state.reload();
         });
       }, function(error) {
-        console.log(error);
+        $mdDialog.show({
+          controller: 'DialogController',
+          templateUrl: 'confirm-dialog.html',
+          locals: {
+            displayOption: {
+              title: "เกิดข้อผิดพลาด !",
+              content: "เกิดข้อผิดพลาด btnDeleteRating ใน ratingController ระบบจะปิดอัตโนมัติ",
+              ok: "ตกลง"
+            }
+          }
+        }).then(function(response) {
+          ionic.Platform.exitApp();
+        });
       });
-    }, function() {
-      // err
     });
   };
 });

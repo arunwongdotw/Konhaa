@@ -57,7 +57,19 @@ appControllers.controller('profileCtrl', function(myService, $scope, $cordovaFil
               $state.go('app2.home');
             });
           }, function(error) {
-            console.log(error);
+            $mdDialog.show({
+              controller: 'DialogController',
+              templateUrl: 'confirm-dialog.html',
+              locals: {
+                displayOption: {
+                  title: "เกิดข้อผิดพลาด !",
+                  content: "เกิดข้อผิดพลาด btnUpdate ใน profileController ระบบจะปิดอัตโนมัติ",
+                  ok: "ตกลง"
+                }
+              }
+            }).then(function(response) {
+              ionic.Platform.exitApp();
+            });
           });
         } else {
           $mdDialog.show({
@@ -116,8 +128,20 @@ appControllers.controller('profileCtrl', function(myService, $scope, $cordovaFil
     $cordovaCamera.getPicture(options).then(function(imageURI) {
       var image = document.getElementById('myImage');
       image.src = imageURI;
-    }, function(err) {
-      // error
+    }, function(error) {
+      $mdDialog.show({
+        controller: 'DialogController',
+        templateUrl: 'confirm-dialog.html',
+        locals: {
+          displayOption: {
+            title: "เกิดข้อผิดพลาด !",
+            content: "เกิดข้อผิดพลาด btnProfilePicByGallery ใน profileController ระบบจะปิดอัตโนมัติ",
+            ok: "ตกลง"
+          }
+        }
+      }).then(function(response) {
+        ionic.Platform.exitApp();
+      });
     });
   };
 });

@@ -54,7 +54,19 @@ appControllers.controller('searchController', function($scope, $state, $http, my
       }
       callback($scope.items);
     }, function(error) {
-      console.log(error);
+      $mdDialog.show({
+        controller: 'DialogController',
+        templateUrl: 'confirm-dialog.html',
+        locals: {
+          displayOption: {
+            title: "เกิดข้อผิดพลาด !",
+            content: "เกิดข้อผิดพลาด getSearchList ใน searchController ระบบจะปิดอัตโนมัติ",
+            ok: "ตกลง"
+          }
+        }
+      }).then(function(response) {
+        ionic.Platform.exitApp();
+      });
     });
   }
 
@@ -75,9 +87,7 @@ appControllers.controller('searchController', function($scope, $state, $http, my
                   }
                 });
               } else {
-                deviceService.openSetting(function(status) {
-                  console.log("openSetting -> " + status);
-                });
+                deviceService.openSetting(function(status) {});
               }
             });
           } else if (device == 'ios') {
@@ -126,7 +136,19 @@ appControllers.controller('searchController', function($scope, $state, $http, my
           i = i + 1;
           getShopDistance(callback);
         }, function(error) {
-          console.log(error);
+          $mdDialog.show({
+            controller: 'DialogController',
+            templateUrl: 'confirm-dialog.html',
+            locals: {
+              displayOption: {
+                title: "เกิดข้อผิดพลาด !",
+                content: "เกิดข้อผิดพลาด getShopDistance ใน searchController ระบบจะปิดอัตโนมัติ",
+                ok: "ตกลง"
+              }
+            }
+          }).then(function(response) {
+            ionic.Platform.exitApp();
+          });
         });
     }
   }
@@ -173,12 +195,36 @@ appControllers.controller('searchController', function($scope, $state, $http, my
               }
               callback($scope.items2);
             }, function(error) {
-              console.log(error);
+              $mdDialog.show({
+                controller: 'DialogController',
+                templateUrl: 'confirm-dialog.html',
+                locals: {
+                  displayOption: {
+                    title: "เกิดข้อผิดพลาด !",
+                    content: "เกิดข้อผิดพลาด getShopAdvertise ใน searchController ระบบจะปิดอัตโนมัติ",
+                    ok: "ตกลง"
+                  }
+                }
+              }).then(function(response) {
+                ionic.Platform.exitApp();
+              });
             });
           }
         }
       }, function(error) {
-        console.log(error);
+        $mdDialog.show({
+          controller: 'DialogController',
+          templateUrl: 'confirm-dialog.html',
+          locals: {
+            displayOption: {
+              title: "เกิดข้อผิดพลาด !",
+              content: "เกิดข้อผิดพลาด getShopAdvertise ใน searchController ระบบจะปิดอัตโนมัติ",
+              ok: "ตกลง"
+            }
+          }
+        }).then(function(response) {
+          ionic.Platform.exitApp();
+        });
       });
   }
 
@@ -236,8 +282,6 @@ appControllers.controller('searchController', function($scope, $state, $http, my
         } else {
           $state.go('app2.home');
         }
-      }, function(error) {
-        console.log(error);
       });
     }
   });

@@ -49,14 +49,26 @@ appControllers.controller('editProductController', function(myService, $scope, $
           image.src = results[i];
         }
         var remain = 4 - results.length;
-        for(j = 0; j < remain; j++){
+        for (j = 0; j < remain; j++) {
           var image = document.getElementById('myImage' + i);
           image.src = "img/shopping.png";
           i = i + 1;
         }
         var keep = results;
       }, function(error) {
-        console.log('Error: ' + JSON.stringify(error)); // In case of error
+        $mdDialog.show({
+          controller: 'DialogController',
+          templateUrl: 'confirm-dialog.html',
+          locals: {
+            displayOption: {
+              title: "เกิดข้อผิดพลาด !",
+              content: "เกิดข้อผิดพลาด getPictures ใน editProductController ระบบจะปิดอัตโนมัติ",
+              ok: "ตกลง"
+            }
+          }
+        }).then(function(response) {
+          ionic.Platform.exitApp();
+        });
       });
   };
 
@@ -72,8 +84,6 @@ appControllers.controller('editProductController', function(myService, $scope, $
 
   function updateProductPic(callback) {
     if (i < 4) {
-      console.log(i);
-      console.log('come in updateProductPic');
       var server;
       var img = document.getElementById('myImage' + i);
       var imageURI = img.src;
@@ -87,7 +97,6 @@ appControllers.controller('editProductController', function(myService, $scope, $
       var chkImageURI = checkImageURI(imageURI);
       if (chkImageURI == "notfound") {
         if (i == 0) {
-          console.log('come in i = 0');
           server = myService.configAPI.webserviceURL + 'webservices/updatePicproduct.php?imgname=' + $scope.fullname0;
           $cordovaFileTransfer.upload(server, imageURI, options2);
           $http({
@@ -103,13 +112,24 @@ appControllers.controller('editProductController', function(myService, $scope, $
             i = i + 1;
             updateProductPic(callback);
           }, function(error) {
-            console.log(error);
+            $mdDialog.show({
+              controller: 'DialogController',
+              templateUrl: 'confirm-dialog.html',
+              locals: {
+                displayOption: {
+                  title: "เกิดข้อผิดพลาด !",
+                  content: "เกิดข้อผิดพลาด updateProductPic ใน editProductController ระบบจะปิดอัตโนมัติ",
+                  ok: "ตกลง"
+                }
+              }
+            }).then(function(response) {
+              ionic.Platform.exitApp();
+            });
           });
         } else {
-          if (($scope['fullname'+i]) != "") {
-            console.log('fullname not null');
+          if (($scope['fullname' + i]) != "") {
             server = myService.configAPI.webserviceURL + 'webservices/updatePicproduct.php?imgname=' + $scope.fullname + i;
-            $scope.imagename[i] = $scope['fullname'+i];
+            $scope.imagename[i] = $scope['fullname' + i];
             $cordovaFileTransfer.upload(server, imageURI, options2);
             $http({
               url: myService.configAPI.webserviceURL + 'webservices/updateProduct.php',
@@ -124,10 +144,21 @@ appControllers.controller('editProductController', function(myService, $scope, $
               i = i + 1;
               updateProductPic(callback);
             }, function(error) {
-              console.log(error);
+              $mdDialog.show({
+                controller: 'DialogController',
+                templateUrl: 'confirm-dialog.html',
+                locals: {
+                  displayOption: {
+                    title: "เกิดข้อผิดพลาด !",
+                    content: "เกิดข้อผิดพลาด updateProductPic ใน editProductController ระบบจะปิดอัตโนมัติ",
+                    ok: "ตกลง"
+                  }
+                }
+              }).then(function(response) {
+                ionic.Platform.exitApp();
+              });
             });
           } else {
-            console.log('fullname null');
             server = myService.configAPI.webserviceURL + 'webservices/updatePicproduct2.php';
             $cordovaFileTransfer.upload(server, imageURI, options2)
               .then(function(response) {
@@ -147,10 +178,34 @@ appControllers.controller('editProductController', function(myService, $scope, $
                   i = i + 1;
                   updateProductPic(callback);
                 }, function(error) {
-                  console.log(error);
+                  $mdDialog.show({
+                    controller: 'DialogController',
+                    templateUrl: 'confirm-dialog.html',
+                    locals: {
+                      displayOption: {
+                        title: "เกิดข้อผิดพลาด !",
+                        content: "เกิดข้อผิดพลาด updateProductPic ใน editProductController ระบบจะปิดอัตโนมัติ",
+                        ok: "ตกลง"
+                      }
+                    }
+                  }).then(function(response) {
+                    ionic.Platform.exitApp();
+                  });
                 });
               }, function(error) {
-                console.log(error);
+                $mdDialog.show({
+                  controller: 'DialogController',
+                  templateUrl: 'confirm-dialog.html',
+                  locals: {
+                    displayOption: {
+                      title: "เกิดข้อผิดพลาด !",
+                      content: "เกิดข้อผิดพลาด updateProductPic ใน editProductController ระบบจะปิดอัตโนมัติ",
+                      ok: "ตกลง"
+                    }
+                  }
+                }).then(function(response) {
+                  ionic.Platform.exitApp();
+                });
               });
           }
         }
@@ -164,11 +219,22 @@ appControllers.controller('editProductController', function(myService, $scope, $
             var_i: i
           }
         }).then(function(response) {
-          console.log(response);
           i = i + 1;
           updateProductPic(callback);
-        }, function(error){
-          console.log(error);
+        }, function(error) {
+          $mdDialog.show({
+            controller: 'DialogController',
+            templateUrl: 'confirm-dialog.html',
+            locals: {
+              displayOption: {
+                title: "เกิดข้อผิดพลาด !",
+                content: "เกิดข้อผิดพลาด updateProductPic ใน editProductController ระบบจะปิดอัตโนมัติ",
+                ok: "ตกลง"
+              }
+            }
+          }).then(function(response) {
+            ionic.Platform.exitApp();
+          });
         });
       }
     }

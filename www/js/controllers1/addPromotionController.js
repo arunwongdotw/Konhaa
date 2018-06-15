@@ -12,7 +12,19 @@ appControllers.controller('addPromotionCtrl', function(ionicDatePicker, $scope, 
     .then(function(response) {
       $scope.promotionTypeArray = response.data.results;
     }, function(error) {
-      console.log(error);
+      $mdDialog.show({
+        controller: 'DialogController',
+        templateUrl: 'confirm-dialog.html',
+        locals: {
+          displayOption: {
+            title: "เกิดข้อผิดพลาด !",
+            content: "เกิดข้อผิดพลาด getPromotionType.php ใน addPromotionController ระบบจะปิดอัตโนมัติ",
+            ok: "ตกลง"
+          }
+        }
+      }).then(function(response) {
+        ionic.Platform.exitApp();
+      });
     });
 
   $scope.setDetail = function(promotion_type_id) {
@@ -90,11 +102,21 @@ appControllers.controller('addPromotionCtrl', function(ionicDatePicker, $scope, 
                         }
                       }).then(function(response) {
                         $state.go('app2.shop');
-                      }, function(error) {
-                        console.log(error);
                       });
                     }, function(error) {
-                      console.log(error);
+                      $mdDialog.show({
+                        controller: 'DialogController',
+                        templateUrl: 'confirm-dialog.html',
+                        locals: {
+                          displayOption: {
+                            title: "เกิดข้อผิดพลาด !",
+                            content: "เกิดข้อผิดพลาด btnAddPromotion ใน addPromotionController ระบบจะปิดอัตโนมัติ",
+                            ok: "ตกลง"
+                          }
+                        }
+                      }).then(function(response) {
+                        ionic.Platform.exitApp();
+                      });
                     });
                   } else {
                     $mdDialog.show({
@@ -219,11 +241,21 @@ appControllers.controller('addPromotionCtrl', function(ionicDatePicker, $scope, 
                       }
                     }).then(function(response) {
                       $state.go('app2.shop');
-                    }, function(error) {
-                      console.log(error);
                     });
                   }, function(error) {
-                    console.log(error);
+                    $mdDialog.show({
+                      controller: 'DialogController',
+                      templateUrl: 'confirm-dialog.html',
+                      locals: {
+                        displayOption: {
+                          title: "เกิดข้อผิดพลาด !",
+                          content: "เกิดข้อผิดพลาด btnAddPromotion ใน addPromotionController ระบบจะปิดอัตโนมัติ",
+                          ok: "ตกลง"
+                        }
+                      }
+                    }).then(function(response) {
+                      ionic.Platform.exitApp();
+                    });
                   });
                 } else {
                   $mdDialog.show({
@@ -335,11 +367,21 @@ appControllers.controller('addPromotionCtrl', function(ionicDatePicker, $scope, 
                       }
                     }).then(function(response) {
                       $state.go('app2.shop');
-                    }, function(error) {
-                      console.log(error);
                     });
                   }, function(error) {
-                    console.log(error);
+                    $mdDialog.show({
+                      controller: 'DialogController',
+                      templateUrl: 'confirm-dialog.html',
+                      locals: {
+                        displayOption: {
+                          title: "เกิดข้อผิดพลาด !",
+                          content: "เกิดข้อผิดพลาด btnAddPromotion ใน addPromotionController ระบบจะปิดอัตโนมัติ",
+                          ok: "ตกลง"
+                        }
+                      }
+                    }).then(function(response) {
+                      ionic.Platform.exitApp();
+                    });
                   });
                 } else {
                   $mdDialog.show({

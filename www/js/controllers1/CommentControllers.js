@@ -1,23 +1,22 @@
-// Controller of Notes List Page.
-// It will call NoteDB Services to present data to html view.
-appControllers.controller('CommentControllers', function ($scope,$stateParams, $timeout, NoteDB, $state) {
-  $scope.goToSetting = function () {
+appControllers.controller('CommentControllers', function($scope, $stateParams, $timeout, NoteDB, $state) {
+  $scope.goToSetting = function() {
     $state.go("app.commentsetting");
   };
-  $scope.btnBack = function () {
+
+  $scope.btnBack = function() {
     $state.go("app.detail");
   };
 
   // initialForm is the first activity in the controller.
   // It will initial all variable data and let the function works when page load.
-  $scope.initialForm = function () {
+  $scope.initialForm = function() {
 
     //$scope.isLoading is the variable that use for check statue of process.
     $scope.isLoading = true;
 
     //$scope.isAnimated is the variable that use for receive object data from state params.
     //For enable/disable row animation.
-    $scope.isAnimated =  $stateParams.isAnimated;
+    $scope.isAnimated = $stateParams.isAnimated;
 
     // $scope.noteList is the variable that store data from NoteDB service.
     $scope.noteList = [];
@@ -26,15 +25,14 @@ appControllers.controller('CommentControllers', function ($scope,$stateParams, $
     $scope.filterText = "";
 
     // The function for loading progress.
-    $timeout(function () {
+    $timeout(function() {
       if ($scope.isAndroid) {
         jQuery('#note-list-loading-progress').show();
-      }
-      else {
+      } else {
         jQuery('#note-list-loading-progress').fadeIn(700);
       }
     }, 400);
-    $timeout(function () {
+    $timeout(function() {
 
       //Get all notes from NoteDB service.
       $scope.noteList = NoteDB.selectAll();
@@ -42,9 +40,9 @@ appControllers.controller('CommentControllers', function ($scope,$stateParams, $
       jQuery('#note-list-loading-progress').hide();
       jQuery('#note-list-content').fadeIn();
       $scope.isLoading = false;
-    }, 3000);// End loading progress.
+    }, 3000); // End loading progress.
 
-  };//End initialForm.
+  }; //End initialForm.
 
   // navigateTo is for navigate to other page
   // by using targetPage to be the destination page
@@ -52,31 +50,31 @@ appControllers.controller('CommentControllers', function ($scope,$stateParams, $
   // Parameter :
   // targetPage = destination page.
   // objectData = object that will sent to destination page.
-  $scope.navigateTo = function (targetPage, objectData) {
+  $scope.navigateTo = function(targetPage, objectData) {
     $state.go(targetPage, {
       noteDetail: objectData,
       actionDelete: (objectData == null ? false : true)
     });
-  };// End navigateTo.
+  }; // End navigateTo.
 
   $scope.initialForm();
-});// End of Notes List Page  Controller.// End of Notes List Page  Controller.
+}); // End of Notes List Page  Controller.// End of Notes List Page  Controller.
 
 // Controller of Note Setting Page.
-appControllers.controller('CommentSettingCtrl', function ($scope, NoteDB,$state, $ionicViewSwitcher,$stateParams, $ionicHistory, $mdBottomSheet, $mdDialog, $mdToast) {
+appControllers.controller('CommentSettingCtrl', function($scope, NoteDB, $state, $ionicViewSwitcher, $stateParams, $ionicHistory, $mdBottomSheet, $mdDialog, $mdToast) {
 
   // initialForm is the first activity in the controller.
   // It will initial all variable data and let the function works when page load.
-  $scope.initialForm = function () {
+  $scope.initialForm = function() {
 
     //$scope.noteLenght is is the variable for get note count.
     $scope.noteLenght = NoteDB.count();
-  };// End initialForm.
+  }; // End initialForm.
 
   // clearAllData is for remove all notes data.
   // Parameter :
   // $event(object) = position of control that user tap.
-  $scope.clearAllData = function ($event) {
+  $scope.clearAllData = function($event) {
 
     //$mdBottomSheet.hide() use for hide bottom sheet.
     $mdBottomSheet.hide();
@@ -94,7 +92,7 @@ appControllers.controller('CommentSettingCtrl', function ($scope, NoteDB,$state,
           cancel: "Close"
         }
       }
-    }).then(function () {
+    }).then(function() {
       // For confirm button to remove all data.
       try {
         //To remove all notes data by calling NoteDB.clear() service.
@@ -113,8 +111,7 @@ appControllers.controller('CommentSettingCtrl', function ($scope, NoteDB,$state,
             }
           }
         });
-      }
-      catch (e) {
+      } catch (e) {
         //Showing toast for unable to remove data.
         $mdToast.show({
           controller: 'toastController',
@@ -128,17 +125,17 @@ appControllers.controller('CommentSettingCtrl', function ($scope, NoteDB,$state,
           }
         });
       }
-    }, function () {
+    }, function() {
       // For cancel button to remove all data.
     });
-  }// End clearAllData.
+  } // End clearAllData.
 
   // navigateTo is for navigate to other page
   // by using targetPage to be the destination state.
   // Parameter :
   // stateNames = target state to go.
   // objectData = Object data will send to destination state.
-  $scope.navigateTo = function (stateName,objectData) {
+  $scope.navigateTo = function(stateName, objectData) {
     if ($ionicHistory.currentStateName() != stateName) {
       $ionicHistory.nextViewOptions({
         disableAnimate: false,
@@ -155,13 +152,13 @@ appControllers.controller('CommentSettingCtrl', function ($scope, NoteDB,$state,
   }; // End of navigateTo.
 
   $scope.initialForm();
-});// End of Notes Setting Page  Controller.
+}); // End of Notes Setting Page  Controller.
 
 // Controller of Note Detail Page.
-appControllers.controller('CommentDetailController', function ($scope, NoteDB, $stateParams, $filter, $mdBottomSheet, $mdDialog, $mdToast, $ionicHistory) {
+appControllers.controller('CommentDetailController', function($scope, NoteDB, $stateParams, $filter, $mdBottomSheet, $mdDialog, $mdToast, $ionicHistory) {
   // initialForm is the first activity in the controller.
   // It will initial all variable data and let the function works when page load.
-  $scope.initialForm = function () {
+  $scope.initialForm = function() {
 
     // $scope.actionDelete is the variable for allow or not allow to delete data.
     // It will allow to delete data when found data in the database.
@@ -176,10 +173,10 @@ appControllers.controller('CommentDetailController', function ($scope, NoteDB, $
 
     // $scope.noteList is the variable that store data from NoteDB service.
     $scope.noteList = [];
-  };// End initialForm.
+  }; // End initialForm.
 
   //getNoteData is for get note detail data.
-  $scope.getNoteData = function (actionDelete, noteDetail) {
+  $scope.getNoteData = function(actionDelete, noteDetail) {
     // tempNoteData is temporary note data detail.
     var tempNoteData = {
       id: null,
@@ -191,13 +188,13 @@ appControllers.controller('CommentDetailController', function ($scope, NoteDB, $
     // If actionDelete is true note Detail Page will show note detail that receive form note list page.
     // else it will show tempNoteData for user to add new data.
     return (actionDelete ? angular.copy(noteDetail) : tempNoteData);
-  };// End getNoteData.
+  }; // End getNoteData.
 
   // showListBottomSheet is for showing the bottom sheet.
   // Parameter :
   // $event(object) = position of control that user tap.
   // noteForm(object) = note object that presenting on the view.
-  $scope.showListBottomSheet = function ($event, noteForm) {
+  $scope.showListBottomSheet = function($event, noteForm) {
 
     $scope.disableSaveBtn = $scope.validateRequiredField(noteForm);
 
@@ -206,20 +203,20 @@ appControllers.controller('CommentDetailController', function ($scope, NoteDB, $
       targetEvent: $event,
       scope: $scope.$new(false),
     });
-  };// End showing the bottom sheet.
+  }; // End showing the bottom sheet.
 
   // validateRequiredField is for validate the required field.
   // Parameter :
   // form(object) = note object that presenting on the view.
-  $scope.validateRequiredField = function (form) {
+  $scope.validateRequiredField = function(form) {
     return !(form.noteTitle.$error.required == undefined);
-  };// End validate the required field.
+  }; // End validate the required field.
 
   // saveNote is for save note.
   // Parameter :
   // note(object) = note object that presenting on the view.
   // $event(object) = position of control that user tap.
-  $scope.saveNote = function (note, $event) {
+  $scope.saveNote = function(note, $event) {
     // $mdBottomSheet.hide() use for hide bottom sheet.
     $mdBottomSheet.hide();
 
@@ -236,7 +233,7 @@ appControllers.controller('CommentDetailController', function ($scope, NoteDB, $
           cancel: "Close"
         }
       }
-    }).then(function () {
+    }).then(function() {
 
       // For confirm button to save data.
       try {
@@ -254,7 +251,7 @@ appControllers.controller('CommentDetailController', function ($scope, NoteDB, $
           NoteDB.insert(note);
           $scope.noteList = NoteDB.selectAll();
           $scope.actionDelete = true;
-        }// End  add new  data.
+        } // End  add new  data.
 
         // Showing toast for save data is success.
         $mdToast.show({
@@ -267,9 +264,8 @@ appControllers.controller('CommentDetailController', function ($scope, NoteDB, $
               title: "Data Saved !"
             }
           }
-        });//End showing toast.
-      }
-      catch (e) {
+        }); //End showing toast.
+      } catch (e) {
         // Showing toast for unable to save data.
         $mdToast.show({
           controller: 'toastController',
@@ -281,19 +277,19 @@ appControllers.controller('CommentDetailController', function ($scope, NoteDB, $
               title: window.globalVariable.message.errorMessage
             }
           }
-        });// End showing toast.
+        }); // End showing toast.
       }
 
-    }, function () {
+    }, function() {
       // For cancel button to save data.
-    });// End alert box.
-  };// End save note.
+    }); // End alert box.
+  }; // End save note.
 
   // deleteNote is for remove note.
   // Parameter :
   // note(object) = note object that presenting on the view.
   // $event(object) = position of control that user tap.
-  $scope.deleteNote = function (note, $event) {
+  $scope.deleteNote = function(note, $event) {
     // $mdBottomSheet.hide() use for hide bottom sheet.
     $mdBottomSheet.hide();
 
@@ -310,7 +306,7 @@ appControllers.controller('CommentDetailController', function ($scope, NoteDB, $
           cancel: "Close"
         }
       }
-    }).then(function () {
+    }).then(function() {
       // For confirm button to remove data.
       try {
         // Remove note by calling  NoteDB.delete(note) service.
@@ -319,7 +315,7 @@ appControllers.controller('CommentDetailController', function ($scope, NoteDB, $
         }
         NoteDB.delete(note);
         $ionicHistory.goBack();
-      }// End remove note.
+      } // End remove note.
       catch (e) {
         // Showing toast for unable to remove data.
         $mdToast.show({
@@ -332,14 +328,14 @@ appControllers.controller('CommentDetailController', function ($scope, NoteDB, $
               title: window.globalVariable.message.errorMessage
             }
           }
-        });//End showing toast.
+        }); //End showing toast.
       }
 
-    }, function () {
+    }, function() {
       // For cancel button to remove data.
-    });// End alert box.
-  };// End remove note.
+    }); // End alert box.
+  }; // End remove note.
 
   $scope.initialForm();
 
-});// End of Notes Detail Page  Controller.
+}); // End of Notes Detail Page  Controller.

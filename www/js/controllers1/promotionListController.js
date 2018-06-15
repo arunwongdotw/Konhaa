@@ -36,10 +36,21 @@ appControllers.controller('promotionListCtrl', function($scope, $mdUtil, $mdSide
       var timeDiff = (enddate.getTime() - sevenhours) - today.getTime();
       var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
       $scope.PromotionListArray[i].remain = diffDays;
-      console.log($scope.PromotionListArray);
     }
   }, function(error) {
-    console.log(error);
+    $mdDialog.show({
+      controller: 'DialogController',
+      templateUrl: 'confirm-dialog.html',
+      locals: {
+        displayOption: {
+          title: "เกิดข้อผิดพลาด !",
+          content: "เกิดข้อผิดพลาด getPromotionOfMember.php ใน promotionListController ระบบจะปิดอัตโนมัติ",
+          ok: "ตกลง"
+        }
+      }
+    }).then(function(response) {
+      ionic.Platform.exitApp();
+    });
   });
 
   $scope.btnDetail = function(promotion_id) {
@@ -50,12 +61,23 @@ appControllers.controller('promotionListCtrl', function($scope, $mdUtil, $mdSide
         var_promotionid: promotion_id
       }
     }).then(function(response) {
-      console.log(response.data.results[0]);
       myService.passDataObject2 = response.data.results[0];
       myService.passDataObject2.img = myService.configAPI.webserviceURL + 'img/img_shop/' + response.data.results[0].img + '?random+\=' + Math.random();
       $state.go('app2.detail');
     }, function(error) {
-      console.log(error);
+      $mdDialog.show({
+        controller: 'DialogController',
+        templateUrl: 'confirm-dialog.html',
+        locals: {
+          displayOption: {
+            title: "เกิดข้อผิดพลาด !",
+            content: "เกิดข้อผิดพลาด btnDetail ใน promotionListController ระบบจะปิดอัตโนมัติ",
+            ok: "ตกลง"
+          }
+        }
+      }).then(function(response) {
+        ionic.Platform.exitApp();
+      });
     });
   };
 

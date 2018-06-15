@@ -1,6 +1,5 @@
 appControllers.controller('listChat2Ctrl', function($scope, $state, $ionicPopup, $ionicScrollDelegate, myService, $http, $mdBottomSheet, $mdDialog) {
   $ionicScrollDelegate.scrollBottom(true);
-
   $scope.member_id = window.localStorage.username;
   var array = {};
   var array2 = [];
@@ -23,7 +22,7 @@ appControllers.controller('listChat2Ctrl', function($scope, $state, $ionicPopup,
           cancel: "ยกเลิก"
         }
       }
-    }).then(function() {
+    }).then(function(response) {
       var node = myService.passDataObject.member_username + '-' + record.shop_id;
       var fbdelete = new Firebase("https://konhaaapp.firebaseio.com/");
       var nodedelete = fbdelete.child('chat').child(node).remove();
@@ -48,7 +47,7 @@ appControllers.controller('listChat2Ctrl', function($scope, $state, $ionicPopup,
       }).then(function(response) {
         $state.reload();
       });
-    }, function() {});
+    });
   };
 
   $scope.backMessage = function() {
@@ -103,7 +102,19 @@ appControllers.controller('listChat2Ctrl', function($scope, $state, $ionicPopup,
               });
               $scope.items2 = array2;
             }, function(error) {
-              console.log(error);
+              $mdDialog.show({
+                controller: 'DialogController',
+                templateUrl: 'confirm-dialog.html',
+                locals: {
+                  displayOption: {
+                    title: "เกิดข้อผิดพลาด !",
+                    content: "เกิดข้อผิดพลาด listenToFirebase ใน listchat2Controller ระบบจะปิดอัตโนมัติ",
+                    ok: "ตกลง"
+                  }
+                }
+              }).then(function(response) {
+                ionic.Platform.exitApp();
+              });
             });
         });
       }
@@ -120,7 +131,6 @@ appControllers.controller('listChat2Ctrl', function($scope, $state, $ionicPopup,
 
   $scope.btnDelCusChat = function(record) {
     getShopDetail(function(status) {
-      console.log(shop_id);
       $mdDialog.show({
         controller: 'DialogController',
         templateUrl: 'confirm-dialog.html',
@@ -132,7 +142,7 @@ appControllers.controller('listChat2Ctrl', function($scope, $state, $ionicPopup,
             cancel: "ยกเลิก"
           }
         }
-      }).then(function() {
+      }).then(function(response) {
         // var node = record.member_username + '-' + shop_id;
         var node = shop_id + '-' + record.member_username;
         var fbdelete = new Firebase("https://konhaaapp.firebaseio.com/");
@@ -158,7 +168,7 @@ appControllers.controller('listChat2Ctrl', function($scope, $state, $ionicPopup,
         }).then(function(response) {
           $state.reload();
         });
-      }, function() {});
+      });
     });
   };
 
@@ -169,7 +179,19 @@ appControllers.controller('listChat2Ctrl', function($scope, $state, $ionicPopup,
         shop_id = response.data.results[0].shop_id;
         callback($scope.title, shop_id);
       }, function(error) {
-        console.log(error);
+        $mdDialog.show({
+          controller: 'DialogController',
+          templateUrl: 'confirm-dialog.html',
+          locals: {
+            displayOption: {
+              title: "เกิดข้อผิดพลาด !",
+              content: "เกิดข้อผิดพลาด getShopDetail ใน listchat2Controller ระบบจะปิดอัตโนมัติ",
+              ok: "ตกลง"
+            }
+          }
+        }).then(function(response) {
+          ionic.Platform.exitApp();
+        });
       });
   }
 
@@ -211,7 +233,19 @@ appControllers.controller('listChat2Ctrl', function($scope, $state, $ionicPopup,
                 });
                 $scope.items3 = array5;
               }, function(error) {
-                console.log(error);
+                $mdDialog.show({
+                  controller: 'DialogController',
+                  templateUrl: 'confirm-dialog.html',
+                  locals: {
+                    displayOption: {
+                      title: "เกิดข้อผิดพลาด !",
+                      content: "เกิดข้อผิดพลาด listenToFirebase2 ใน listchat2Controller ระบบจะปิดอัตโนมัติ",
+                      ok: "ตกลง"
+                    }
+                  }
+                }).then(function(response) {
+                  ionic.Platform.exitApp();
+                });
               });
           });
         }

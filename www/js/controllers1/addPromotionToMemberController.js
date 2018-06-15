@@ -8,10 +8,21 @@ appControllers.controller('addPromotionToMemberCtrl', function($scope, $mdUtil, 
       var_shopid: myService.shopid.shop_id
     }
   }).then(function(response) {
-    console.log(response.data.results);
     $scope.PromotionListArray = response.data.results;
   }, function(error) {
-    console.log(error);
+    $mdDialog.show({
+      controller: 'DialogController',
+      templateUrl: 'confirm-dialog.html',
+      locals: {
+        displayOption: {
+          title: "เกิดข้อผิดพลาด !",
+          content: "เกิดข้อผิดพลาด getPromotionToAdd.php ใน addPromotionToMemberController ระบบจะปิดอัตโนมัติ",
+          ok: "ตกลง"
+        }
+      }
+    }).then(function(response) {
+      ionic.Platform.exitApp();
+    });
   });
 
   $scope.setmdSelectValue = function(promotion_id) {
@@ -20,9 +31,9 @@ appControllers.controller('addPromotionToMemberCtrl', function($scope, $mdUtil, 
 
   $scope.btnAddPromotionToMember = function() {
     var number = /^[0-9]+$/;
-    if(($scope.mdSelectValue != null) && ($scope.mdSelectValue != "")) {
-      if(($scope.amount.freq != null) && ($scope.amount.freq != "")) {
-        if(number.test($scope.amount.freq)) {
+    if (($scope.mdSelectValue != null) && ($scope.mdSelectValue != "")) {
+      if (($scope.amount.freq != null) && ($scope.amount.freq != "")) {
+        if (number.test($scope.amount.freq)) {
           $http({
             url: myService.configAPI.webserviceURL + 'webservices/addPromotionToMember.php',
             method: 'POST',
@@ -44,11 +55,21 @@ appControllers.controller('addPromotionToMemberCtrl', function($scope, $mdUtil, 
               }
             }).then(function(response) {
               $state.go('app2.shop');
-            }, function(error) {
-              console.log(error);
             });
           }, function(error) {
-            console.log(error);
+            $mdDialog.show({
+              controller: 'DialogController',
+              templateUrl: 'confirm-dialog.html',
+              locals: {
+                displayOption: {
+                  title: "เกิดข้อผิดพลาด !",
+                  content: "เกิดข้อผิดพลาด btnAddPromotionToMember ใน addPromotionToMemberController ระบบจะปิดอัตโนมัติ",
+                  ok: "ตกลง"
+                }
+              }
+            }).then(function(response) {
+              ionic.Platform.exitApp();
+            });
           });
         } else {
           $mdDialog.show({

@@ -1,6 +1,5 @@
 appControllers.controller('ChatfirebaseCtrl', function($scope, $state, $ionicPopup, $ionicScrollDelegate, myService, $http) {
   $ionicScrollDelegate.scrollBottom(true);
-  console.log('ChatfirebaseCtrl start...');
   // var fb = new Firebase("https://mymap-ebb16.firebaseio.com/");
   var fb = new Firebase("https://konhaaapp.firebaseio.com/");
   var shop_id = myService.passDataObject2.shop_id;
