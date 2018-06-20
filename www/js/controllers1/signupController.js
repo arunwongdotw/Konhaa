@@ -75,7 +75,7 @@ appControllers.controller('signupCtrl', function($scope, $mdDialog, $http, mySer
                                 window.localStorage.username = $scope.form.txt_username;
                                 myService.passDataObject = response.data.results[0];
                                 $state.go('app2.home');
-                              }, function(error){
+                              }, function(error) {
                                 $mdDialog.show({
                                   controller: 'DialogController',
                                   templateUrl: 'confirm-dialog.html',
