@@ -81,6 +81,17 @@ appControllers.controller('promotionListCtrl', function($scope, $mdUtil, $mdSide
     });
   };
 
+  $scope.openLink = function(ads) {
+    var options = {
+      location: 'yes',
+      clearcache: 'yes',
+      toolbar: 'no'
+    };
+    if ((ads.advertise_url != "") && (ads.advertise_url != null)) {
+      $cordovaInAppBrowser.open('http://' + ads.advertise_url, '_system', options);
+    }
+  }
+
   $scope.closeCard = function() {
     var myEl = angular.element(document.querySelector('#advertise-card'));
     myEl.remove();

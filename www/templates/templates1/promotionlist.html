@@ -1,6 +1,6 @@
 <ion-view title="รายการโปรโมชั่น" id="online-course">
     <ion-content id="online-course-content" overflow-scroll="false">
-        <div class="card" id="advertise-card" ng-repeat="ads in adsArray" style="border: 3px solid red;">
+        <div class="card" id="advertise-card" ng-repeat="ads in adsArray" style="border: 3px solid red;" ng-click="openLink(ads)">
             <div class="item item-icon-right" style="text-align: center;">
                 <p style="font-weight: bold; font-size: 20px;">{{ads.advertise_text_1}}</p>
                 <p style="font-weight: bold; font-size: 18px;">{{ads.advertise_text_2}}</p>
