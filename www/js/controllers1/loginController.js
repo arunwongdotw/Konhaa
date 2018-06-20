@@ -1,4 +1,4 @@
-appControllers.controller('loginCtrl', function($scope, $mdDialog, $http, myService, $state, $cordovaOauth, localStorage, $cordovaDevice) {
+appControllers.controller('loginCtrl', function($scope, $mdDialog, $http, myService, $state, $cordovaOauth, $cordovaDevice) {
   $scope.login = {};
 
   $scope.btnLogin = function() {
