@@ -1,4 +1,4 @@
-appControllers.controller('qrCodeCtrl', function($scope, $mdUtil, $mdSidenav, $timeout, $ionicHistory, $state, $http, myService) {
+appControllers.controller('qrCodeCtrl', function($scope, $mdUtil, $mdSidenav, $timeout, $ionicHistory, $state, $http, myService, $cordovaInAppBrowser) {
   $scope.toggleLeft = buildToggler('left');
 
   function buildToggler(navID) {

@@ -1,4 +1,4 @@
-appControllers.controller('shopController', function($http, $scope, $state, $cordovaCamera, $cordovaFileTransfer, $cordovaDialogs, myService, $mdDialog) {
+appControllers.controller('shopController', function($http, $scope, $state, $cordovaCamera, $cordovaFileTransfer, $cordovaDialogs, myService, $mdDialog, $cordovaInAppBrowser) {
   $scope.member_id = myService.passDataObject.member_id;
   var shop_id = myService.shopid.shop_id;
 

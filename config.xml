@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.smartonline.konhaa" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.smartonline.konhaa" version="1.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Konhaa</name>
     <description>
-    ค้นหาร้านค้าที่ใกล้ตัวคุณ
-  </description>
+    แอปพลิเคชันค้นหาร้านค้าใกล้ ๆ ตัวคุณ
+    </description>
     <author email="roj2007@gmail.com" href="http://www.smartonline.info">
-    Smart Online
+    Smart Online Co., Ltd.
     </author>
     <content src="index.html" />
     <allow-navigation href="tel:*" />
